@@ -10,7 +10,17 @@ Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **
 
 1. **29 Mô Hình 3D GLB Tương Tác Xoay 360°**
    - 5 chủ đề thân thuộc: Con vật (7), Đồ ăn & Uống (7), Đồ chơi (5), Xe cộ & Đi lại (3), Đồ dùng & Quần áo (7).
-   - Bé có thể dùng tay vuốt xoay tròn, ngắm nghía mọi góc cạnh để kích thích thị giác và trí tò mò.
+   - **Đầy đủ hoạt họa cử động (3D Animations)** cho 100% các con vật:
+     - 🦆 **Con vịt**: Bơi lội lạch bạch (*Waddle*) & Quác quác nhảy múa (*Dance*).
+     - 🐟 **Con cá**: Bơi lội quẫy đuôi (*Swim*) & Phóng mình quẫy nước (*Jump*).
+     - 🦊 **Con cáo**: Ngó nghiêng tò mò (*Survey*), Đi dạo thong thả (*Walk*) & Chạy nhảy tung tăng (*Run*).
+     - 🐎 **Con ngựa**: Phi nước đại tung vó (*horse_A_*).
+     - 🦜 **Con vẹt**: Vỗ cánh bay lượn (*parrot_A_*).
+     - 🦩 **Hồng hạc**: Sải cánh bồng bềnh (*flamingo_flyA_*).
+     - 🕊️ **Con cò**: Tung cánh bay lượn (*storkFly_B_*).
+     - 🤖 **Người máy**: Nhảy múa, Vẫy tay, Nhảy cao, Khen giỏi...
+   - **Thanh điều khiển động tác**: Bé có thể chạm chọn các động tác khác nhau, tạm dừng/tiếp tục hoặc bấm nút "💃 Cử động" để chuyển động tác ăn mừng kèm pháo hoa confetti.
+   - Bé có thể dùng tay vuốt xoay 360°, phóng to thu nhỏ để kích thích thị giác và trí tò mò.
 
 2. **Hỗ Trợ Chuẩn 3 Giọng Vùng Miền Việt Nam**
    - Chuyển đổi linh hoạt tức thì ngay trên giao diện.

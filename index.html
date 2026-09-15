@@ -92,6 +92,7 @@
           <div class="hero-viewer-wrap">
             <model-viewer
               id="heroViewer"
+              autoplay
               src="models/duck.glb"
               alt="Mô hình 3D vui nhộn"
               auto-rotate
@@ -176,6 +177,7 @@
       <div class="modal-3d-box">
         <model-viewer
           id="modalViewer"
+          autoplay
           src=""
           alt="Mô hình 3D từ vựng"
           auto-rotate
@@ -192,10 +194,19 @@
           <button class="viewer-float-btn" id="btnArView" title="Xem ngoài đời thực bằng camera AR">
             📱 Xem AR
           </button>
-          <button class="viewer-float-btn" id="btnDance3D" title="Mô hình cử động nhảy múa">
-            💃 Nhảy múa
+          <button class="viewer-float-btn" id="btnDance3D" title="Đổi động tác hoặc cử động nhảy múa">
+            💃 Cử động
           </button>
         </div>
+      </div>
+
+      <!-- THANH ĐIỀU KHIỂN ANIMATION CỬ ĐỘNG DÀNH CHO BÉ -->
+      <div class="anim-bar hidden" id="modalAnimBar">
+        <div class="anim-bar-header">
+          <span class="anim-bar-label">🎬 Động tác của bạn:</span>
+          <button class="anim-toggle-play" id="btnAnimPlayPause" title="Tạm dừng / Tiếp tục cử động">⏸️ Tạm dừng</button>
+        </div>
+        <div class="anim-chips" id="modalAnimChips"></div>
       </div>
 
       <small id="modalCat">CON VẬT</small>
@@ -258,6 +269,7 @@
       <div class="fc-viewer-box">
         <model-viewer
           id="fcViewer"
+          autoplay
           src=""
           alt="Mô hình Flashcard"
           auto-rotate
@@ -307,6 +319,7 @@
       <div class="shadow-viewer-box">
         <model-viewer
           id="shadowViewer"
+          autoplay
           src=""
           alt="Bóng bí ẩn"
           auto-rotate

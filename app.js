@@ -1074,6 +1074,93 @@ if (btnPlayRecorded) {
   });
 }
 
+
+// ANIMATION INFOS & CONTROLS FOR ANIMALS AND 3D MODELS
+const ANIM_INFO = {
+  // Animals
+  Waddle: { label: "🦆 Bơi lội", hint: "Chú vịt bơi lội nhịp nhàng" },
+  Dance: { label: "💃 Nhảy múa", hint: "Quác quác! Nhảy múa ăn mừng" },
+  Swim: { label: "🐟 Bơi lội", hint: "Chú cá bơi lội vẫy đuôi uyển chuyển" },
+  Jump: { label: "🌊 Quẫy nước", hint: "Chú cá quẫy nước phóng lên cao" },
+  Survey: { label: "🦊 Ngó nghiêng", hint: "Bạn Cáo ngơ ngác ngó quanh tò mò" },
+  Walk: { label: "🐾 Đi dạo", hint: "Bạn Cáo bước đi thong thả" },
+  Run: { label: "⚡ Chạy nhảy", hint: "Bạn Cáo chạy lon ton tinh nghịch" },
+  horse_A_: { label: "🐎 Phi nước đại", hint: "Chú ngựa tung vó phi nhanh" },
+  parrot_A_: { label: "🦜 Vỗ cánh", hint: "Chú vẹt vỗ cánh bay lượn" },
+  flamingo_flyA_: { label: "🦩 Sải cánh", hint: "Hồng hạc sải cánh tuyệt đẹp" },
+  storkFly_B_: { label: "🕊️ Tung cánh", hint: "Chú cò trắng tung cánh bay lượn" },
+  // Vehicles & Toys
+  Holobike_Loop: { label: "🚲 Đạp xe", hint: "Bánh xe đạp quay đều" },
+  Wheels: { label: "🚚 Lăn bánh", hint: "Xe bon bon trên đường" },
+  Wave: { label: "👋 Vẫy tay", hint: "Người máy vẫy tay chào bé" },
+  ThumbsUp: { label: "👍 Khen giỏi", hint: "Khen ngợi bé phát âm giỏi" },
+  Walking: { label: "🚶 Đi bộ", hint: "Người máy bước đi vững chãi" },
+  Running: { label: "🏃 Chạy nhanh", hint: "Người máy chạy thật nhanh" },
+  Yes: { label: "🙆 Gật đầu", hint: "Gật đầu đồng ý với bé" },
+  No: { label: "🙅 Lắc đầu", hint: "Lắc đầu trêu đùa vui nhộn" }
+};
+
+function updateModalAnimations() {
+  const viewer = $("#modalViewer");
+  const animBar = $("#modalAnimBar");
+  const animChips = $("#modalAnimChips");
+  if (!viewer || !animBar || !animChips) return;
+
+  const anims = viewer.availableAnimations || [];
+  if (anims.length === 0) {
+    animBar.classList.add("hidden");
+    animChips.innerHTML = "";
+    return;
+  }
+
+  animBar.classList.remove("hidden");
+  const current = viewer.animationName || anims[0];
+  animChips.innerHTML = anims.map((name) => {
+    const info = ANIM_INFO[name] || { label: "✨ " + name, hint: "Động tác " + name };
+    const isActive = name === current;
+    return '<button class="anim-chip ' + (isActive ? "active" : "") + '" data-anim="' + name + '" title="' + info.hint + '">' + info.label + '</button>';
+  }).join("");
+
+  const btnPlayPause = $("#btnAnimPlayPause");
+  if (btnPlayPause) {
+    btnPlayPause.textContent = viewer.paused ? "▶️ Tiếp tục" : "⏸️ Tạm dừng";
+  }
+
+  animChips.querySelectorAll(".anim-chip").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const anim = btn.getAttribute("data-anim");
+      setViewerAnimation(anim);
+    });
+  });
+}
+
+function setViewerAnimation(animName) {
+  const viewer = $("#modalViewer");
+  if (!viewer) return;
+
+  viewer.animationName = animName;
+  viewer.play();
+
+  const chips = document.querySelectorAll("#modalAnimChips .anim-chip");
+  chips.forEach((c) => {
+    c.classList.toggle("active", c.getAttribute("data-anim") === animName);
+  });
+
+  const btnPlayPause = $("#btnAnimPlayPause");
+  if (btnPlayPause) btnPlayPause.textContent = "⏸️ Tạm dừng";
+
+  const info = ANIM_INFO[animName] || { label: animName, hint: "Đang cử động " + animName };
+  showToast("✨ " + (info.hint || info.label));
+  playFanfare();
+
+  viewer.style.transition = "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)";
+  viewer.style.transform = "scale(1.1) translateY(-12px)";
+  setTimeout(() => {
+    viewer.style.transform = "scale(1) translateY(0)";
+  }, 350);
+}
+
 // AR & Dance
 $('#btnArView').addEventListener('click', () => {
   const viewer = $('#modalViewer');
@@ -1087,14 +1174,42 @@ $('#btnArView').addEventListener('click', () => {
 $('#btnDance3D').addEventListener('click', () => {
   const viewer = $('#modalViewer');
   if (!viewer) return;
-  playFanfare();
-  viewer.style.transition = 'transform 0.4s ease';
-  viewer.style.transform = 'scale(1.15) translateY(-20px) rotate(15deg)';
-  setTimeout(() => {
-    viewer.style.transform = 'scale(1) translateY(0) rotate(0)';
-  }, 450);
-  showToast('💃 Hoan hô! Bạn 3D đang nhảy múa vui quá nè!');
+
+  const anims = viewer.availableAnimations || [];
+  if (anims.length > 0) {
+    const current = viewer.animationName || anims[0];
+    const nextIdx = (anims.indexOf(current) + 1) % anims.length;
+    const nextAnim = anims[nextIdx];
+    setViewerAnimation(nextAnim);
+    launchConfetti();
+  } else {
+    playFanfare();
+    launchConfetti();
+    viewer.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    viewer.style.transform = 'scale(1.18) translateY(-25px) rotate(12deg)';
+    setTimeout(() => {
+      viewer.style.transform = 'scale(1) translateY(0) rotate(0)';
+    }, 450);
+    showToast('💃 Hoan hô! Bạn 3D đang nhảy múa vui quá nè!');
+  }
 });
+
+$('#btnAnimPlayPause').addEventListener('click', (e) => {
+  e.stopPropagation();
+  const viewer = $('#modalViewer');
+  if (!viewer) return;
+  if (viewer.paused) {
+    viewer.play();
+    $('#btnAnimPlayPause').textContent = '⏸️ Tạm dừng';
+    showToast('▶️ Bạn 3D tiếp tục cử động nè!');
+  } else {
+    viewer.pause();
+    $('#btnAnimPlayPause').textContent = '▶️ Tiếp tục';
+    showToast('⏸️ Đã tạm dừng cử động');
+  }
+});
+
+$('#modalViewer').addEventListener('load', updateModalAnimations);
 
 // Baby 3D Toy Park
 function renderPark() {
@@ -1119,6 +1234,7 @@ function renderPark() {
         <model-viewer
           src="${item.glb}"
           alt="${item.word}"
+          autoplay
           auto-rotate
           rotation-per-second="40deg"
           camera-controls
@@ -1262,6 +1378,7 @@ function renderGrid() {
           <model-viewer
             src="${item.glb}"
             alt="${item.word}"
+            autoplay
             auto-rotate
             rotation-per-second="25deg"
             camera-controls
@@ -1325,6 +1442,7 @@ function openWord(rawItem) {
   if (aiStars) aiStars.textContent = '⭐⭐⭐';
 
   $('#wordModal').classList.remove('hidden');
+  setTimeout(updateModalAnimations, 60);
 
   playAudio(item.audio);
 }
@@ -1501,6 +1619,7 @@ function nextQuizRound() {
         <model-viewer
           src="${item.glb}"
           alt="${item.word}"
+          autoplay
           auto-rotate
           rotation-per-second="35deg"
           camera-controls

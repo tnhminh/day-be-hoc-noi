@@ -56,3 +56,14 @@ test('Prompts and celebratory fanfare exist for all regional dialects', () => {
   assert.ok(fs.existsSync('audio_central/applause.wav'), 'Central applause missing');
   assert.ok(fs.existsSync('audio_south/applause.wav'), 'South applause missing');
 });
+
+test('All 7 animal 3D models have interactive animations', () => {
+  const animalIds = ['duck', 'fish', 'fox', 'horse', 'parrot', 'flamingo', 'stork'];
+  for (const id of animalIds) {
+    const buf = fs.readFileSync(`models/${id}.glb`);
+    const jsonLen = buf.readUInt32LE(12);
+    const jsonStr = buf.toString('utf8', 20, 20 + jsonLen);
+    const gltf = JSON.parse(jsonStr);
+    assert.ok(Array.isArray(gltf.animations) && gltf.animations.length > 0, `Animal model ${id} must have animations`);
+  }
+});
