@@ -2,7 +2,7 @@
 
 Ứng dụng web tương tác 3D và phát âm chuẩn tiếng Việt giúp trẻ mầm non tập nói, mở rộng vốn từ vựng và luyện phản xạ ngôn ngữ tự nhiên.
 
-Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **Giọng Miền Bắc**, tích hợp 29 mô hình 3D thực tế, chức năng thu âm giọng bé, 2 trò chơi đố vui thông minh, khóa phụ huynh và khả năng hoạt động offline 100% (PWA).
+Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **Giọng Miền Bắc**, tích hợp 29 mô hình 3D thực tế, chức năng thu âm giọng bé, trung tâm 6 mini game tương tác riêng biệt, khóa phụ huynh và khả năng hoạt động offline 100% (PWA).
 
 ---
 
@@ -32,9 +32,13 @@ Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **
 3. **Chức Năng Ghi Âm "Bé Tập Nói & Nghe Lại Giọng Mình"**
    - Bé bấm nút ghi âm nói thử -> Hệ thống tự động phát lại giọng nói non nớt của bé và phát lời khen ngợi kích lệ tinh thần.
 
-4. **2 Chế Độ Mini Game Đa Dạng**
-   - **🎯 Đố Vui Nghe Tiếng**: Nghe phát âm câu hỏi và chọn đúng mô hình 3D.
-   - **🕵️ Đoán Bóng 3D Bí Ẩn**: Mô hình 3D hiển thị dưới dạng bóng đen bí ẩn, khi bé đoán đúng thì ánh sáng bừng sáng kèm hiệu ứng chúc mừng rực rỡ.
+4. **Khu Vui Chơi All-in-One: 6 Mini Game Riêng Biệt Cho Bé**
+   - **🎯 1. Đố Vui Nghe Tiếng (Audio Identification)**: Nghe phát âm chuẩn (Nam/Trung/Bắc) và nhận diện bạn 3D đang xoay trong 4 lựa chọn.
+   - **🕵️ 2. Đoán Bóng Bí Ẩn (3D Silhouette Cognition)**: Mô hình 3D hiển thị dưới dạng bóng đen bí ẩn, bé đoán hình khối và bừng sáng màu sắc khi đoán đúng.
+   - **🃏 3. Lật Thẻ Trí Nhớ 3D (3D Memory Match)**: Lật mở các lá bài ma thuật tìm các cặp bạn 3D giống nhau, rèn luyện trí nhớ không gian và sự tập trung.
+   - **🧺 4. Thu Hoạch Bỏ Giỏ (Category Sorting & Counting)**: Đi chợ/thu hoạch nhặt đúng các món Đồ Ăn, Con Vật, Đồ Chơi... bỏ vào chiếc giỏ thần kỳ nảy sóng âm thanh.
+   - **⚡ 5. Bắt Bạn Nhanh Tay (Whack-a-Buddy Reflex)**: Đua phản xạ 30 giây bắt đúng các bạn 3D trồi lên khỏi đám mây ngộ nghĩnh.
+   - **📺 6. Rạp Phim Flashcard 3D (Hands-free Cinema)**: Tự động chiếu từng thẻ 3D xoay 360° kết hợp phát âm chậm rãi cho bé xem thư giãn trước giờ ngủ.
 
 5. **Góc Ba Mẹ & Khóa Phụ Huynh An Toàn (Parental Controls)**
    - Khóa phụ huynh bằng phép tính toán học ngẫu nhiên ngăn trẻ bấm nhầm.

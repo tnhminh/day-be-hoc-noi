@@ -725,6 +725,9 @@ const state = {
   flashcardTimer: null,
   quiz: { round: 0, score: 0, answer: null, locked: false },
   shadow: { round: 0, score: 0, answer: null, locked: false },
+  memory: { pairsMatched: 0, firstCard: null, secondCard: null, locked: false, items: [] },
+  basket: { category: null, targetItems: [], collected: [], round: 0, locked: false },
+  whack: { score: 0, target: null, timer: null, timeLeft: 30, activeHoles: [], running: false },
   parentGateAnswer: null
 };
 
@@ -1339,21 +1342,21 @@ function applyVoiceUI() {
     $('#subHeading').textContent = 'Hôm nay bé muốn tập nói từ gì nè?';
     $('#greeting').textContent = '🔊 Nghe cô chào con';
     $('#quizQuestion').textContent = 'Con lắng nghe và chọn đúng hình nghen!';
-    $('#challengeDesc').textContent = 'Hai chế độ đố vui thông minh với giọng đọc miền Nam gần gũi, giúp bé phản xạ tự nhiên.';
+    const arcSub = $('#arcadeSubtitle'); if (arcSub) arcSub.textContent = 'Sáu trò chơi tương tác với sắc thái miền Nam thân thương, giúp con phát triển toàn diện!';
     $('#learn').textContent = '⭐ Con nói được từ này rồi!';
   } else if (isCentral) {
     $('#heroChip').textContent = '🏮 Đang dùng: Giọng Miền Trung gần gũi';
     $('#subHeading').textContent = 'Hôm ni bé muốn tập nói từ gì hè?';
     $('#greeting').textContent = '🔊 Nghe cô chào con';
     $('#quizQuestion').textContent = 'Con nghe rồi chọn đúng hình nghe!';
-    $('#challengeDesc').textContent = 'Hai chế độ đố vui với sắc thái miền Trung thân thương, giúp bé nghe đa dạng giọng Việt.';
+    const arcSub = $('#arcadeSubtitle'); if (arcSub) arcSub.textContent = 'Sáu trò chơi với giọng đọc miền Trung gần gũi, giúp con luyện tai nghe và phản xạ nhanh!';
     $('#learn').textContent = '⭐ Con nói được từ ni rồi!';
   } else {
     $('#heroChip').textContent = '🌸 Đang dùng: Giọng Miền Bắc chuẩn mực';
     $('#subHeading').textContent = 'Hôm nay bé muốn tập nói từ gì nhé?';
     $('#greeting').textContent = '🔊 Nghe cô chào bé';
     $('#quizQuestion').textContent = 'Bé lắng nghe và chọn đúng hình nhé!';
-    $('#challengeDesc').textContent = 'Hai chế độ đố vui thông minh với giọng đọc miền Bắc chuẩn xác, giúp bé nhớ lâu.';
+    const arcSub = $('#arcadeSubtitle'); if (arcSub) arcSub.textContent = 'Sáu trò chơi tương tác với giọng chuẩn phổ thông miền Bắc, rèn luyện trí nhớ và phản xạ cho bé!';
     $('#learn').textContent = '⭐ Bé đã nói được từ này!';
   }
 }
@@ -1450,6 +1453,10 @@ function openWord(rawItem) {
 function closeModal(id) {
   const modal = $(`#${id}`);
   if (modal) modal.classList.add('hidden');
+  if (id === 'whackModal') {
+    state.whack.running = false;
+    clearInterval(state.whack.timer);
+  }
 }
 
 function showToast(text) {
@@ -1775,6 +1782,410 @@ function handleShadowAnswer(btn) {
 }
 
 $('#startShadowGame').addEventListener('click', startShadowGame);
+
+
+// ==========================================================================
+// GAME 3: LẬT THẺ TRÍ NHỚ 3D (3D MEMORY MATCH)
+// ==========================================================================
+function openMemoryGame() {
+  initAudioContext();
+  $('#memoryModal').classList.remove('hidden');
+  initMemoryRound();
+}
+
+function initMemoryRound() {
+  const isSouth = state.voice === 'south';
+  const isCentral = state.voice === 'central';
+  state.memory = {
+    pairsMatched: 0,
+    firstCard: null,
+    secondCard: null,
+    locked: false,
+    items: []
+  };
+
+  $('#memoryScore').textContent = 'Cặp đúng: 0 / 3';
+  $('#memoryTitle').textContent = isSouth
+    ? 'Con hãy lật tìm 2 thẻ giống nhau nghen!'
+    : (isCentral ? 'Con hãy lật tìm 2 thẻ giống nhau nghe!' : 'Bé hãy lật tìm 2 thẻ giống nhau nhé!');
+  $('#memoryInstruct').textContent = 'Chạm vào từng lá bài ma thuật để xem bạn 3D nào đang trốn bên trong.';
+  $('#memoryFeedback').textContent = '';
+
+  // Select 3 random distinct items from rawWords
+  const all = [...rawWords].sort(() => Math.random() - 0.5);
+  const selected = all.slice(0, 3).map(getItemData);
+
+  // Duplicate to make 3 pairs = 6 cards
+  const cards = [];
+  selected.forEach((item, idx) => {
+    cards.push({ id: item.id, item, key: idx * 2 });
+    cards.push({ id: item.id, item, key: idx * 2 + 1 });
+  });
+  cards.sort(() => Math.random() - 0.5);
+  state.memory.items = cards;
+
+  const grid = $('#memoryGrid');
+  grid.innerHTML = cards.map((c, i) =>
+    '<div class="memory-card" data-key="' + i + '" data-id="' + c.id + '">' +
+      '<div class="memory-card-inner">' +
+        '<div class="memory-card-back">⭐</div>' +
+        '<div class="memory-card-front">' +
+          '<model-viewer src="' + c.item.glb + '" autoplay auto-rotate rotation-per-second="35deg" camera-controls disable-zoom interaction-prompt="none"></model-viewer>' +
+          '<span>' + c.item.word + '</span>' +
+        '</div>' +
+      '</div>' +
+    '</div>'
+  ).join('');
+
+  grid.querySelectorAll('.memory-card').forEach((cardEl) => {
+    cardEl.addEventListener('click', () => {
+      const idx = parseInt(cardEl.dataset.key, 10);
+      handleMemoryCardClick(cardEl, state.memory.items[idx]);
+    });
+  });
+
+  playAudio(getAudioPath('find_prompt'));
+}
+
+function handleMemoryCardClick(cardEl, cardData) {
+  if (state.memory.locked) return;
+  if (cardEl.classList.contains('flipped') || cardEl.classList.contains('matched')) return;
+
+  const isSouth = state.voice === 'south';
+  cardEl.classList.add('flipped');
+  playAudio(cardData.item.audioShort);
+
+  if (!state.memory.firstCard) {
+    state.memory.firstCard = { el: cardEl, data: cardData };
+    return;
+  }
+
+  // Second card flipped
+  state.memory.secondCard = { el: cardEl, data: cardData };
+  state.memory.locked = true;
+
+  if (state.memory.firstCard.data.id === state.memory.secondCard.data.id) {
+    // MATCH!
+    state.memory.firstCard.el.classList.add('matched');
+    state.memory.secondCard.el.classList.add('matched');
+    state.memory.pairsMatched++;
+    $('#memoryScore').textContent = 'Cặp đúng: ' + state.memory.pairsMatched + ' / 3';
+
+    playFanfare();
+    launchConfetti();
+    showToast(isSouth ? '🌟 Con ghép đúng cặp ' + cardData.item.word + ' rồi nè!' : '🌟 Bé ghép đúng cặp ' + cardData.item.word + ' rồi!');
+
+    state.memory.firstCard = null;
+    state.memory.secondCard = null;
+    state.memory.locked = false;
+
+    if (state.memory.pairsMatched === 3) {
+      setTimeout(() => {
+        playAudio(getAudioPath('quiz_complete'));
+        $('#memoryTitle').textContent = isSouth ? '🎉 Hoan hô! Con có trí nhớ siêu phàm!' : '🎉 Hoan hô! Bé có trí nhớ siêu phàm!';
+        $('#memoryGrid').innerHTML =
+          '<div style="grid-column: 1 / -1; text-align: center; padding: 24px;">' +
+            '<div style="font-size: 54px; margin-bottom: 10px;">🏆 ⭐ 🌟</div>' +
+            '<p style="font-size: 16px; font-weight: 800; color: #2d3436; margin-bottom: 16px;">' +
+              (isSouth ? 'Con đã tìm đủ 3 cặp bài 3D xuất sắc lắm!' : 'Bé đã tìm đủ 3 cặp bài 3D xuất sắc lắm!') +
+            '</p>' +
+            '<button class="primary" id="btnRestartMemory" style="padding: 12px 24px; font-size: 15px;">' +
+              (isSouth ? 'Con Chơi Ván Mới 🚀' : 'Bé Chơi Ván Mới 🚀') +
+            '</button>' +
+          '</div>';
+        $('#btnRestartMemory').addEventListener('click', initMemoryRound);
+      }, 700);
+    }
+  } else {
+    // MISMATCH
+    playAudio(getAudioPath('wrong'));
+    setTimeout(() => {
+      if (state.memory.firstCard) state.memory.firstCard.el.classList.remove('flipped');
+      if (state.memory.secondCard) state.memory.secondCard.el.classList.remove('flipped');
+      state.memory.firstCard = null;
+      state.memory.secondCard = null;
+      state.memory.locked = false;
+    }, 1100);
+  }
+}
+
+// ==========================================================================
+// GAME 4: THU HOẠCH BỎ GIỎ (BASKET CATEGORY SORTING)
+// ==========================================================================
+const BASKET_CATEGORIES = [
+  { cat: 'animals', name: 'Con Vật 🐶', promptSouth: 'Con hãy nhặt 3 bạn Con Vật bỏ vào giỏ nghen!', promptNorth: 'Bé hãy nhặt 3 bạn Con Vật bỏ vào giỏ nhé!' },
+  { cat: 'food', name: 'Đồ Ăn & Uống 🍎', promptSouth: 'Con hãy nhặt 3 món Đồ Ăn ngon lành bỏ vào giỏ nghen!', promptNorth: 'Bé hãy nhặt 3 món Đồ Ăn ngon lành bỏ vào giỏ nhé!' },
+  { cat: 'toys', name: 'Đồ Chơi 🧸', promptSouth: 'Con hãy nhặt 3 món Đồ Chơi bỏ vào giỏ nghen!', promptNorth: 'Bé hãy nhặt 3 món Đồ Chơi bỏ vào giỏ nhé!' },
+  { cat: 'vehicles', name: 'Xe Cộ 🚗', promptSouth: 'Con hãy nhặt các loại Xe Cộ bỏ vào giỏ nghen!', promptNorth: 'Bé hãy nhặt các loại Xe Cộ bỏ vào giỏ nhé!' },
+  { cat: 'objects', name: 'Đồ Dùng 👕', promptSouth: 'Con hãy nhặt 3 món Đồ Dùng bỏ vào giỏ nghen!', promptNorth: 'Bé hãy nhặt 3 món Đồ Dùng bỏ vào giỏ nhé!' }
+];
+
+function openBasketGame() {
+  initAudioContext();
+  $('#basketModal').classList.remove('hidden');
+  initBasketRound();
+}
+
+function initBasketRound() {
+  const isSouth = state.voice === 'south';
+  state.basket = {
+    category: null,
+    targetItems: [],
+    collected: [],
+    round: 0,
+    locked: false
+  };
+
+  const catConfig = BASKET_CATEGORIES[Math.floor(Math.random() * BASKET_CATEGORIES.length)];
+  state.basket.category = catConfig.cat;
+
+  const targetPool = rawWords.filter(w => w.cat === catConfig.cat).sort(() => Math.random() - 0.5).slice(0, 3).map(getItemData);
+  const otherPool = rawWords.filter(w => w.cat !== catConfig.cat).sort(() => Math.random() - 0.5).slice(0, 3).map(getItemData);
+  const combined = [...targetPool, ...otherPool].sort(() => Math.random() - 0.5);
+
+  $('#basketTargetText').textContent = isSouth ? catConfig.promptSouth : catConfig.promptNorth;
+  $('#basketProgress').textContent = 'Đã nhặt: 0 / 3';
+  $('#basketStatusText').textContent = isSouth ? 'Giỏ Thần Kỳ Đang Chờ Con' : 'Giỏ Thần Kỳ Đang Chờ Bé';
+  $('#basketHintText').textContent = isSouth ? 'Chạm vào món đồ đúng để bay vào giỏ nghen!' : 'Chạm vào món đồ đúng để bay vào giỏ nhé!';
+  $('#basketCollectedPreview').innerHTML = '';
+  $('#basketFeedback').textContent = '';
+
+  const shelf = $('#basketItemsShelf');
+  shelf.innerHTML = combined.map(item =>
+    '<div class="basket-item" data-id="' + item.id + '" data-cat="' + item.cat + '">' +
+      '<model-viewer src="' + item.glb + '" autoplay auto-rotate rotation-per-second="30deg" camera-controls disable-zoom interaction-prompt="none"></model-viewer>' +
+      '<strong>' + item.word + '</strong>' +
+    '</div>'
+  ).join('');
+
+  shelf.querySelectorAll('.basket-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const item = combined.find(x => x.id === el.dataset.id);
+      handleBasketItemClick(el, item);
+    });
+  });
+
+  playAudio(getAudioPath('find_prompt'));
+}
+
+function handleBasketItemClick(itemEl, item) {
+  if (state.basket.locked) return;
+  if (itemEl.classList.contains('collected')) return;
+
+  const isSouth = state.voice === 'south';
+
+  if (item.cat === state.basket.category) {
+    // CORRECT!
+    itemEl.classList.add('collected');
+    state.basket.collected.push(item);
+    playAudio(item.audio);
+
+    const zone = $('#basketDropZone');
+    zone.style.transition = 'transform 0.25s ease';
+    zone.style.transform = 'scale(1.12)';
+    setTimeout(() => { zone.style.transform = 'scale(1)'; }, 280);
+
+    const count = state.basket.collected.length;
+    $('#basketProgress').textContent = 'Đã nhặt: ' + count + ' / 3';
+    $('#basketCollectedPreview').innerHTML += '<span>✓ ' + item.word + '</span>';
+    showToast(isSouth ? '🧺 Con đã bỏ ' + item.word + ' vào giỏ nè!' : '🧺 Bé đã bỏ ' + item.word + ' vào giỏ!');
+
+    if (count === 3) {
+      state.basket.locked = true;
+      setTimeout(() => {
+        playFanfare();
+        playAudio(getAudioPath('quiz_complete'));
+        launchConfetti();
+        $('#basketTargetText').textContent = isSouth ? '🎉 Hoan hô con đã thu hoạch đầy giỏ!' : '🎉 Hoan hô bé đã thu hoạch đầy giỏ!';
+        $('#basketItemsShelf').innerHTML =
+          '<div style="grid-column: 1 / -1; text-align: center; padding: 20px;">' +
+            '<div style="font-size: 54px; margin-bottom: 10px;">🧺 ✨ 🌟</div>' +
+            '<p style="font-size: 16px; font-weight: 800; color: #166534; margin-bottom: 16px;">' +
+              (isSouth ? 'Giỏ đầy ắp rồi! Con phân loại đồ vật giỏi dữ ta!' : 'Giỏ đầy ắp rồi! Bé phân loại đồ vật giỏi lắm!') +
+            '</p>' +
+            '<button class="primary" id="btnRestartBasket" style="padding: 12px 24px; font-size: 15px;">' +
+              (isSouth ? 'Con Thu Hoạch Tiếp 🚀' : 'Bé Thu Hoạch Tiếp 🚀') +
+            '</button>' +
+          '</div>';
+        $('#btnRestartBasket').addEventListener('click', initBasketRound);
+      }, 600);
+    }
+  } else {
+    // WRONG
+    playAudio(getAudioPath('wrong'));
+    itemEl.style.transition = 'transform 0.15s ease';
+    itemEl.style.transform = 'translateX(-6px)';
+    setTimeout(() => { itemEl.style.transform = 'translateX(6px)'; }, 150);
+    setTimeout(() => { itemEl.style.transform = 'translateX(0)'; }, 300);
+    showToast(isSouth ? 'Úi, món này thuộc nhóm khác rồi nè!' : 'Úi, món này thuộc nhóm khác rồi bé ơi!');
+  }
+}
+
+$('#basketHearTask').addEventListener('click', () => {
+  playAudio(getAudioPath('find_prompt'));
+});
+
+// ==========================================================================
+// GAME 5: BẮT BẠN NHANH TAY (WHACK-A-BUDDY FAST REFLEX)
+// ==========================================================================
+function openWhackGame() {
+  initAudioContext();
+  $('#whackModal').classList.remove('hidden');
+  startWhackGame();
+}
+
+function startWhackGame() {
+  clearInterval(state.whack.timer);
+  state.whack = {
+    score: 0,
+    target: null,
+    timer: null,
+    timeLeft: 30,
+    activeHoles: [],
+    running: true
+  };
+
+  $('#whackScore').textContent = 'Điểm: 0';
+  $('#whackTimer').textContent = '⏱️ 30s';
+  $('#whackFeedback').textContent = '';
+
+  state.whack.timer = setInterval(() => {
+    state.whack.timeLeft--;
+    $('#whackTimer').textContent = '⏱️ ' + state.whack.timeLeft + 's';
+    if (state.whack.timeLeft <= 0) {
+      endWhackGame();
+    }
+  }, 1000);
+
+  nextWhackRound();
+}
+
+function nextWhackRound() {
+  if (!state.whack.running) return;
+
+  const isSouth = state.voice === 'south';
+  const allShuffled = [...rawWords].sort(() => Math.random() - 0.5);
+  const target = getItemData(allShuffled[0]);
+  state.whack.target = target;
+
+  const distractors = allShuffled.slice(1, 4).map(getItemData);
+  const choices = [target, ...distractors].sort(() => Math.random() - 0.5);
+
+  $('#whackQuestion').textContent = isSouth
+    ? 'Con hãy chạm thật nhanh vào bạn "' + target.word + '" nghen!'
+    : 'Bé hãy chạm thật nhanh vào bạn "' + target.word + '" nhé!';
+
+  playAudio(target.audioShort);
+
+  const grid = $('#whackGrid');
+  grid.innerHTML = choices.map(item =>
+    '<div class="whack-hole" data-id="' + item.id + '">' +
+      '<div class="whack-character">' +
+        '<model-viewer src="' + item.glb + '" autoplay auto-rotate rotation-per-second="45deg" camera-controls disable-zoom interaction-prompt="none"></model-viewer>' +
+        '<span>' + item.word + '</span>' +
+      '</div>' +
+    '</div>'
+  ).join('');
+
+  setTimeout(() => {
+    grid.querySelectorAll('.whack-hole').forEach(h => h.classList.add('popped'));
+  }, 40);
+
+  grid.querySelectorAll('.whack-hole').forEach(hole => {
+    hole.addEventListener('click', () => {
+      if (!state.whack.running) return;
+      if (hole.dataset.id === state.whack.target.id) {
+        // HIT!
+        hole.classList.add('hit');
+        state.whack.score += 10;
+        $('#whackScore').textContent = 'Điểm: ' + state.whack.score;
+        playFanfare();
+        showToast(isSouth ? '⚡ Bắt trúng bạn ' + target.word + ' rồi nè! +10 điểm!' : '⚡ Bắt trúng bạn ' + target.word + ' rồi! +10 điểm!');
+        setTimeout(nextWhackRound, 450);
+      } else {
+        // WRONG HOLE
+        hole.style.transition = 'transform 0.1s ease';
+        hole.style.transform = 'scale(0.95)';
+        setTimeout(() => { hole.style.transform = 'scale(1)'; }, 150);
+      }
+    });
+  });
+}
+
+function endWhackGame() {
+  state.whack.running = false;
+  clearInterval(state.whack.timer);
+
+  playFanfare();
+  playAudio(getAudioPath('quiz_complete'));
+  launchConfetti();
+
+  const isSouth = state.voice === 'south';
+  $('#whackQuestion').textContent = isSouth ? '🎉 Hết giờ rồi! Con phản xạ nhanh dữ ta!' : '🎉 Hết giờ rồi! Bé phản xạ nhanh quá!';
+  $('#whackGrid').innerHTML =
+    '<div style="grid-column: 1 / -1; text-align: center; padding: 24px;">' +
+      '<div style="font-size: 54px; margin-bottom: 10px;">⚡ 🏆 🌟</div>' +
+      '<p style="font-size: 18px; font-weight: 800; color: #c2410c; margin-bottom: 8px;">' +
+        (isSouth ? 'Tổng điểm của con:' : 'Tổng điểm của bé:') + ' ' + state.whack.score + ' điểm!' +
+      '</p>' +
+      '<p style="color: #64748b; font-size: 14px; margin-bottom: 18px;">' +
+        (state.whack.score >= 40 ? 'Bé đạt danh hiệu: Thần Đồng Nhanh Tay 🚀' : 'Bé đã tập trung rất tốt! Luyện tiếp để lên điểm cao hơn nhé!') +
+      '</p>' +
+      '<button class="primary" id="btnRestartWhack" style="padding: 12px 24px; font-size: 15px;">' +
+        (isSouth ? 'Con Chơi Lại Vòng Khác 🚀' : 'Bé Chơi Lại Vòng Khác 🚀') +
+      '</button>' +
+    '</div>';
+  $('#btnRestartWhack').addEventListener('click', startWhackGame);
+}
+
+$('#whackHearTarget').addEventListener('click', () => {
+  if (state.whack.target) playAudio(state.whack.target.audio);
+});
+
+// ==========================================================================
+// ARCADE LOBBY NAVIGATION & CARD CLICK EVENTS
+// ==========================================================================
+$('#btnNavArcade')?.addEventListener('click', () => {
+  initAudioContext();
+  playFanfare();
+  const arcade = $('#arcadeSection');
+  if (arcade) {
+    arcade.scrollIntoView({ behavior: 'smooth' });
+    arcade.style.transition = 'transform 0.4s ease';
+    arcade.style.transform = 'scale(1.02)';
+    setTimeout(() => { arcade.style.transform = 'scale(1)'; }, 450);
+  }
+});
+
+// Game 1
+$('#arcadeCardQuiz')?.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') startQuiz();
+});
+// Game 2
+$('#arcadeCardShadow')?.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') startShadowGame();
+});
+// Game 3
+$('#startMemoryGame')?.addEventListener('click', openMemoryGame);
+$('#arcadeCardMemory')?.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') openMemoryGame();
+});
+// Game 4
+$('#startBasketGame')?.addEventListener('click', openBasketGame);
+$('#arcadeCardBasket')?.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') openBasketGame();
+});
+// Game 5
+$('#startWhackGame')?.addEventListener('click', openWhackGame);
+$('#arcadeCardWhack')?.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') openWhackGame();
+});
+// Game 6
+$('#startCinemaGame')?.addEventListener('click', openFlashcardMode);
+$('#arcadeCardCinema')?.addEventListener('click', (e) => {
+  if (e.target.tagName !== 'BUTTON') openFlashcardMode();
+});
+
 
 // PARENT GATE & SETTINGS
 function generateMathQuestion() {

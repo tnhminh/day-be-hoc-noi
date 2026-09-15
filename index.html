@@ -53,6 +53,11 @@
           </div>
         </div>
 
+        <!-- NÚT ĐI ĐẾN SẢNH 6 TRÒ CHƠI ALL-IN-ONE -->
+        <button class="icon-btn btn-arcade-nav" id="btnNavArcade" title="Khu Vui Chơi All-in-One (6 Mini Game)">
+          <span>🎮 Sảnh Game (6)</span>
+        </button>
+
         <!-- NÚT CHIẾU FLASHCARD TỰ ĐỘNG -->
         <button class="icon-btn btn-flashcard-auto" id="btnOpenFlashcard" title="Chiếu Flashcard 3D tự động">
           <span>📺 Flashcard</span>
@@ -143,17 +148,80 @@
 
       <section class="grid" id="grid" aria-label="Danh sách từ vựng 3D"></section>
 
-      <!-- KHU VỰC 2 MINI GAME -->
-      <section class="challenge">
-        <div class="target">🎯</div>
-        <div class="challenge-info">
-          <small id="challengeSmall">TRÒ CHƠI LUYỆN TẬP ĐA NĂNG</small>
-          <h2 id="challengeTitle">Cùng Chơi Đố Vui Cùng Bạn 3D</h2>
-          <p id="challengeDesc">Hai chế độ chơi rèn luyện trí nhớ và phản xạ nhanh cho bé với 29 mô hình sinh động.</p>
+      <!-- KHU VUI CHƠI TRÒ CHƠI ALL-IN-ONE (6 MINI GAME RIÊNG BIỆT) -->
+      <section class="arcade-section" id="arcadeSection">
+        <div class="arcade-header">
+          <div class="arcade-badge">🎪 TRUNG TÂM TRÒ CHƠI ALL-IN-ONE</div>
+          <h2 id="arcadeHeading">6 Mini Game Vui Nhộn Cho Bé</h2>
+          <p id="arcadeSubtitle">Mỗi mini game là một cách chơi hoàn toàn riêng biệt, kích thích đa giác quan và sự hào hứng!</p>
         </div>
-        <div class="challenge-buttons">
-          <button class="primary" id="startQuiz">🎯 Đố Vui Nghe Tiếng →</button>
-          <button class="secondary-game-btn" id="startShadowGame">🕵️ Đoán Bóng Bí Ẩn →</button>
+
+        <div class="arcade-grid">
+          <!-- GAME 1: ĐỐ VUI NGHE TIẾNG -->
+          <div class="arcade-card card-quiz" id="arcadeCardQuiz" tabindex="0" role="button">
+            <div class="arcade-icon">🎯</div>
+            <div class="arcade-card-body">
+              <span class="game-tag">Thính giác & Quan sát</span>
+              <h3>Đố Vui Nghe Tiếng</h3>
+              <p>Lắng nghe giọng đọc mẫu rồi chọn đúng bạn 3D đang xoay!</p>
+            </div>
+            <button class="arcade-play-btn" id="startQuiz">Chơi Ngay 🚀</button>
+          </div>
+
+          <!-- GAME 2: ĐOÁN BÓNG BÍ ẨN -->
+          <div class="arcade-card card-shadow" id="arcadeCardShadow" tabindex="0" role="button">
+            <div class="arcade-icon">🕵️</div>
+            <div class="arcade-card-body">
+              <span class="game-tag">Hình khối & Bí ẩn</span>
+              <h3>Đoán Bóng 3D</h3>
+              <p>Nhìn bóng đen 3D xoay tròn để đoán xem bạn nhỏ nào đang trốn!</p>
+            </div>
+            <button class="arcade-play-btn" id="startShadowGame">Chơi Ngay 🚀</button>
+          </div>
+
+          <!-- GAME 3: LẬT THẺ TRÍ NHỚ 3D -->
+          <div class="arcade-card card-memory" id="arcadeCardMemory" tabindex="0" role="button">
+            <div class="arcade-icon">🃏</div>
+            <div class="arcade-card-body">
+              <span class="game-tag">Trí nhớ không gian</span>
+              <h3>Lật Thẻ Trí Nhớ 3D</h3>
+              <p>Lật mở các lá bài ma thuật tìm các cặp bạn 3D giống nhau!</p>
+            </div>
+            <button class="arcade-play-btn" id="startMemoryGame">Chơi Ngay 🚀</button>
+          </div>
+
+          <!-- GAME 4: THU HOẠCH BỎ GIỎ -->
+          <div class="arcade-card card-basket" id="arcadeCardBasket" tabindex="0" role="button">
+            <div class="arcade-icon">🧺</div>
+            <div class="arcade-card-body">
+              <span class="game-tag">Phân loại & Đếm số</span>
+              <h3>Thu Hoạch Bỏ Giỏ</h3>
+              <p>Nhặt đúng các món Đồ Ăn, Con Vật... bỏ vào chiếc giỏ thần kỳ!</p>
+            </div>
+            <button class="arcade-play-btn" id="startBasketGame">Chơi Ngay 🚀</button>
+          </div>
+
+          <!-- GAME 5: BẮT BẠN NHANH TAY -->
+          <div class="arcade-card card-whack" id="arcadeCardWhack" tabindex="0" role="button">
+            <div class="arcade-icon">⚡</div>
+            <div class="arcade-card-body">
+              <span class="game-tag">Phản xạ nhanh tay</span>
+              <h3>Bắt Bạn Nhanh Tay</h3>
+              <p>Quan sát bạn 3D trồi lên thụt xuống và chạm thật nhanh để bắt!</p>
+            </div>
+            <button class="arcade-play-btn" id="startWhackGame">Chơi Ngay 🚀</button>
+          </div>
+
+          <!-- GAME 6: RẠP CHIẾU FLASHCARD 3D -->
+          <div class="arcade-card card-cinema" id="arcadeCardCinema" tabindex="0" role="button">
+            <div class="arcade-icon">📺</div>
+            <div class="arcade-card-body">
+              <span class="game-tag">Rảnh tay & Thư giãn</span>
+              <h3>Rạp Phim Flashcard</h3>
+              <p>Tự động trình chiếu thẻ 3D xoay tròn kết hợp giọng đọc êm ái.</p>
+            </div>
+            <button class="arcade-play-btn" id="startCinemaGame">Xem Ngay 🚀</button>
+          </div>
         </div>
       </section>
     </main>
@@ -334,6 +402,71 @@
 
       <div class="shadow-choices" id="shadowChoices"></div>
       <p id="shadowFeedback"></p>
+    </div>
+  </div>
+  <!-- POP-UP TRÒ CHƠI 3: LẬT THẺ TRÍ NHỚ 3D -->
+  <div class="overlay hidden" id="memoryModal" role="dialog" aria-modal="true" aria-labelledby="memoryTitle">
+    <div class="modal memory-modal">
+      <button class="close" title="Đóng" aria-label="Đóng trò chơi lật thẻ">×</button>
+      <div class="quiz-head">
+        <span class="chip chip-memory">🃏 Lật Thẻ Trí Nhớ 3D</span>
+        <b id="memoryScore">Cặp đúng: 0 / 3</b>
+      </div>
+      <h2 id="memoryTitle">Bé hãy lật tìm 2 thẻ giống nhau nhé!</h2>
+      <p class="game-instruct" id="memoryInstruct">Chạm vào từng lá bài ma thuật để xem bạn 3D nào đang trốn bên trong.</p>
+      
+      <div class="memory-grid" id="memoryGrid"></div>
+      
+      <p id="memoryFeedback" class="game-feedback"></p>
+    </div>
+  </div>
+
+  <!-- POP-UP TRÒ CHƠI 4: THU HOẠCH BỎ GIỎ -->
+  <div class="overlay hidden" id="basketModal" role="dialog" aria-modal="true" aria-labelledby="basketTargetText">
+    <div class="modal basket-modal">
+      <button class="close" title="Đóng" aria-label="Đóng trò chơi bỏ giỏ">×</button>
+      <div class="quiz-head">
+        <span class="chip chip-basket">🧺 Thu Hoạch Bỏ Giỏ</span>
+        <b id="basketProgress">Đã nhặt: 0 / 3</b>
+      </div>
+      <h2 id="basketTargetText">Bé hãy nhặt các món Đồ Ăn bỏ vào giỏ nhé!</h2>
+      <button class="listen" id="basketHearTask">🔊 Nghe lại nhiệm vụ</button>
+
+      <!-- KỆ TRƯNG BÀY 6 MÓN ĐỒ 3D -->
+      <div class="basket-items-shelf" id="basketItemsShelf"></div>
+
+      <!-- CHIẾC GIỎ THẦN KỲ -->
+      <div class="basket-target-zone" id="basketDropZone">
+        <div class="basket-big-icon">🧺</div>
+        <div class="basket-info">
+          <strong id="basketStatusText">Giỏ Thần Kỳ Đang Chờ Bé</strong>
+          <small id="basketHintText">Chạm vào món đồ đúng yêu cầu để bay vào giỏ nghen!</small>
+        </div>
+        <div class="basket-collected-preview" id="basketCollectedPreview"></div>
+      </div>
+
+      <p id="basketFeedback" class="game-feedback"></p>
+    </div>
+  </div>
+
+  <!-- POP-UP TRÒ CHƠI 5: BẮT BẠN NHANH TAY -->
+  <div class="overlay hidden" id="whackModal" role="dialog" aria-modal="true" aria-labelledby="whackQuestion">
+    <div class="modal whack-modal">
+      <button class="close" title="Đóng" aria-label="Đóng trò chơi nhanh tay">×</button>
+      <div class="quiz-head">
+        <span class="chip chip-whack">⚡ Bắt Bạn Nhanh Tay</span>
+        <div class="whack-stats">
+          <span class="whack-timer" id="whackTimer">⏱️ 30s</span>
+          <b id="whackScore">Điểm: 0</b>
+        </div>
+      </div>
+      <h2 id="whackQuestion">Bé hãy chạm thật nhanh vào bạn Vịt vàng nhé!</h2>
+      <button class="listen" id="whackHearTarget">🔊 Nghe lại tên bạn</button>
+
+      <!-- 4 ĐÁM MÂY THẦN TIÊN -->
+      <div class="whack-grid" id="whackGrid"></div>
+
+      <p id="whackFeedback" class="game-feedback"></p>
     </div>
   </div>
 

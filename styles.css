@@ -1570,3 +1570,399 @@ model-viewer {
     height: 170px;
   }
 }
+
+
+/* ==========================================================================
+   ARCADE ALL-IN-ONE GAME SUITE STYLES
+   ========================================================================== */
+.btn-arcade-nav {
+  background: linear-gradient(135deg, #ff7675, #e84393) !important;
+  color: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 4px 14px rgba(232, 67, 147, 0.35);
+  animation: navPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes navPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.arcade-section {
+  background: linear-gradient(145deg, #f8faff, #fff7fb);
+  border: 2px solid #e0e7ff;
+  border-radius: 28px;
+  padding: 32px 24px;
+  margin: 36px 0;
+  box-shadow: 0 16px 36px rgba(108, 92, 231, 0.08);
+}
+
+.arcade-header {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 26px;
+}
+
+.arcade-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: #e84393;
+  background: #ffeaa7;
+  padding: 4px 14px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.arcade-header h2 {
+  font-size: clamp(22px, 3.5vw, 28px);
+  color: #2d3436;
+  margin-bottom: 6px;
+}
+
+.arcade-header p {
+  color: #636e72;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.arcade-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.arcade-card {
+  background: #ffffff;
+  border-radius: 20px;
+  border: 2px solid #edf2f7;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.arcade-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 32px rgba(108, 92, 231, 0.15);
+  border-color: var(--purple);
+}
+
+.arcade-icon {
+  font-size: 34px;
+  line-height: 1;
+  background: #f1f2f6;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.arcade-card-body h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: #2d3436;
+  margin: 6px 0 4px;
+}
+
+.arcade-card-body p {
+  font-size: 13px;
+  color: #636e72;
+  line-height: 1.4;
+}
+
+.game-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #eef2ff;
+  color: var(--purple-dark);
+}
+
+.arcade-play-btn {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(135deg, var(--purple), #8b5cf6);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arcade-play-btn:hover {
+  filter: brightness(1.1);
+  transform: scale(1.02);
+}
+
+/* CHIPS FOR GAMES */
+.chip-memory { background: #e0e7ff; color: #4338ca; }
+.chip-basket { background: #dcfce7; color: #15803d; }
+.chip-whack { background: #ffedd5; color: #c2410c; }
+
+/* GAME 3: MEMORY MATCH MODAL */
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  perspective: 1000px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.memory-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  transform-style: preserve-3d;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.memory-card.flipped .memory-card-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card-front, .memory-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.memory-card-back {
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  border: 3px solid #ffffff;
+  color: #ffffff;
+  font-size: 32px;
+}
+
+.memory-card-front {
+  background: #ffffff;
+  border: 3px solid #6c5ce7;
+  transform: rotateY(180deg);
+}
+
+.memory-card-front model-viewer {
+  width: 100%;
+  height: 75%;
+}
+
+.memory-card-front span {
+  font-size: 11px;
+  font-weight: 800;
+  color: #2d3436;
+}
+
+.memory-card.matched .memory-card-front {
+  border-color: #2ecc71;
+  background: #f0fdf4;
+  animation: pulseMatched 0.5s ease;
+}
+
+@keyframes pulseMatched {
+  0% { transform: rotateY(180deg) scale(1); }
+  50% { transform: rotateY(180deg) scale(1.1); }
+  100% { transform: rotateY(180deg) scale(1); }
+}
+
+/* GAME 4: BASKET MODAL */
+.basket-items-shelf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.basket-item {
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.basket-item:hover {
+  transform: scale(1.05);
+  border-color: #22c55e;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.2);
+}
+
+.basket-item.collected {
+  opacity: 0.2;
+  pointer-events: none;
+  transform: scale(0.9);
+}
+
+.basket-item model-viewer {
+  width: 100%;
+  height: 85px;
+}
+
+.basket-item strong {
+  display: block;
+  font-size: 12px;
+  color: #334155;
+  margin-top: 4px;
+}
+
+.basket-target-zone {
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border: 2.5px dashed #4ade80;
+  border-radius: 20px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+  transition: transform 0.3s ease;
+}
+
+.basket-big-icon {
+  font-size: 38px;
+  line-height: 1;
+}
+
+.basket-info {
+  text-align: left;
+  flex: 1;
+}
+
+.basket-info strong {
+  display: block;
+  font-size: 14px;
+  color: #166534;
+}
+
+.basket-info small {
+  font-size: 11px;
+  color: #15803d;
+}
+
+.basket-collected-preview {
+  display: flex;
+  gap: 6px;
+}
+
+.basket-collected-preview span {
+  background: #ffffff;
+  border: 1px solid #86efac;
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #166534;
+}
+
+/* GAME 5: WHACK-A-BUDDY MODAL */
+.whack-stats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.whack-timer {
+  background: #ffedd5;
+  color: #c2410c;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.whack-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.whack-hole {
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  border: 3px solid #cbd5e1;
+  border-radius: 24px;
+  height: 125px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: inset 0 8px 16px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.whack-hole:hover {
+  border-color: #f97316;
+}
+
+.whack-character {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 100%;
+  transition: top 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.whack-character model-viewer {
+  width: 100%;
+  height: 85%;
+}
+
+.whack-character span {
+  font-size: 11px;
+  font-weight: 800;
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.whack-hole.popped .whack-character {
+  top: 5%;
+}
+
+.whack-hole.hit {
+  background: #fef08a;
+  border-color: #eab308;
+  animation: whackBounce 0.4s ease;
+}
+
+@keyframes whackBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
