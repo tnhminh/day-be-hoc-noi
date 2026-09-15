@@ -1,14 +1,22 @@
-const CACHE_NAME = 'be-hoc-noi-3d-v1';
+const CACHE_NAME = 'be-hoc-noi-3d-v2';
 
 const CORE_ASSETS = [
   '/',
   '/index.html',
   '/styles.css',
   '/app.js',
+  '/admin.html',
+  '/admin.css',
+  '/admin.js',
   '/model-viewer.min.js',
   '/manifest.webmanifest',
   '/icon.svg',
-  '/favicon.svg'
+  '/favicon.svg',
+  '/models/duck.glb',
+  '/models/fox.glb',
+  '/models/fish.glb',
+  '/models/apple.glb',
+  '/models/robot.glb'
 ];
 
 self.addEventListener('install', (event) => {
@@ -85,5 +93,3 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
-
-

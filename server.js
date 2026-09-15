@@ -464,6 +464,22 @@ const server = http.createServer(async (req, res) => {
     const ext = path.extname(safePath).toLowerCase();
     const contentType = MIME_TYPES[ext] || 'application/octet-stream';
 
+    // HTTP 304 ETag & Last-Modified caching
+    const etag = 'W/"' + stats.size.toString(16) + '-' + stats.mtime.getTime().toString(16) + '"';
+    const lastModified = stats.mtime.toUTCString();
+
+    res.setHeader('ETag', etag);
+    res.setHeader('Last-Modified', lastModified);
+
+    if (
+      req.headers['if-none-match'] === etag ||
+      req.headers['if-modified-since'] === lastModified
+    ) {
+      res.writeHead(304);
+      res.end();
+      return;
+    }
+
     // Caching headers
     if (ext === '.glb' || ext === '.mp3') {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');

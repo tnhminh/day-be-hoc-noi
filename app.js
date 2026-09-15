@@ -2286,3 +2286,21 @@ updateProgress();
 renderPark();
 
 
+
+// PRELOAD FREQUENT 3D MODELS IN BACKGROUND CACHE
+if ("caches" in window) {
+  const PRELOAD_MODELS = [
+    "models/duck.glb",
+    "models/fox.glb",
+    "models/fish.glb",
+    "models/apple.glb",
+    "models/robot.glb",
+    "models/ball.glb",
+    "models/toy_car.glb"
+  ];
+  window.addEventListener("load", () => {
+    caches.open("be-hoc-noi-3d-v2").then(cache => {
+      PRELOAD_MODELS.forEach(m => cache.add(m).catch(() => {}));
+    }).catch(() => {});
+  });
+}

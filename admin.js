@@ -664,3 +664,12 @@ $("#uploadVoiceSouthInput")?.addEventListener("change", async (e) => {
     alert("Lỗi kết nối: " + err.message);
   }
 });
+
+// PWA Service Worker Registration for CMS 3D Caching
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js").then(() => {
+      console.log("CMS ServiceWorker active with 3D model caching");
+    }).catch(() => {});
+  });
+}
