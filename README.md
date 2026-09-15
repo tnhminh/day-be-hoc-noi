@@ -6,7 +6,28 @@ Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **
 
 ---
 
-## Tính Năng Nổi Bật
+## Tính Năng Đẳng Cấp Thương Mại ($50K Full Option)
+
+1. **🗺️ Bản Đồ Phiêu Lưu Thần Tiên (Adventure World Map UI)**
+   - Đưa bé vào chuyến hành trình kỳ thú qua 5 Vương Quốc Thần Tiên: *Đảo Thú Cưng (7 trạm), Vườn Trái Cây & Bánh Ngọt (7 trạm), Xưởng Đồ Chơi (5 trạm), Thành Phố Siêu Tốc (3 trạm), Vương Quốc Bé Ngoan (7 trạm)*.
+   - Con đường quanh co (S-Curve Trail) với các viên đá trạm dừng chân 3D phát sáng, hiển thị số sao ⭐⭐⭐ và đánh dấu trạm đang chinh phục.
+   - Chuyển đổi mượt mà 1-chạm giữa chế độ **🗺️ Bản Đồ Phiêu Lưu** và **📋 Danh Sách Thẻ**.
+
+2. **🦆 Linh Vật Ảo Mascot 3D Tương Tác Cố Định (Virtual Companion)**
+   - Bạn Vịt Vàng 3D lắc lư cử động túc trực ở góc màn hình, có bong bóng thoại ngộ nghĩnh.
+   - Chạm vào bạn Vịt sẽ nhảy cẫng lên nảy tưng tưng, phát tiếng kêu cartoon vui nhộn và đổi lời thoại khen ngợi khích lệ bé.
+   - Tự động nhắc nhở dễ thương sau 14 giây nếu bé chưa chạm vào màn hình.
+
+3. **✨ Hệ Thống Game Juice Đã Mắt & Bộ Âm Thanh Hoạt Hình (Cartoon SFX Synthesizer)**
+   - **Vệt sao băng chạm tay (Touch Star Trails)**: Ngón tay chạm hay vuốt tới đâu trên màn hình, vệt sao vàng, bong bóng và trái tim lấp lánh bay theo tới đó.
+   - **Hiệu ứng nảy thạch (Jelly Bounce Physics)**: Nút bấm và trạm 3D nảy co giãn đàn hồi cực kỳ sinh động.
+   - **Bộ tổng hợp âm thanh hoạt hình độc quyền (Web Audio Synthesizer)**: Phát tiếng *boing, pop, sparkle, tadaa* tức thì với độ trễ 0ms, không tốn dung lượng tải.
+
+4. **🎁 Hệ Thống Mở Rương Kho Báu 3D Kỳ Diệu (3D Mystery Chest Unboxing)**
+   - Đặt tại cuối mỗi vương quốc và trên thanh tiêu đề: Rương báu vàng phát sáng tia sét ma thuật.
+   - Cơ chế mở hộp tương tác 3 lần chạm (*Tap 1: Rung lắc -> Tap 2: Nứt sáng -> Tap 3: Bùng nổ pháo hoa confetti*), bạn nhỏ 3D bất ngờ xuất hiện nhảy múa ăn mừng!
+
+## Tính Năng Nổi Bật Khác
 
 1. **29 Mô Hình 3D GLB Tương Tác Xoay 360°**
    - 5 chủ đề thân thuộc: Con vật (7), Đồ ăn & Uống (7), Đồ chơi (5), Xe cộ & Đi lại (3), Đồ dùng & Quần áo (7).

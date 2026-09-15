@@ -718,6 +718,8 @@ const state = {
   timeLimit: parseInt(localStorage.getItem('time_limit'), 10) || 0,
   filter: 'all',
   learned: new Set(JSON.parse(localStorage.getItem('learned_words') || '[]')),
+  viewMode: localStorage.getItem('view_mode') || 'map',
+  chest: { step: 0, reward: null, opened: false },
   current: null,
   heroIndex: 0,
   flashcardIndex: 0,
@@ -861,6 +863,83 @@ function initAudioContext() {
   if (audioCtx && audioCtx.state === 'suspended') {
     audioCtx.resume();
   }
+}
+
+
+// CARTOON WEB AUDIO SYNTHESIZERS (GAME JUICE SFX)
+function playCartoonBoing() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'triangle';
+  osc.frequency.setValueAtTime(140, now);
+  osc.frequency.exponentialRampToValueAtTime(620, now + 0.18);
+  gain.gain.setValueAtTime(0.09, now);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.28);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.28);
+}
+
+function playCartoonPop() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(750, now);
+  osc.frequency.exponentialRampToValueAtTime(180, now + 0.08);
+  gain.gain.setValueAtTime(0.09, now);
+  gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.09);
+}
+
+function playCartoonSparkle() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+  notes.forEach((freq, idx) => {
+    setTimeout(() => {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now);
+      gain.gain.setValueAtTime(0.06, now);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.22);
+    }, idx * 45);
+  });
+}
+
+function playCartoonTadaa() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const chord = [392.00, 523.25, 659.25, 783.99];
+  chord.forEach((freq) => {
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(freq, now);
+    gain.gain.setValueAtTime(0.08, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.65);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + 0.65);
+  });
 }
 
 function playTone(freq, duration = 0.6, gainLevel = 0.035) {
@@ -1421,6 +1500,7 @@ function updateProgress() {
   $('#settingLearnedSummary').textContent = `Đã hoàn thành ${count} / 29 từ vựng`;
   localStorage.setItem('learned_words', JSON.stringify([...state.learned]));
   renderPark();
+  renderAdventureMap();
 }
 
 function openWord(rawItem) {
@@ -2199,6 +2279,376 @@ $('#arcadeCardCinema')?.addEventListener('click', (e) => {
 });
 
 
+
+// ==========================================================================
+// 50K FULL OPTION SUITE: ADVENTURE MAP, MASCOT, GAME JUICE, CHEST UNBOXING
+// ==========================================================================
+
+// 1. TOUCH / CURSOR STAR TRAILS & GAME JUICE PARTICLES
+const particleCanvas = $('#particleCanvas');
+let pCtx = null;
+let touchParticles = [];
+
+if (particleCanvas) {
+  pCtx = particleCanvas.getContext('2d');
+  function resizeParticleCanvas() {
+    particleCanvas.width = window.innerWidth;
+    particleCanvas.height = window.innerHeight;
+  }
+  resizeParticleCanvas();
+  window.addEventListener('resize', resizeParticleCanvas);
+
+  function spawnTouchParticle(x, y) {
+    const emojis = ['⭐', '✨', '🌟', '💛', '🎈', '💖'];
+    const em = emojis[Math.floor(Math.random() * emojis.length)];
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 2.5 + 1.2;
+    touchParticles.push({
+      x,
+      y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 1.2,
+      emoji: em,
+      size: Math.random() * 8 + 14,
+      alpha: 1,
+      rot: Math.random() * 360,
+      rotSpeed: (Math.random() - 0.5) * 8
+    });
+    if (touchParticles.length > 50) touchParticles.shift();
+  }
+
+  function renderTouchParticles() {
+    if (!pCtx) return;
+    pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+    for (let i = touchParticles.length - 1; i >= 0; i--) {
+      const p = touchParticles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.05;
+      p.alpha -= 0.025;
+      p.rot += p.rotSpeed;
+
+      if (p.alpha <= 0) {
+        touchParticles.splice(i, 1);
+        continue;
+      }
+
+      pCtx.save();
+      pCtx.globalAlpha = Math.max(p.alpha, 0);
+      pCtx.translate(p.x, p.y);
+      pCtx.rotate((p.rot * Math.PI) / 180);
+      pCtx.font = p.size + 'px sans-serif';
+      pCtx.textAlign = 'center';
+      pCtx.textBaseline = 'middle';
+      pCtx.fillText(p.emoji, 0, 0);
+      pCtx.restore();
+    }
+    requestAnimationFrame(renderTouchParticles);
+  }
+  requestAnimationFrame(renderTouchParticles);
+
+  window.addEventListener('pointermove', (e) => {
+    if (Math.random() < 0.35) spawnTouchParticle(e.clientX, e.clientY);
+  });
+  window.addEventListener('pointerdown', (e) => {
+    for (let k = 0; k < 4; k++) spawnTouchParticle(e.clientX, e.clientY);
+  });
+}
+
+// 2. ADVENTURE MAP REALMS & WINDING TRAILS
+const ADVENTURE_REALMS = [
+  {
+    cat: 'animals',
+    name: 'Đảo Thú Cưng',
+    icon: '🐾',
+    badge: 'Vương Quốc 1',
+    desc: 'Khám phá 7 người bạn động vật đáng yêu'
+  },
+  {
+    cat: 'food',
+    name: 'Vườn Trái Cây & Bánh Ngọt',
+    icon: '🍎',
+    badge: 'Vương Quốc 2',
+    desc: 'Thưởng thức 7 món ăn ngon lành bổ dưỡng'
+  },
+  {
+    cat: 'toys',
+    name: 'Xưởng Đồ Chơi Ma Thuật',
+    icon: '🧸',
+    badge: 'Vương Quốc 3',
+    desc: 'Khám phá 5 món đồ chơi biết nhảy múa'
+  },
+  {
+    cat: 'vehicles',
+    name: 'Thành Phố Siêu Tốc',
+    icon: '🚗',
+    badge: 'Vương Quốc 4',
+    desc: '3 phương tiện giao thông bon bon trên đường'
+  },
+  {
+    cat: 'objects',
+    name: 'Vương Quốc Bé Ngoan',
+    icon: '👕',
+    badge: 'Vương Quốc 5',
+    desc: '7 đồ dùng thân thuộc bé nhìn thấy mỗi ngày'
+  }
+];
+
+function renderAdventureMap() {
+  const container = $('#adventureRealmsWrap');
+  if (!container) return;
+
+  const learnedSet = state.learned;
+  let globalStopIndex = 1;
+
+  container.innerHTML = ADVENTURE_REALMS.map((realm, realmIdx) => {
+    const realmWords = rawWords.filter(w => w.cat === realm.cat).map(getItemData);
+    const learnedInRealm = realmWords.filter(w => learnedSet.has(w.id)).length;
+
+    const stopsHtml = realmWords.map((item, itemIdx) => {
+      const isCompleted = learnedSet.has(item.id);
+      const isCurrentActive = !isCompleted && (itemIdx === 0 || learnedSet.has(realmWords[itemIdx - 1].id));
+      const stopNum = globalStopIndex++;
+
+      return `
+        <div class="trail-stop btn-jelly ${isCompleted ? 'completed' : ''} ${isCurrentActive ? 'active' : ''}" data-id="${item.id}" title="${item.word}">
+          <div class="trail-stop-circle">
+            <span class="trail-stop-num">${stopNum}</span>
+            <model-viewer
+              src="${item.glb}"
+              alt="${item.word}"
+              autoplay
+              auto-rotate
+              rotation-per-second="25deg"
+              camera-controls
+              disable-zoom
+              interaction-prompt="none"
+              loading="lazy">
+            </model-viewer>
+          </div>
+          <span class="trail-stop-label">${item.word}</span>
+          <span class="trail-stop-stars">${isCompleted ? '⭐⭐⭐' : (isCurrentActive ? '⭐' : '🔒')}</span>
+        </div>
+      `;
+    }).join('');
+
+    return `
+      <article class="adventure-realm-card">
+        <div class="realm-header-bar">
+          <div class="realm-title-group">
+            <div class="realm-icon-badge">${realm.icon}</div>
+            <div>
+              <h3>${realm.name}</h3>
+              <span>${realm.desc}</span>
+            </div>
+          </div>
+          <div class="realm-progress-tag">
+            Tiến độ: ${learnedInRealm} / ${realmWords.length}
+          </div>
+        </div>
+
+        <div class="adventure-trail">
+          ${stopsHtml}
+
+          <!-- TRẠM RƯƠNG BÁU MILESTONE Ở CUỐI MỖI VƯƠNG QUỐC -->
+          <div class="trail-chest-milestone btn-jelly" data-realm="${realm.cat}" title="Mở Rương Báu ${realm.name}">
+            <div class="chest-milestone-circle">🎁</div>
+            <span class="chest-milestone-label">Rương Báu ${realmIdx + 1}</span>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  // Event handlers for trail stops
+  container.querySelectorAll('.trail-stop').forEach((stop) => {
+    stop.addEventListener('click', () => {
+      playCartoonPop();
+      const raw = rawWords.find(x => x.id === stop.dataset.id);
+      if (raw) openWord(raw);
+    });
+  });
+
+  // Event handlers for milestone chests
+  container.querySelectorAll('.trail-chest-milestone').forEach((chest) => {
+    chest.addEventListener('click', () => {
+      openMysteryChest();
+    });
+  });
+
+  // Update progress counter
+  const mapProgress = $('#mapProgressCount');
+  if (mapProgress) {
+    mapProgress.textContent = `${state.learned.size} / ${rawWords.length}`;
+  }
+}
+
+// 3. VIEW MODE SWITCHER (ADVENTURE MAP VS CLASSIC GRID)
+function applyViewMode(mode) {
+  state.viewMode = mode;
+  localStorage.setItem('view_mode', mode);
+
+  const mapSec = $('#adventureMapSection');
+  const gridHead = $('#gridHeadingSection');
+  const tabs = document.querySelector('.tabs');
+  const grid = $('#grid');
+
+  const btnMap = $('#btnViewMap');
+  const btnGrid = $('#btnViewGrid');
+
+  if (mode === 'map') {
+    if (mapSec) mapSec.style.display = 'block';
+    if (gridHead) gridHead.style.display = 'none';
+    if (tabs) tabs.style.display = 'none';
+    if (grid) grid.style.display = 'none';
+    if (btnMap) btnMap.classList.add('active');
+    if (btnGrid) btnGrid.classList.remove('active');
+    renderAdventureMap();
+  } else {
+    if (mapSec) mapSec.style.display = 'none';
+    if (gridHead) gridHead.style.display = 'flex';
+    if (tabs) tabs.style.display = 'flex';
+    if (grid) grid.style.display = 'grid';
+    if (btnGrid) btnGrid.classList.add('active');
+    if (btnMap) btnMap.classList.remove('active');
+    renderGrid();
+  }
+}
+
+$('#btnViewMap')?.addEventListener('click', () => {
+  playCartoonBoing();
+  applyViewMode('map');
+});
+
+$('#btnViewGrid')?.addEventListener('click', () => {
+  playCartoonBoing();
+  applyViewMode('grid');
+});
+
+// 4. FLOATING 3D MASCOT COMPANION (INTERACTIVE BUDDY)
+const MASCOT_PHRASES = [
+  "Quác quác! Bé yêu của cô ơi, cùng học nói nghen! 🦆",
+  "Hoan hô! Tui thích chơi cùng bé dữ lắm nè! ⭐",
+  "Bé ơi, thử mở chiếc rương báu xem có gì bất ngờ nha! 🎁",
+  "Con nói to rõ từng từ là giỏi nhất nhà luôn! 🌟",
+  "Chạm vào bạn 3D tiếp theo trên bản đồ nào bé ơi! 🚀"
+];
+
+let mascotPhraseIndex = 0;
+let mascotIdleTimeout = null;
+
+function triggerMascotCheer() {
+  playCartoonBoing();
+  const mascotWidget = $('#mascotWidget');
+  const mascotText = $('#mascotText');
+
+  mascotPhraseIndex = (mascotPhraseIndex + 1) % MASCOT_PHRASES.length;
+  if (mascotText) mascotText.textContent = MASCOT_PHRASES[mascotPhraseIndex];
+
+  if (mascotWidget) {
+    mascotWidget.style.transition = 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    mascotWidget.style.transform = 'scale(1.22) translateY(-16px) rotate(6deg)';
+    setTimeout(() => {
+      mascotWidget.style.transform = 'scale(1) translateY(0) rotate(0)';
+    }, 380);
+  }
+
+  // Spawn star confetti around mascot
+  const rect = mascotWidget?.getBoundingClientRect();
+  if (rect && typeof spawnTouchParticle === 'function') {
+    for (let k = 0; k < 6; k++) {
+      spawnTouchParticle(rect.left + rect.width / 2, rect.top);
+    }
+  }
+
+  resetMascotIdle();
+}
+
+$('#mascotWidget')?.addEventListener('click', triggerMascotCheer);
+
+function resetMascotIdle() {
+  clearTimeout(mascotIdleTimeout);
+  mascotIdleTimeout = setTimeout(() => {
+    const mascotText = $('#mascotText');
+    if (mascotText) {
+      mascotText.textContent = "Bé ơi, con chạm vào bạn tiếp theo trên bản đồ nghen! 🚀";
+    }
+  }, 14000);
+}
+window.addEventListener('pointerdown', resetMascotIdle);
+
+// 5. 3D MYSTERY CHEST UNBOXING SYSTEM
+function openMysteryChest() {
+  initAudioContext();
+  state.chest = { step: 0, reward: null, opened: false };
+  $('#mysteryChestModal')?.classList.remove('hidden');
+
+  $('#chestGiantIcon')?.classList.remove('hidden');
+  $('#chestRewardBox')?.classList.add('hidden');
+  $('#btnTapChest')?.classList.remove('hidden');
+  $('#btnRestartChest')?.classList.add('hidden');
+  $('#chestStepCount').textContent = 'Chạm: 0 / 3';
+  $('#chestTitle').textContent = 'Bé Hãy Chạm 3 Lần Vào Rương Để Mở Nhé!';
+  $('#chestInstruct').textContent = 'Rương ma thuật đang rung lắc nảy lửa, chạm mạnh nào!';
+
+  playCartoonSparkle();
+}
+
+$('#btnOpenMysteryChest')?.addEventListener('click', openMysteryChest);
+
+function handleChestTap() {
+  state.chest.step++;
+  const wrapper = $('#chest3DWrapper');
+
+  if (state.chest.step === 1) {
+    playCartoonBoing();
+    if (wrapper) {
+      wrapper.classList.add('rumble');
+      setTimeout(() => wrapper.classList.remove('rumble'), 350);
+    }
+    $('#chestStepCount').textContent = 'Chạm: 1 / 3';
+    $('#chestInstruct').textContent = 'Hay quá! Còn 2 lần nữa, chạm tiếp nào bé ơi!';
+  } else if (state.chest.step === 2) {
+    playCartoonSparkle();
+    if (wrapper) {
+      wrapper.classList.add('rumble');
+      setTimeout(() => wrapper.classList.remove('rumble'), 350);
+    }
+    $('#chestStepCount').textContent = 'Chạm: 2 / 3';
+    $('#chestInstruct').textContent = 'Sắp mở rồi! Chạm lần cuối thật mạnh nào!';
+  } else if (state.chest.step >= 3) {
+    // BURST OPEN REWARD!
+    playCartoonTadaa();
+    launchConfetti();
+
+    // Pick a random reward from vocabulary
+    const all = rawWords.map(getItemData);
+    const reward = all[Math.floor(Math.random() * all.length)];
+    state.chest.reward = reward;
+    state.chest.opened = true;
+
+    $('#chestGiantIcon')?.classList.add('hidden');
+    const rewardBox = $('#chestRewardBox');
+    if (rewardBox) {
+      rewardBox.classList.remove('hidden');
+      $('#chestRewardViewer')?.setAttribute('src', reward.glb);
+      $('#chestRewardWord').textContent = 'Bạn ' + reward.word;
+      $('#chestRewardHint').textContent = '“' + reward.sentence + '”';
+    }
+
+    $('#chestTitle').textContent = '🎉 Hoan Hô! Bé Đã Mở Được Bạn ' + reward.word + '!';
+    $('#chestInstruct').textContent = 'Bạn nhỏ đã xuất hiện và vui mừng chào đón con nè!';
+    $('#btnTapChest')?.classList.add('hidden');
+    $('#btnRestartChest')?.classList.remove('hidden');
+
+    playAudio(reward.audio);
+  }
+}
+
+$('#btnTapChest')?.addEventListener('click', handleChestTap);
+$('#chestGiantIcon')?.addEventListener('click', handleChestTap);
+$('#btnRestartChest')?.addEventListener('click', openMysteryChest);
+
 // PARENT GATE & SETTINGS
 function generateMathQuestion() {
   const n1 = Math.floor(Math.random() * 5) + 2;
@@ -2284,6 +2734,8 @@ applyVoiceUI();
 renderGrid();
 updateProgress();
 renderPark();
+applyViewMode(state.viewMode);
+resetMascotIdle();
 
 
 

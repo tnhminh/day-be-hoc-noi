@@ -31,6 +31,8 @@
 <body>
   <!-- CANVAS HIỆU ỨNG PHÁO HOA GIẤY (CONFETTI CANNON) -->
   <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+  <!-- CANVAS HIỆU ỨNG SAO BĂNG CHẠM TAY & GAME JUICE -->
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
 
   <div class="app">
     <header>
@@ -56,6 +58,11 @@
         <!-- NÚT ĐI ĐẾN SẢNH 6 TRÒ CHƠI ALL-IN-ONE -->
         <button class="icon-btn btn-arcade-nav" id="btnNavArcade" title="Khu Vui Chơi All-in-One (6 Mini Game)">
           <span>🎮 Sảnh Game (6)</span>
+        </button>
+
+                <!-- NÚT MỞ RƯƠNG BÁU 3D KỲ DIỆU -->
+        <button class="icon-btn btn-mystery-chest-nav btn-jelly" id="btnOpenMysteryChest" title="Mở Rương Báu 3D Kỳ Diệu">
+          <span>🎁 Rương Báu</span>
         </button>
 
         <!-- NÚT CHIẾU FLASHCARD TỰ ĐỘNG -->
@@ -129,7 +136,32 @@
         <div class="park-grid" id="parkGrid"></div>
       </section>
 
-      <section class="heading">
+      <!-- BỘ CHUYỂN ĐỔI CHẾ ĐỘ: BẢN ĐỒ PHIÊU LƯU 3D VS DANH SÁCH THẺ -->
+      <div class="view-mode-bar">
+        <div class="view-switch-box">
+          <button class="view-switch-btn active btn-jelly" id="btnViewMap" data-view="map">
+            <span>🗺️ Bản Đồ Phiêu Lưu</span>
+          </button>
+          <button class="view-switch-btn btn-jelly" id="btnViewGrid" data-view="grid">
+            <span>📋 Danh Sách Thẻ</span>
+          </button>
+        </div>
+        <div class="map-progress-pill">
+          <span>🏆 Tiến Độ Khám Phá: <b id="mapProgressCount">0 / 29</b> Trạm</span>
+        </div>
+      </div>
+
+      <!-- BẢN ĐỒ THẾ GIỚI PHIÊU LƯU 3D (ADVENTURE WORLD MAP) -->
+      <section class="adventure-map-section" id="adventureMapSection">
+        <div class="adventure-map-header">
+          <div class="map-tag">✨ HÀNH TRÌNH 5 VƯƠNG QUỐC KỲ THÚ</div>
+          <h2 id="adventureMapTitle">Con Đường Phiêu Lưu Của Bé</h2>
+          <p id="adventureMapDesc">Chạm vào từng trạm 3D đang phát sáng để cùng bé tập nói và mở khóa rương kho báu nghen!</p>
+        </div>
+        <div class="adventure-realms-wrap" id="adventureRealmsWrap"></div>
+      </section>
+
+      <section class="heading" id="gridHeadingSection" style="display: none;">
         <div>
           <small id="subHeadingSmall">CHỦ ĐỀ BÉ YÊU THÍCH</small>
           <h2 id="subHeading">Hôm nay bé muốn tập nói từ gì nè?</h2>
@@ -550,6 +582,67 @@
   <div class="toast hidden" id="toast">⭐ Bé giỏi quá!</div>
 
   <script src="app.js"></script>
+
+  <!-- LINH VẬT ẢO MASCOT 3D TƯƠNG TÁC (FLOATING 3D COMPANION) -->
+  <aside class="mascot-widget btn-jelly" id="mascotWidget" title="Chạm để chơi cùng bạn Vịt Vàng!">
+    <div class="mascot-bubble" id="mascotBubble">
+      <span id="mascotText">Quác quác! Bé chạm vào tui để chơi nghen! 🦆</span>
+    </div>
+    <div class="mascot-avatar-box">
+      <model-viewer
+        id="mascotViewer"
+        src="models/duck.glb"
+        autoplay
+        auto-rotate
+        rotation-per-second="25deg"
+        camera-controls
+        interaction-prompt="none"
+        disable-zoom>
+      </model-viewer>
+    </div>
+  </aside>
+
+  <!-- POP-UP MỞ RƯƠNG BÁU 3D KỲ DIỆU (MYSTERY CHEST UNBOXING) -->
+  <div class="overlay hidden" id="mysteryChestModal" role="dialog" aria-modal="true" aria-labelledby="chestTitle">
+    <div class="modal chest-modal">
+      <button class="close" title="Đóng" aria-label="Đóng rương báu">×</button>
+      <div class="quiz-head">
+        <span class="chip chip-chest">🎁 Rương Kho Báu 3D</span>
+        <b id="chestStepCount">Chạm: 0 / 3</b>
+      </div>
+      <h2 id="chestTitle">Bé Hãy Chạm 3 Lần Vào Rương Để Mở Nhé!</h2>
+      <p class="game-instruct" id="chestInstruct">Rương ma thuật đang rung lắc nảy lửa, chạm mạnh nào!</p>
+
+      <div class="chest-stage" id="chestStage">
+        <div class="chest-glow-ring"></div>
+        <div class="chest-3d-wrapper" id="chest3DWrapper">
+          <div class="chest-icon-giant" id="chestGiantIcon">🎁</div>
+          <div class="chest-sparks" id="chestSparks">✨ ⭐ ✨</div>
+        </div>
+        <!-- VẬT PHẨM MỞ ĐƯỢC -->
+        <div class="chest-reward-box hidden" id="chestRewardBox">
+          <model-viewer
+            id="chestRewardViewer"
+            src="models/robot.glb"
+            autoplay
+            auto-rotate
+            rotation-per-second="45deg"
+            camera-controls
+            disable-zoom
+            interaction-prompt="none">
+          </model-viewer>
+          <h3 id="chestRewardWord">Bạn Người Máy</h3>
+          <p id="chestRewardHint">"Nhảy múa chào đón bé!"</p>
+        </div>
+      </div>
+
+      <div class="chest-actions" id="chestActions">
+        <button class="primary btn-jelly" id="btnTapChest">Chạm Mở Rương ✨</button>
+        <button class="primary btn-jelly hidden" id="btnRestartChest">Mở Rương Khác 🚀</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
 
