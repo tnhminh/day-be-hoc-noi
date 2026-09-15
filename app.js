@@ -1453,10 +1453,22 @@ function openWord(rawItem) {
 function closeModal(id) {
   const modal = $(`#${id}`);
   if (modal) modal.classList.add('hidden');
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.currentTime = 0;
+  }
   if (id === 'whackModal') {
     state.whack.running = false;
     clearInterval(state.whack.timer);
   }
+  if (id === 'flashcardModal') {
+    state.flashcardPlaying = false;
+    clearTimeout(state.flashcardTimer);
+  }
+  if (id === 'quizModal') state.quiz.locked = false;
+  if (id === 'shadowModal') state.shadow.locked = false;
+  if (id === 'memoryModal') state.memory.locked = false;
+  if (id === 'basketModal') state.basket.locked = false;
 }
 
 function showToast(text) {
