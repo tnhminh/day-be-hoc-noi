@@ -61,6 +61,10 @@ test('Visual Usage Simulation: UI components and interactive handler exist', () 
   assert.ok(html.includes('id="btnTryAction"'), 'btnTryAction must exist in index.html');
   assert.ok(html.includes('id="cameraFlashOverlay"'), 'cameraFlashOverlay must exist in index.html');
   assert.ok(appJs.includes("$('#btnTryAction')"), 'btnTryAction logic must be handled in app.js');
+  assert.ok(html.includes('id="btnFloatSimulate"'), 'btnFloatSimulate must exist in index.html');
+  assert.ok(html.includes('id="simulationFxOverlay"'), 'simulationFxOverlay must exist in index.html');
+  assert.ok(html.includes('id="fxComicBadge"'), 'fxComicBadge must exist in index.html');
+  assert.ok(appJs.includes("triggerPracticalSimulation"), 'triggerPracticalSimulation must be defined in app.js');
   assert.ok(appJs.includes('function playUsageWaterSound()'), 'playUsageWaterSound must exist in app.js');
   assert.ok(appJs.includes('function playCameraSound()'), 'playCameraSound must exist in app.js');
 });

@@ -483,7 +483,7 @@ const server = http.createServer(async (req, res) => {
     // Caching headers
     if (ext === '.glb' || ext === '.mp3') {
       res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    } else if (ext === '.html' || ext === '.json') {
+    } else if (ext === '.html' || ext === '.json' || ext === '.js' || ext === '.css') {
       res.setHeader('Cache-Control', 'no-cache');
     } else {
       res.setHeader('Cache-Control', 'public, max-age=86400');

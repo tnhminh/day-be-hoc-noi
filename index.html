@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=v3">
   <script type="module" src="model-viewer.min.js"></script>
 </head>
 <body>
@@ -289,8 +289,18 @@
           touch-action="pan-y">
         </model-viewer>
 
+        <!-- LỚP HIỆU ỨNG THỰC TẾ TRỰC QUAN TRONG KHUNG 3D (VISUAL SIMULATION OVERLAY) -->
+        <div class="simulation-fx-overlay" id="simulationFxOverlay">
+          <div class="fx-comic-badge hidden" id="fxComicBadge">ỰC ỰC! 🥤</div>
+          <div class="fx-element-layer" id="fxElementLayer"></div>
+        </div>
+
         <!-- NÚT AR & NÚT NHẢY MÚA NẰM TRONG KHUNG 3D -->
         <div class="viewer-floating-actions">
+          <button class="viewer-float-btn btn-float-simulate btn-jelly" id="btnFloatSimulate" title="Thử dùng thực tế ngay!">
+            <span id="floatSimulateIcon">✨</span>
+            <span id="floatSimulateText">Thử Dùng Ngay</span>
+          </button>
           <button class="viewer-float-btn" id="btnArView" title="Xem ngoài đời thực bằng camera AR">
             📱 Xem AR
           </button>
@@ -594,7 +604,7 @@
   <!-- THÔNG BÁO TOAST -->
   <div class="toast hidden" id="toast">⭐ Bé giỏi quá!</div>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=v3"></script>
 
   <!-- LINH VẬT ẢO MASCOT 3D TƯƠNG TÁC (FLOATING 3D COMPANION) -->
   <aside class="mascot-widget btn-jelly" id="mascotWidget" title="Chạm để chơi cùng bạn Vịt Vàng!">

@@ -1591,8 +1591,8 @@ $('#btnAnimPlayPause').addEventListener('click', (e) => {
 
 $('#modalViewer').addEventListener('load', updateModalAnimations);
 
-// PRACTICAL LIFE SIMULATION INTERACTIVE HANDLER
-$('#btnTryAction')?.addEventListener('click', () => {
+// PRACTICAL LIFE SIMULATION INTERACTIVE HANDLER (RICH VISUAL & AUDIO FX)
+function triggerPracticalSimulation() {
   if (!state.current) return;
   const item = state.current;
   const viewer = $('#modalViewer');
@@ -1605,64 +1605,113 @@ $('#btnTryAction')?.addEventListener('click', () => {
   playFanfare();
   launchConfetti();
 
+  const badge = $('#fxComicBadge');
+  const fxLayer = $('#fxElementLayer');
+
+  function spawnFloatingEmojis(emojis) {
+    if (!fxLayer) return;
+    fxLayer.innerHTML = '';
+    for (let k = 0; k < 8; k++) {
+      const el = document.createElement('span');
+      el.className = 'fx-floating-emoji';
+      el.textContent = emojis[k % emojis.length];
+      el.style.left = (12 + Math.random() * 76) + '%';
+      el.style.top = (35 + Math.random() * 35) + '%';
+      el.style.animationDelay = (k * 0.08) + 's';
+      fxLayer.appendChild(el);
+      setTimeout(() => el.remove(), 1300);
+    }
+  }
+
+  function showComic(text) {
+    if (!badge) return;
+    badge.textContent = text;
+    badge.classList.remove('hidden');
+    badge.style.animation = 'none';
+    void badge.offsetWidth;
+    badge.style.animation = 'comicBadgePop 1.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards';
+  }
+
   if (actionType === 'drink') {
     playUsageWaterSound();
-    viewer.style.transition = 'transform 0.45s ease';
-    viewer.style.transform = 'scale(1.15) rotate(32deg) translateY(-14px)';
+    showComic('ỰC ỰC! 🥤');
+    spawnFloatingEmojis(['💧', '💦', '🫧', '🌊', '✨']);
+    viewer.style.transition = 'transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    viewer.style.transform = 'scale(1.22) rotate(32deg) translateY(-14px)';
     setTimeout(() => { viewer.style.transform = 'scale(1) rotate(0) translateY(0)'; }, 650);
     showToast(isSouth ? '🥤 Ực ực! Con uống nước mát lành sảng khoái ghê!' : '🥤 Ực ực! Bé uống nước mát lành sảng khoái ghê!');
   } else if (actionType === 'eat') {
     playUsageEatSound();
-    viewer.style.transition = 'transform 0.3s ease';
-    viewer.style.transform = 'scale(1.22) rotate(-8deg)';
+    showComic('RỘP RỘP! 😋');
+    spawnFloatingEmojis(['😋', '✨', '⭐', '🍎', '🍰', '🍪']);
+    viewer.style.transition = 'transform 0.25s ease';
+    viewer.style.transform = 'scale(1.28) rotate(-10deg)';
     setTimeout(() => { viewer.style.transform = 'scale(1) rotate(0)'; }, 450);
     showToast(isSouth ? '😋 Ngon quá! Con cắn một miếng bổ dưỡng nghen!' : '😋 Ngon quá! Bé cắn một miếng bổ dưỡng nhé!');
   } else if (actionType === 'camera') {
     playCameraSound();
+    showComic('TÁCH! 📸');
     const fl = $('#cameraFlashOverlay');
     if (fl) {
       fl.classList.add('active');
-      setTimeout(() => fl.classList.remove('active'), 220);
+      setTimeout(() => fl.classList.remove('active'), 250);
     }
+    spawnFloatingEmojis(['📸', '✨', '🌟', '💖', '😁']);
     showToast(isSouth ? '📸 Tách! Con cười tươi xinh xắn quá nè!' : '📸 Tách! Bé cười tươi xinh xắn quá nè!');
   } else if (actionType === 'vehicle') {
     playCarHonk();
+    showComic('BÍP BÍP! 🚗');
+    spawnFloatingEmojis(['💨', '🏁', '⚡', '✨']);
     viewer.style.transition = 'transform 0.35s ease';
-    viewer.style.transform = 'scale(1.14) translateX(36px)';
+    viewer.style.transform = 'scale(1.18) translateX(42px)';
     setTimeout(() => { viewer.style.transform = 'scale(1) translateX(0)'; }, 500);
     showToast(isSouth ? '🚗 Bon bon! Xe lăn bánh an toàn trên đường nghen!' : '🚗 Bon bon! Xe lăn bánh an toàn trên đường nhé!');
   } else if (actionType === 'plant') {
     playUsageWaterSound();
+    showComic('TÍ TÁCH! 🌸');
+    spawnFloatingEmojis(['🚿', '💧', '🌸', '🌼', '🌺', '🌱']);
     viewer.style.transition = 'transform 0.35s ease';
-    viewer.style.transform = 'scale(1.12) translateY(-12px)';
+    viewer.style.transform = 'scale(1.16) translateY(-14px)';
     setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0)'; }, 400);
     showToast(isSouth ? '🌸 Tí tách! Cây xanh tươi tốt nở những bông hoa xinh!' : '🌸 Tí tách! Cây xanh tươi tốt nở những bông hoa xinh!');
   } else if (actionType === 'wear') {
     playCartoonSparkle();
+    showComic('TỰ TIN! 👟');
+    spawnFloatingEmojis(['👟', '🧦', '✨', '⭐', '🚶']);
     viewer.style.transition = 'transform 0.3s ease';
-    viewer.style.transform = 'scale(1.15) translateY(-16px)';
+    viewer.style.transform = 'scale(1.18) translateY(-18px)';
     setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0)'; }, 450);
     showToast(isSouth ? '👟 Con mang vào người tự tin bước đi dạo nè!' : '👟 Bé mang vào người tự tin bước đi dạo nhé!');
   } else if (actionType === 'music') {
     playCartoonSparkle();
+    showComic('RỘN RÀNG! 🎶');
+    spawnFloatingEmojis(['🎵', '🎶', '🎸', '🎺', '🌈', '✨']);
     viewer.style.transition = 'transform 0.3s ease';
-    viewer.style.transform = 'scale(1.18) rotate(12deg)';
+    viewer.style.transform = 'scale(1.22) rotate(14deg)';
     setTimeout(() => { viewer.style.transform = 'scale(1) rotate(0)'; }, 450);
     showToast(isSouth ? '🎶 Giai điệu rộn ràng, cùng nhún nhảy theo nhạc nào!' : '🎶 Giai điệu rộn ràng, cùng nhún nhảy theo nhạc nào!');
   } else if (actionType === 'animal') {
     if (viewer.play) viewer.play();
+    showComic('QUÁC QUÁC! 🐾');
+    spawnFloatingEmojis(['🐾', '💖', '⭐', '🎈', '✨']);
     viewer.style.transition = 'transform 0.4s ease';
-    viewer.style.transform = 'scale(1.15) translateY(-18px) rotate(-6deg)';
+    viewer.style.transform = 'scale(1.18) translateY(-20px) rotate(-8deg)';
     setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0) rotate(0)'; }, 500);
     showToast(isSouth ? '🐾 Bạn nhỏ vui vẻ chạy nhảy cùng con nè!' : '🐾 Bạn nhỏ vui vẻ chạy nhảy cùng bé nè!');
   } else {
     playCartoonBoing();
+    showComic('HOAN HÔ! ⭐');
+    spawnFloatingEmojis(['✨', '🌟', '💖', '🎉']);
     viewer.style.transition = 'transform 0.35s ease';
-    viewer.style.transform = 'scale(1.15) translateY(-15px)';
+    viewer.style.transform = 'scale(1.18) translateY(-16px)';
     setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0)'; }, 400);
     showToast(isSouth ? '✨ Con đã khám phá cách sử dụng bạn này rồi!' : '✨ Bé đã khám phá cách sử dụng bạn này rồi!');
   }
-});
+}
+
+$('#btnTryAction')?.addEventListener('click', triggerPracticalSimulation);
+$('#btnFloatSimulate')?.addEventListener('click', triggerPracticalSimulation);
+
 
 
 // Baby 3D Toy Park
