@@ -26,6 +26,7 @@ COPY icon.svg ./
 COPY favicon.svg ./
 COPY models/ ./models/
 COPY audio/ ./audio/
+COPY audio_central/ ./audio_central/
 COPY audio_south/ ./audio_south/
 
 # Switch to non-root user
@@ -39,3 +40,4 @@ HEALTHCHECK --interval=30s --timeout=4s --start-period=5s --retries=3 \
   CMD node -e "fetch('http://localhost:80/healthz').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"
 
 CMD ["node", "server.js"]
+

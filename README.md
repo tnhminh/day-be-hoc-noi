@@ -152,3 +152,33 @@ Bao gồm:
 - Kiểm tra server HTTP Range streaming và headers bảo mật.
 
 
+
+---
+
+## Cách Cập Nhật Giọng Miền Nam & Miền Trung Chuẩn Bản Xứ 100%
+
+Do các engine TTS miễn phí công cộng (như Google Translate TTS hoặc Microsoft Edge TTS) hiện chỉ cung cấp giọng mẫu chuẩn Bắc/Phổ thông, để có **chất giọng Nam và Trung bản xứ 100%**, dự án đã tích hợp sẵn 2 phương án:
+
+### Phương Án 1: Sinh Tự Động Bằng FPT.AI TTS (Khuyên Dùng)
+FPT.AI cung cấp các voice mẫu vùng miền cực kỳ tự nhiên:
+- **Giọng Miền Nam:** lannhi (nữ dịu dàng), minhquang (nam trầm ấm).
+- **Giọng Miền Trung:** myan (nữ giọng Huế/Trung), 	hungan (nữ Trung).
+
+Chỉ cần đăng ký tài khoản miễn phí tại [fpt.ai](https://fpt.ai) lấy API Key, sau đó chạy lệnh:
+
+`powershell
+# Đặt API Key của bạn
+$env:FPT_AI_API_KEY="<api_key_cua_fpt_ai>"
+
+# Chạy script tự động tổng hợp toàn bộ từ vựng, câu mẫu, gợi ý và lời khen
+node scripts/generate-regional-voices-fpt.mjs
+`
+
+Script sẽ tự động render toàn bộ 58 file audio vào udio_south/ và udio_central/.
+
+### Phương Án 2: Tự Thu Âm Trực Tiếp Voice Talent Hoặc Giọng Ba Mẹ
+Bạn có thể thu âm giọng người thật (dùng điện thoại hoặc mic) và xuất file định dạng .mp3 với tên tương ứng vào thư mục:
+- udio_south/<id>.mp3: File từ vựng (ví dụ: duck.mp3, pple.mp3...)
+- udio_south/<id>_short.mp3: File từ đơn ngắn
+- udio_south/<id>_sentence.mp3: File câu ví dụ hoàn chỉnh
+- udio_central/: Tương tự cho giọng Miền Trung.
