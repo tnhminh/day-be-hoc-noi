@@ -53,6 +53,11 @@ Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **
    - Bảo mật bằng mã PIN quản trị viên (Mặc định: **2026**, có thể tùy chỉnh).
    - **📊 Tổng Quan (Dashboard)**: Thống kê số lượng từ vựng, mô hình 3D, tệp âm thanh 3 miền, tài nguyên RAM và thời gian máy chủ chạy.
    - **📚 Quản Lý Từ Vựng & 3D (Full CRUD)**: Thêm, sửa, xóa từ vựng; tùy biến tên gọi 3 miền (Bắc/Trung/Nam); xem trước mô hình 3D xoay 360°; nghe thử âm thanh trực tiếp.
+   - **🌐 Tích Hợp Kho Mô Hình 3D Miễn Phí (Free GLB Repositories)**:
+     - Danh mục các nguồn 3D CC0 uy tín cho thiếu nhi: **Poly Pizza** (10.000+ model hoạt hình cute tải 1-click), **Quaternius** (động vật hoạt hình có animation), **Kenney 3D Assets** (đồ ăn, xe cộ, đồ chơi), **Sketchfab Free Models**, **Khronos glTF Samples**.
+     - Tải tệp `.glb` từ máy tính lên máy chủ với tính năng upload tức thì (`POST /api/upload-model`).
+     - Tải tệp trực tiếp từ đường dẫn URL trực tuyến (`POST /api/download-model-url`).
+     - Dropdown chọn nhanh 29+ mô hình có sẵn trong kho và khung xem trước 3D trực tiếp ngay trên form.
    - **🎮 Vận Hành 6 Mini Game**: Bật/tắt từng trò chơi độc lập, tùy chỉnh số câu hỏi đố vui, số cặp bài trí nhớ, thời gian phản xạ, tốc độ chiếu Flashcard.
    - **🎙️ Kiểm Tra Âm Thanh 3 Miền**: Quét và đối soát độ toàn vẹn của tệp phát âm Miền Bắc, Miền Trung và Miền Nam.
    - **⚙️ Cài Đặt & Sao Lưu Toàn Diện**: Tùy chỉnh thông điệp Hero banner, xuất sao lưu dữ liệu ra file JSON dự phòng và khôi phục nhanh chóng.

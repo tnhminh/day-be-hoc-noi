@@ -264,6 +264,65 @@ const server = http.createServer(async (req, res) => {
         sendJson(res, 200, { success: true, count: list.length, models: list });
         return;
       }
+      // 8b. POST /api/upload-model
+      if (req.method === "POST" && pathname === "/api/upload-model") {
+        const rawFilename = req.headers["x-filename"] || "model_" + Date.now() + ".glb";
+        let cleanName = path.basename(decodeURIComponent(rawFilename)).replace(/[^a-zA-Z0-9_.-]/g, "_");
+        if (!cleanName.toLowerCase().endsWith(".glb")) cleanName += ".glb";
+        const targetPath = path.join(__dirname, "models", cleanName);
+
+        const chunks = [];
+        let totalSize = 0;
+        req.on("data", chunk => {
+          chunks.push(chunk);
+          totalSize += chunk.length;
+          if (totalSize > 50 * 1024 * 1024) {
+            req.destroy();
+          }
+        });
+        req.on("end", () => {
+          const buffer = Buffer.concat(chunks);
+          fs.writeFileSync(targetPath, buffer);
+          sendJson(res, 200, {
+            success: true,
+            filename: cleanName,
+            path: "models/" + cleanName,
+            sizeKB: (buffer.length / 1024).toFixed(1)
+          });
+        });
+        return;
+      }
+
+      // 8c. POST /api/download-model-url
+      if (req.method === "POST" && pathname === "/api/download-model-url") {
+        const payload = await parseJsonBody(req);
+        if (!payload.url) {
+          sendJson(res, 400, { success: false, error: "Thiếu url" });
+          return;
+        }
+        let cleanName = payload.filename
+          ? path.basename(payload.filename).replace(/[^a-zA-Z0-9_.-]/g, "_")
+          : "model_" + Date.now() + ".glb";
+        if (!cleanName.toLowerCase().endsWith(".glb")) cleanName += ".glb";
+
+        const targetPath = path.join(__dirname, "models", cleanName);
+        const resp = await fetch(payload.url);
+        if (!resp.ok) {
+          sendJson(res, 400, { success: false, error: "Tải từ URL thất bại (HTTP " + resp.status + ")" });
+          return;
+        }
+        const ab = await resp.arrayBuffer();
+        const buffer = Buffer.from(ab);
+        fs.writeFileSync(targetPath, buffer);
+        sendJson(res, 200, {
+          success: true,
+          filename: cleanName,
+          path: "models/" + cleanName,
+          sizeKB: (buffer.length / 1024).toFixed(1)
+        });
+        return;
+      }
+
 
       // 9. POST /api/admin/verify-pin
       if (req.method === 'POST' && pathname === '/api/admin/verify-pin') {

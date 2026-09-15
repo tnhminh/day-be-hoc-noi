@@ -131,6 +131,7 @@
             </div>
             <div style="display: flex; gap: 8px;">
               <button class="btn-action-secondary" id="btnSyncToApp" title="Đồng bộ vào bundle game">🔄 Đồng Bộ Vào Game</button>
+              <button class="btn-action-free-glb" id="btnOpenFreeGlbInToolbar" style="font-size: 13px; padding: 8px 16px;">🌐 Các Trang GLB Free</button>
               <button class="btn-action-primary" id="btnOpenNewWordModal">+ Thêm Từ Vựng</button>
             </div>
           </div>
@@ -337,9 +338,41 @@
           <input type="text" id="fHint" class="form-control" placeholder="ví dụ: Gâu gâu! Chú cún đáng yêu">
         </div>
 
-        <div class="form-group">
-          <label>Đường dẫn tệp 3D (.glb)*:</label>
-          <input type="text" id="fGlb" class="form-control" placeholder="models/duck.glb" required>
+        <div class="form-group" style="background: #f8fafc; border: 1.5px solid var(--border); border-radius: 14px; padding: 14px;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+            <label style="margin-bottom: 0; font-size: 13.5px; font-weight: 800; color: var(--text);">
+              🧊 Mô Hình 3D Định Dạng GLB (.glb)*:
+            </label>
+            <button type="button" class="btn-action-free-glb" id="btnOpenFreeGlbInForm">
+              🌐 Danh Sách Trang GLB Free
+            </button>
+          </div>
+
+          <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+            <input type="text" id="fGlb" class="form-control" placeholder="models/duck.glb" required style="flex: 1;">
+            <select id="fGlbSelectExisting" class="form-control" style="width: 180px; flex-shrink: 0; font-weight: 700; background: #fff;">
+              <option value="">📁 Chọn file có sẵn...</option>
+            </select>
+          </div>
+
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;">
+            <label class="btn-action-secondary" style="font-size: 12px; padding: 6px 12px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px;">
+              ⬆️ Tải tệp .glb từ máy tính
+              <input type="file" id="uploadGlbInput" accept=".glb" style="display: none;">
+            </label>
+            <button type="button" class="btn-action-secondary" id="btnDownloadGlbUrl" style="font-size: 12px; padding: 6px 12px; display: inline-flex; align-items: center; gap: 4px;">
+              🔗 Tải từ link URL
+            </button>
+            <button type="button" class="btn-action-secondary" id="btnRefreshFormPreview" style="font-size: 12px; padding: 6px 12px; display: inline-flex; align-items: center; gap: 4px;">
+              👁️ Xem thử 3D
+            </button>
+          </div>
+
+          <!-- KHUNG XEM TRƯỚC 3D TRỰC TIẾP TRONG FORM -->
+          <div class="form-glb-preview-wrap">
+            <model-viewer id="formGlbViewer" src="models/duck.glb" autoplay auto-rotate camera-controls disable-zoom interaction-prompt="none"></model-viewer>
+            <span class="preview-tag">Xem trước 3D trực tiếp (xoay 360°)</span>
+          </div>
         </div>
 
         <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
@@ -366,5 +399,109 @@
   <div class="cms-toast hidden" id="cmsToast">⭐ Thông báo thành công</div>
 
   <script src="admin.js"></script>
+
+  <!-- MODAL DANH SÁCH CÁC TRANG WEB TẢI GLB MIỄN PHÍ -->
+  <div class="modal-overlay hidden" id="freeGlbSitesModal">
+    <div class="cms-modal" style="max-width: 780px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 style="margin-bottom: 0;">🌐 Các Trang Tải Mô Hình 3D GLB Miễn Phí Tốt Nhất Cho Game Bé</h3>
+        <button type="button" class="btn-icon-table" id="btnCloseFreeGlbModal" style="width: 32px; height: 32px; font-size: 16px;">×</button>
+      </div>
+
+      <p style="font-size: 13.5px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+        Đây là các kho tài nguyên 3D định dạng <b>.glb / glTF</b> miễn phí bản quyền (CC0 / Creative Commons) đẹp nhất, tối ưu nhẹ nhàng cho web và các ứng dụng giáo dục trẻ em:
+      </p>
+
+      <div class="free-glb-grid">
+        <!-- 1. POLY PIZZA -->
+        <div class="free-glb-card">
+          <div class="free-glb-card-head">
+            <div class="free-glb-icon">🍕</div>
+            <div>
+              <strong>Poly Pizza</strong>
+              <small>Hơn 10.000 mô hình Low-poly cực xinh</small>
+            </div>
+            <a href="https://poly.pizza" target="_blank" class="btn-visit-site">Mở Trang ↗</a>
+          </div>
+          <p>Kho 3D hoạt hình phong cách cute, chuyên biệt cho thiếu nhi (con vật, trái cây, đồ ăn, xe cộ). Tải trực tiếp 1-click định dạng <code>.glb</code> nhẹ & chuẩn web.</p>
+        </div>
+
+        <!-- 2. QUATERNIUS -->
+        <div class="free-glb-card">
+          <div class="free-glb-card-head">
+            <div class="free-glb-icon">🦁</div>
+            <div>
+              <strong>Quaternius Free Assets</strong>
+              <small>Có sẵn Animation cử động (CC0)</small>
+            </div>
+            <a href="https://quaternius.com" target="_blank" class="btn-visit-site">Mở Trang ↗</a>
+          </div>
+          <p>Tuyệt phẩm cho con vật hoạt hình (Cute Animals Pack) có sẵn động tác chạy, nhảy, vẫy đuôi. Hoàn toàn miễn phí 100% bản quyền công cộng CC0.</p>
+        </div>
+
+        <!-- 3. KENNEY ASSETS -->
+        <div class="free-glb-card">
+          <div class="free-glb-card-head">
+            <div class="free-glb-icon">📦</div>
+            <div>
+              <strong>Kenney 3D Game Assets</strong>
+              <small>Huyền thoại tài nguyên game CC0</small>
+            </div>
+            <a href="https://kenney.nl/assets/series:3D" target="_blank" class="btn-visit-site">Mở Trang ↗</a>
+          </div>
+          <p>Hàng trăm bộ mô hình 3D đồ ăn, nội thất, xe cộ, đồ chơi, động vật theo phong cách hoạt hình đồ chơi đáng yêu, tải file glTF/GLB miễn phí.</p>
+        </div>
+
+        <!-- 4. SKETCHFAB -->
+        <div class="free-glb-card">
+          <div class="free-glb-card-head">
+            <div class="free-glb-icon">🎨</div>
+            <div>
+              <strong>Sketchfab Free 3D</strong>
+              <small>Kho 3D lớn nhất thế giới</small>
+            </div>
+            <a href="https://sketchfab.com/features/free-3d-models" target="_blank" class="btn-visit-site">Mở Trang ↗</a>
+          </div>
+          <p>Hàng triệu mô hình chất lượng cao. Bật bộ lọc "Downloadable" để tải về định dạng glTF/GLB tự động chuyển đổi.</p>
+        </div>
+
+        <!-- 5. KHRONOS SAMPLE ASSETS -->
+        <div class="free-glb-card">
+          <div class="free-glb-card-head">
+            <div class="free-glb-icon">🏛️</div>
+            <div>
+              <strong>Khronos glTF Samples</strong>
+              <small>Kho mẫu chuẩn glTF 2.0</small>
+            </div>
+            <a href="https://github.com/KhronosGroup/glTF-Sample-Assets" target="_blank" class="btn-visit-site">Mở Trang ↗</a>
+          </div>
+          <p>Các mô hình mẫu tiêu chuẩn quốc tế từ hiệp hội phát triển WebGL/glTF (vịt vàng, quả bơ, con cá, đồ dùng...).</p>
+        </div>
+
+        <!-- 6. OPENGAMEART -->
+        <div class="free-glb-card">
+          <div class="free-glb-card-head">
+            <div class="free-glb-icon">🧸</div>
+            <div>
+              <strong>OpenGameArt 3D</strong>
+              <small>Cộng đồng game mã nguồn mở</small>
+            </div>
+            <a href="https://opengameart.org/art-search-advanced?keys=&field_art_type_tid%5B%5D=10" target="_blank" class="btn-visit-site">Mở Trang ↗</a>
+          </div>
+          <p>Cộng đồng chia sẻ miễn phí tài nguyên game, âm thanh và mô hình 3D đa dạng thể loại.</p>
+        </div>
+      </div>
+
+      <div class="glb-instructions-box">
+        <h4>💡 Hướng Dẫn 3 Bước Nạp Mô Hình 3D Mới Vào Game:</h4>
+        <ol>
+          <li>Bấm vào bất kỳ trang web nào ở trên để tìm con vật hoặc đồ chơi bạn muốn dạy bé.</li>
+          <li>Tải tệp định dạng <code>.glb</code> về máy tính (hoặc sao chép đường link tải).</li>
+          <li>Quay lại form từ vựng, bấm <b>"⬆️ Tải tệp .glb từ máy tính"</b> hoặc dán link URL. Mô hình sẽ hiển thị xoay 360° ngay lập tức!</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

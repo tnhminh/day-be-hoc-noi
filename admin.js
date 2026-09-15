@@ -223,9 +223,12 @@ function openWordModal(isEdit, item = null) {
   $('#fShortWord').value = item ? item.shortWord : '';
   $('#fSentence').value = item ? (item.sentence || '') : '';
   $('#fHint').value = item ? (item.hint || '') : '';
-  $('#fGlb').value = item ? item.glb : 'models/duck.glb';
+  const glbVal = item ? item.glb : "models/duck.glb";
+  $("#fGlb").value = glbVal;
+  $("#formGlbViewer")?.setAttribute("src", glbVal);
+  populateExistingModelsDropdown(glbVal);
 
-  wordModal.classList.remove('hidden');
+  wordModal.classList.remove("hidden");
 }
 
 $('#btnCancelWordForm')?.addEventListener('click', () => wordModal.classList.add('hidden'));
@@ -468,3 +471,123 @@ $('#importFileInput')?.addEventListener('change', async (e) => {
 // STARTUP
 checkAuth();
 loadAllData();
+
+// =======================================================================
+// FREE GLB 3D REPOSITORIES & MODEL PICKER SYSTEM
+// =======================================================================
+const freeGlbModal = $("#freeGlbSitesModal");
+
+$("#btnOpenFreeGlbInToolbar")?.addEventListener("click", () => {
+  freeGlbModal?.classList.remove("hidden");
+});
+
+$("#btnOpenFreeGlbInForm")?.addEventListener("click", () => {
+  freeGlbModal?.classList.remove("hidden");
+});
+
+$("#btnCloseFreeGlbModal")?.addEventListener("click", () => {
+  freeGlbModal?.classList.add("hidden");
+});
+
+// Populate existing models in dropdown
+async function populateExistingModelsDropdown(selectedVal = "") {
+  const sel = $("#fGlbSelectExisting");
+  if (!sel) return;
+  try {
+    const res = await fetch("/api/models");
+    const data = await res.json();
+    const models = data.models || [];
+    sel.innerHTML = "<option value=''>📁 Chọn file có sẵn...</option>" +
+      models.map(m => `<option value="${m.path}" ${m.path === selectedVal ? "selected" : ""}>${m.file} (${m.sizeKB}KB)</option>`).join("");
+  } catch (e) {
+    console.log("Error loading models list", e);
+  }
+}
+
+// When user picks from dropdown
+$("#fGlbSelectExisting")?.addEventListener("change", function() {
+  if (this.value) {
+    $("#fGlb").value = this.value;
+    $("#formGlbViewer")?.setAttribute("src", this.value);
+  }
+});
+
+// Live preview update on typing
+$("#fGlb")?.addEventListener("input", function() {
+  const val = this.value.trim();
+  if (val) $("#formGlbViewer")?.setAttribute("src", val);
+});
+
+$("#btnRefreshFormPreview")?.addEventListener("click", () => {
+  const val = $("#fGlb")?.value.trim();
+  if (val) {
+    $("#formGlbViewer")?.setAttribute("src", val);
+    showToast("👁️ Đã làm mới hiển thị mô hình 3D!");
+  }
+});
+
+// Upload .glb file from local computer
+$("#uploadGlbInput")?.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  if (!file.name.toLowerCase().endsWith(".glb")) {
+    alert("Vui lòng chỉ chọn tệp mô hình định dạng .glb chuẩn!");
+    return;
+  }
+
+  showToast("⏳ Đang tải tệp mô hình 3D lên máy chủ...");
+
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const res = await fetch("/api/upload-model", {
+      method: "POST",
+      headers: {
+        "x-filename": encodeURIComponent(file.name)
+      },
+      body: arrayBuffer
+    });
+    const data = await res.json();
+    if (data.success) {
+      $("#fGlb").value = data.path;
+      $("#formGlbViewer")?.setAttribute("src", data.path);
+      await populateExistingModelsDropdown(data.path);
+      showToast(`✅ Đã tải lên ${data.filename} (${data.sizeKB} KB)!`);
+    } else {
+      alert("Tải lên thất bại: " + data.error);
+    }
+  } catch (err) {
+    alert("Lỗi khi tải tệp: " + err.message);
+  }
+});
+
+// Download .glb directly from Web URL (Poly Pizza, raw GitHub...)
+$("#btnDownloadGlbUrl")?.addEventListener("click", async () => {
+  const url = prompt("Nhập đường dẫn trực tuyến tệp 3D .glb (ví dụ từ Poly Pizza, GitHub, CDN...):");
+  if (!url || !url.trim()) return;
+
+  const defaultName = url.split("/").pop().split("?")[0] || "model.glb";
+  const filename = prompt("Đặt tên tệp lưu trữ trên máy chủ (.glb):", defaultName);
+  if (!filename) return;
+
+  showToast("⏳ Đang kết nối và tải mô hình 3D về máy chủ...");
+
+  try {
+    const res = await fetch("/api/download-model-url", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url: url.trim(), filename: filename.trim() })
+    });
+    const data = await res.json();
+    if (data.success) {
+      $("#fGlb").value = data.path;
+      $("#formGlbViewer")?.setAttribute("src", data.path);
+      await populateExistingModelsDropdown(data.path);
+      showToast(`✅ Đã tải về thành công: ${data.filename} (${data.sizeKB} KB)!`);
+    } else {
+      alert("Lỗi tải tệp từ web: " + data.error);
+    }
+  } catch (err) {
+    alert("Lỗi kết nối: " + err.message);
+  }
+});
