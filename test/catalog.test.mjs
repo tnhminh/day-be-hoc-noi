@@ -25,27 +25,34 @@ test('All 29 GLB 3D models exist and have valid binary size', () => {
   }
 });
 
-test('All Northern and Southern audio files exist (Levels 1, 2, and 3)', () => {
+test('All regional audio files exist (Levels 1, 2, and 3)', () => {
   for (const item of rawWords) {
     assert.ok(fs.existsSync(item.audio), `North full audio missing: ${item.audio}`);
     assert.ok(fs.existsSync(item.audioShort), `North short audio missing: ${item.audioShort}`);
     assert.ok(fs.existsSync(item.sentenceAudio), `North sentence audio missing: ${item.sentenceAudio}`);
+    assert.ok(fs.existsSync(item.centralAudio), `Central full audio missing: ${item.centralAudio}`);
+    assert.ok(fs.existsSync(item.centralShortAudio), `Central short audio missing: ${item.centralShortAudio}`);
+    assert.ok(fs.existsSync(item.centralSentenceAudio), `Central sentence audio missing: ${item.centralSentenceAudio}`);
     assert.ok(fs.existsSync(item.southAudio), `South full audio missing: ${item.southAudio}`);
     assert.ok(fs.existsSync(item.southShortAudio), `South short audio missing: ${item.southShortAudio}`);
     assert.ok(fs.existsSync(item.southSentenceAudio), `South sentence audio missing: ${item.southSentenceAudio}`);
     assert.ok(fs.statSync(item.audio).size > 1000);
     assert.ok(fs.statSync(item.sentenceAudio).size > 1000);
+    assert.ok(fs.statSync(item.centralAudio).size > 1000);
+    assert.ok(fs.statSync(item.centralSentenceAudio).size > 1000);
     assert.ok(fs.statSync(item.southAudio).size > 1000);
     assert.ok(fs.statSync(item.southSentenceAudio).size > 1000);
   }
 });
 
-test('Prompts and celebratory fanfare exist for both North and South dialects', () => {
+test('Prompts and celebratory fanfare exist for all regional dialects', () => {
   const prompts = ['greeting', 'duck_greeting', 'correct', 'wrong', 'find_prompt', 'quiz_complete', 'praise', 'star_reward'];
   for (const p of prompts) {
     assert.ok(fs.existsSync(`audio/${p}.mp3`), `North prompt missing: ${p}`);
+    assert.ok(fs.existsSync(`audio_central/${p}.mp3`), `Central prompt missing: ${p}`);
     assert.ok(fs.existsSync(`audio_south/${p}.mp3`), `South prompt missing: ${p}`);
   }
   assert.ok(fs.existsSync('audio/applause.wav'), 'North applause missing');
+  assert.ok(fs.existsSync('audio_central/applause.wav'), 'Central applause missing');
   assert.ok(fs.existsSync('audio_south/applause.wav'), 'South applause missing');
 });

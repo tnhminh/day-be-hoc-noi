@@ -14,6 +14,12 @@ const rawWords = [
     sentenceAudio: 'audio/duck_sentence.mp3',
     southAudio: 'audio_south/duck.mp3',
     southShortAudio: 'audio_south/duck_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/duck.mp3',
+    centralShortAudio: 'audio_central/duck_short.mp3',
+    centralSentenceAudio: 'audio_central/duck_sentence.mp3',
     southSentenceAudio: 'audio_south/duck_sentence.mp3',
     hint: 'Quác quác! Chú vịt vàng bơi dưới nước'
   },
@@ -31,6 +37,12 @@ const rawWords = [
     sentenceAudio: 'audio/fish_sentence.mp3',
     southAudio: 'audio_south/fish.mp3',
     southShortAudio: 'audio_south/fish_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/fish.mp3',
+    centralShortAudio: 'audio_central/fish_short.mp3',
+    centralSentenceAudio: 'audio_central/fish_sentence.mp3',
     southSentenceAudio: 'audio_south/fish_sentence.mp3',
     hint: 'Bơi lội tung tăng trong làn nước trong veo'
   },
@@ -48,6 +60,12 @@ const rawWords = [
     sentenceAudio: 'audio/fox_sentence.mp3',
     southAudio: 'audio_south/fox.mp3',
     southShortAudio: 'audio_south/fox_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/fox.mp3',
+    centralShortAudio: 'audio_central/fox_short.mp3',
+    centralSentenceAudio: 'audio_central/fox_sentence.mp3',
     southSentenceAudio: 'audio_south/fox_sentence.mp3',
     hint: 'Chú cáo thông minh có chiếc đuôi dài'
   },
@@ -65,6 +83,12 @@ const rawWords = [
     sentenceAudio: 'audio/horse_sentence.mp3',
     southAudio: 'audio_south/horse.mp3',
     southShortAudio: 'audio_south/horse_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/horse.mp3',
+    centralShortAudio: 'audio_central/horse_short.mp3',
+    centralSentenceAudio: 'audio_central/horse_sentence.mp3',
     southSentenceAudio: 'audio_south/horse_sentence.mp3',
     hint: 'Phi nhanh lạch cạch trên đồng cỏ'
   },
@@ -82,6 +106,12 @@ const rawWords = [
     sentenceAudio: 'audio/parrot_sentence.mp3',
     southAudio: 'audio_south/parrot.mp3',
     southShortAudio: 'audio_south/parrot_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/parrot.mp3',
+    centralShortAudio: 'audio_central/parrot_short.mp3',
+    centralSentenceAudio: 'audio_central/parrot_sentence.mp3',
     southSentenceAudio: 'audio_south/parrot_sentence.mp3',
     hint: 'Chú vẹt rực rỡ biết nhại tiếng người'
   },
@@ -99,6 +129,12 @@ const rawWords = [
     sentenceAudio: 'audio/flamingo_sentence.mp3',
     southAudio: 'audio_south/flamingo.mp3',
     southShortAudio: 'audio_south/flamingo_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/flamingo.mp3',
+    centralShortAudio: 'audio_central/flamingo_short.mp3',
+    centralSentenceAudio: 'audio_central/flamingo_sentence.mp3',
     southSentenceAudio: 'audio_south/flamingo_sentence.mp3',
     hint: 'Loài chim lông hồng duyên dáng'
   },
@@ -116,6 +152,12 @@ const rawWords = [
     sentenceAudio: 'audio/stork_sentence.mp3',
     southAudio: 'audio_south/stork.mp3',
     southShortAudio: 'audio_south/stork_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/stork.mp3',
+    centralShortAudio: 'audio_central/stork_short.mp3',
+    centralSentenceAudio: 'audio_central/stork_sentence.mp3',
     southSentenceAudio: 'audio_south/stork_sentence.mp3',
     hint: 'Chú cò trắng bay lả bay la'
   },
@@ -137,6 +179,12 @@ const rawWords = [
     sentenceAudio: 'audio/apple_sentence.mp3',
     southAudio: 'audio_south/apple.mp3',
     southShortAudio: 'audio_south/apple_short.mp3',
+    centralWord: 'Trái táo',
+    centralShort: 'Táo',
+    centralSentence: 'Bé ăn trái táo đỏ ngọt lịm',
+    centralAudio: 'audio_central/apple.mp3',
+    centralShortAudio: 'audio_central/apple_short.mp3',
+    centralSentenceAudio: 'audio_central/apple_sentence.mp3',
     southSentenceAudio: 'audio_south/apple_sentence.mp3',
     hint: 'Quả táo đỏ giòn ngọt, thơm ngon',
     southHint: 'Trái táo đỏ tươi giòn ngọt ngon lành'
@@ -157,6 +205,12 @@ const rawWords = [
     sentenceAudio: 'audio/watermelon_sentence.mp3',
     southAudio: 'audio_south/watermelon.mp3',
     southShortAudio: 'audio_south/watermelon_short.mp3',
+    centralWord: 'Trái dưa hấu',
+    centralShort: 'Dưa hấu',
+    centralSentence: 'Trái dưa hấu ngọt mát mùa hè',
+    centralAudio: 'audio_central/watermelon.mp3',
+    centralShortAudio: 'audio_central/watermelon_short.mp3',
+    centralSentenceAudio: 'audio_central/watermelon_sentence.mp3',
     southSentenceAudio: 'audio_south/watermelon_sentence.mp3',
     hint: 'Dưa hấu vỏ xanh ruột đỏ mát lành',
     southHint: 'Trái dưa hấu vỏ xanh ruột đỏ ngọt mát'
@@ -177,6 +231,12 @@ const rawWords = [
     sentenceAudio: 'audio/avocado_sentence.mp3',
     southAudio: 'audio_south/avocado.mp3',
     southShortAudio: 'audio_south/avocado_short.mp3',
+    centralWord: 'Trái bơ',
+    centralShort: 'Bơ',
+    centralSentence: 'Trái bơ béo thơm ngon lành',
+    centralAudio: 'audio_central/avocado.mp3',
+    centralShortAudio: 'audio_central/avocado_short.mp3',
+    centralSentenceAudio: 'audio_central/avocado_sentence.mp3',
     southSentenceAudio: 'audio_south/avocado_sentence.mp3',
     hint: 'Trái bơ béo thơm và giàu dinh dưỡng'
   },
@@ -194,6 +254,12 @@ const rawWords = [
     sentenceAudio: 'audio/cake_sentence.mp3',
     southAudio: 'audio_south/cake.mp3',
     southShortAudio: 'audio_south/cake_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/cake.mp3',
+    centralShortAudio: 'audio_central/cake_short.mp3',
+    centralSentenceAudio: 'audio_central/cake_sentence.mp3',
     southSentenceAudio: 'audio_south/cake_sentence.mp3',
     hint: 'Bánh sinh nhật ngọt ngào phủ kem tươi'
   },
@@ -211,6 +277,12 @@ const rawWords = [
     sentenceAudio: 'audio/donut_sentence.mp3',
     southAudio: 'audio_south/donut.mp3',
     southShortAudio: 'audio_south/donut_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/donut.mp3',
+    centralShortAudio: 'audio_central/donut_short.mp3',
+    centralSentenceAudio: 'audio_central/donut_sentence.mp3',
     southSentenceAudio: 'audio_south/donut_sentence.mp3',
     hint: 'Bánh vòng phủ kem dâu hồng rực rỡ'
   },
@@ -228,6 +300,12 @@ const rawWords = [
     sentenceAudio: 'audio/kebab_sentence.mp3',
     southAudio: 'audio_south/kebab.mp3',
     southShortAudio: 'audio_south/kebab_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/kebab.mp3',
+    centralShortAudio: 'audio_central/kebab_short.mp3',
+    centralSentenceAudio: 'audio_central/kebab_sentence.mp3',
     southSentenceAudio: 'audio_south/kebab_sentence.mp3',
     hint: 'Món xiên thịt nướng thơm lừng'
   },
@@ -245,6 +323,12 @@ const rawWords = [
     sentenceAudio: 'audio/teacup_sentence.mp3',
     southAudio: 'audio_south/teacup.mp3',
     southShortAudio: 'audio_south/teacup_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/teacup.mp3',
+    centralShortAudio: 'audio_central/teacup_short.mp3',
+    centralSentenceAudio: 'audio_central/teacup_sentence.mp3',
     southSentenceAudio: 'audio_south/teacup_sentence.mp3',
     hint: 'Tách trà ấm áp tỏa ngát hương'
   },
@@ -266,6 +350,12 @@ const rawWords = [
     sentenceAudio: 'audio/robot_sentence.mp3',
     southAudio: 'audio_south/robot.mp3',
     southShortAudio: 'audio_south/robot_short.mp3',
+    centralWord: 'Người máy',
+    centralShort: 'Người máy',
+    centralSentence: 'Người máy thông minh biết nhảy múa',
+    centralAudio: 'audio_central/robot.mp3',
+    centralShortAudio: 'audio_central/robot_short.mp3',
+    centralSentenceAudio: 'audio_central/robot_sentence.mp3',
     southSentenceAudio: 'audio_south/robot_sentence.mp3',
     hint: 'Người máy thông minh biết nhảy múa'
   },
@@ -285,6 +375,12 @@ const rawWords = [
     sentenceAudio: 'audio/ball_sentence.mp3',
     southAudio: 'audio_south/ball.mp3',
     southShortAudio: 'audio_south/ball_short.mp3',
+    centralWord: 'Trái banh',
+    centralShort: 'Banh',
+    centralSentence: 'Bé đá trái banh lăn tăn trong sân',
+    centralAudio: 'audio_central/ball.mp3',
+    centralShortAudio: 'audio_central/ball_short.mp3',
+    centralSentenceAudio: 'audio_central/ball_sentence.mp3',
     southSentenceAudio: 'audio_south/ball_sentence.mp3',
     hint: 'Quả bóng tròn xoe bé thích lăn tăn',
     southHint: 'Trái banh tròn xoe bé thích đá lăn tăn'
@@ -303,6 +399,12 @@ const rawWords = [
     sentenceAudio: 'audio/astronaut_sentence.mp3',
     southAudio: 'audio_south/astronaut.mp3',
     southShortAudio: 'audio_south/astronaut_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/astronaut.mp3',
+    centralShortAudio: 'audio_central/astronaut_short.mp3',
+    centralSentenceAudio: 'audio_central/astronaut_sentence.mp3',
     southSentenceAudio: 'audio_south/astronaut_sentence.mp3',
     hint: 'Chú phi hành gia bay vào vũ trụ'
   },
@@ -320,6 +422,12 @@ const rawWords = [
     sentenceAudio: 'audio/star_sentence.mp3',
     southAudio: 'audio_south/star.mp3',
     southShortAudio: 'audio_south/star_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/star.mp3',
+    centralShortAudio: 'audio_central/star_short.mp3',
+    centralSentenceAudio: 'audio_central/star_sentence.mp3',
     southSentenceAudio: 'audio_south/star_sentence.mp3',
     hint: 'Ngôi sao vàng năm cánh lấp lánh'
   },
@@ -337,6 +445,12 @@ const rawWords = [
     sentenceAudio: 'audio/boombox_sentence.mp3',
     southAudio: 'audio_south/boombox.mp3',
     southShortAudio: 'audio_south/boombox_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/boombox.mp3',
+    centralShortAudio: 'audio_central/boombox_short.mp3',
+    centralSentenceAudio: 'audio_central/boombox_sentence.mp3',
     southSentenceAudio: 'audio_south/boombox_sentence.mp3',
     hint: 'Chiếc máy phát nhạc rộn ràng vui tai'
   },
@@ -358,6 +472,12 @@ const rawWords = [
     sentenceAudio: 'audio/toy_car_sentence.mp3',
     southAudio: 'audio_south/toy_car.mp3',
     southShortAudio: 'audio_south/toy_car_short.mp3',
+    centralWord: 'Xe hơi',
+    centralShort: 'Xe',
+    centralSentence: 'Chiếc xe hơi chạy bon bon trên đường',
+    centralAudio: 'audio_central/toy_car.mp3',
+    centralShortAudio: 'audio_central/toy_car_short.mp3',
+    centralSentenceAudio: 'audio_central/toy_car_sentence.mp3',
     southSentenceAudio: 'audio_south/toy_car_sentence.mp3',
     hint: 'Brum brum! Chiếc xe bốn bánh bon bon',
     southHint: 'Brum brum! Chiếc xe hơi chạy bon bon'
@@ -376,6 +496,12 @@ const rawWords = [
     sentenceAudio: 'audio/bike_sentence.mp3',
     southAudio: 'audio_south/bike.mp3',
     southShortAudio: 'audio_south/bike_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/bike.mp3',
+    centralShortAudio: 'audio_central/bike_short.mp3',
+    centralSentenceAudio: 'audio_central/bike_sentence.mp3',
     southSentenceAudio: 'audio_south/bike_sentence.mp3',
     hint: 'Bé đạp xe rèn luyện sức khỏe dẻo dai'
   },
@@ -393,6 +519,12 @@ const rawWords = [
     sentenceAudio: 'audio/milk_truck_sentence.mp3',
     southAudio: 'audio_south/milk_truck.mp3',
     southShortAudio: 'audio_south/milk_truck_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/milk_truck.mp3',
+    centralShortAudio: 'audio_central/milk_truck_short.mp3',
+    centralSentenceAudio: 'audio_central/milk_truck_sentence.mp3',
     southSentenceAudio: 'audio_south/milk_truck_sentence.mp3',
     hint: 'Xe tải to lớn chở hàng hóa bon bon'
   },
@@ -414,6 +546,12 @@ const rawWords = [
     sentenceAudio: 'audio/cup_sentence.mp3',
     southAudio: 'audio_south/cup.mp3',
     southShortAudio: 'audio_south/cup_short.mp3',
+    centralWord: 'Cái ly',
+    centralShort: 'Ly',
+    centralSentence: 'Bé uống nước bằng cái ly xinh xinh',
+    centralAudio: 'audio_central/cup.mp3',
+    centralShortAudio: 'audio_central/cup_short.mp3',
+    centralSentenceAudio: 'audio_central/cup_sentence.mp3',
     southSentenceAudio: 'audio_south/cup_sentence.mp3',
     hint: 'Cốc dùng để bé uống nước mỗi ngày',
     southHint: 'Cái ly dùng để bé uống nước, uống sữa'
@@ -432,6 +570,12 @@ const rawWords = [
     sentenceAudio: 'audio/bottle_sentence.mp3',
     southAudio: 'audio_south/bottle.mp3',
     southShortAudio: 'audio_south/bottle_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/bottle.mp3',
+    centralShortAudio: 'audio_central/bottle_short.mp3',
+    centralSentenceAudio: 'audio_central/bottle_sentence.mp3',
     southSentenceAudio: 'audio_south/bottle_sentence.mp3',
     hint: 'Bình nước tiện lợi bé mang đi học'
   },
@@ -449,6 +593,12 @@ const rawWords = [
     sentenceAudio: 'audio/shoe_sentence.mp3',
     southAudio: 'audio_south/shoe.mp3',
     southShortAudio: 'audio_south/shoe_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/shoe.mp3',
+    centralShortAudio: 'audio_central/shoe_short.mp3',
+    centralSentenceAudio: 'audio_central/shoe_sentence.mp3',
     southSentenceAudio: 'audio_south/shoe_sentence.mp3',
     hint: 'Đôi giày xinh bảo vệ đôi chân bé'
   },
@@ -468,6 +618,12 @@ const rawWords = [
     sentenceAudio: 'audio/glasses_sentence.mp3',
     southAudio: 'audio_south/glasses.mp3',
     southShortAudio: 'audio_south/glasses_short.mp3',
+    centralWord: 'Kính mát',
+    centralShort: 'Kính',
+    centralSentence: 'Chiếc kính mát che nắng rất đẹp',
+    centralAudio: 'audio_central/glasses.mp3',
+    centralShortAudio: 'audio_central/glasses_short.mp3',
+    centralSentenceAudio: 'audio_central/glasses_sentence.mp3',
     southSentenceAudio: 'audio_south/glasses_sentence.mp3',
     hint: 'Chiếc kính sành điệu che nắng cho mắt',
     southHint: 'Chiếc kính mát che nắng sành điệu'
@@ -486,6 +642,12 @@ const rawWords = [
     sentenceAudio: 'audio/camera_sentence.mp3',
     southAudio: 'audio_south/camera.mp3',
     southShortAudio: 'audio_south/camera_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/camera.mp3',
+    centralShortAudio: 'audio_central/camera_short.mp3',
+    centralSentenceAudio: 'audio_central/camera_sentence.mp3',
     southSentenceAudio: 'audio_south/camera_sentence.mp3',
     hint: 'Tách tách! Máy ảnh lưu giữ kỷ niệm đẹp'
   },
@@ -503,6 +665,12 @@ const rawWords = [
     sentenceAudio: 'audio/lantern_sentence.mp3',
     southAudio: 'audio_south/lantern.mp3',
     southShortAudio: 'audio_south/lantern_short.mp3',
+    centralWord: undefined,
+    centralShort: undefined,
+    centralSentence: undefined,
+    centralAudio: 'audio_central/lantern.mp3',
+    centralShortAudio: 'audio_central/lantern_short.mp3',
+    centralSentenceAudio: 'audio_central/lantern_sentence.mp3',
     southSentenceAudio: 'audio_south/lantern_sentence.mp3',
     hint: 'Chiếc đèn chiếu ánh sáng ấm áp'
   },
@@ -522,6 +690,12 @@ const rawWords = [
     sentenceAudio: 'audio/plant_sentence.mp3',
     southAudio: 'audio_south/plant.mp3',
     southShortAudio: 'audio_south/plant_short.mp3',
+    centralWord: 'Bông hoa',
+    centralShort: 'Hoa',
+    centralSentence: 'Bông hoa tươi thắm nở đẹp quá chừng',
+    centralAudio: 'audio_central/plant.mp3',
+    centralShortAudio: 'audio_central/plant_short.mp3',
+    centralSentenceAudio: 'audio_central/plant_sentence.mp3',
     southSentenceAudio: 'audio_south/plant_sentence.mp3',
     hint: 'Chậu hoa xanh mát làm đẹp căn phòng',
     southHint: 'Bông hoa xinh xắn làm đẹp căn phòng'
@@ -558,15 +732,16 @@ const $ = (s) => document.querySelector(s);
 
 function getItemData(item) {
   const isSouth = state.voice === 'south';
+  const isCentral = state.voice === 'central';
   return {
     id: item.id,
-    word: isSouth && item.southWord ? item.southWord : item.word,
-    shortWord: isSouth && item.southShort ? item.southShort : item.shortWord,
-    sentence: isSouth && item.southSentence ? item.southSentence : item.sentence,
-    audio: isSouth && item.southAudio ? item.southAudio : item.audio,
-    audioShort: isSouth && item.southShortAudio ? item.southShortAudio : item.audioShort,
-    sentenceAudio: isSouth && item.southSentenceAudio ? item.southSentenceAudio : item.sentenceAudio,
-    hint: isSouth && item.southHint ? item.southHint : item.hint,
+    word: isCentral && item.centralWord ? item.centralWord : (isSouth && item.southWord ? item.southWord : item.word),
+    shortWord: isCentral && item.centralShort ? item.centralShort : (isSouth && item.southShort ? item.southShort : item.shortWord),
+    sentence: isCentral && item.centralSentence ? item.centralSentence : (isSouth && item.southSentence ? item.southSentence : item.sentence),
+    audio: isCentral && item.centralAudio ? item.centralAudio : (isSouth && item.southAudio ? item.southAudio : item.audio),
+    audioShort: isCentral && item.centralShortAudio ? item.centralShortAudio : (isSouth && item.southShortAudio ? item.southShortAudio : item.audioShort),
+    sentenceAudio: isCentral && item.centralSentenceAudio ? item.centralSentenceAudio : (isSouth && item.southSentenceAudio ? item.southSentenceAudio : item.sentenceAudio),
+    hint: isCentral && item.centralHint ? item.centralHint : (isSouth && item.southHint ? item.southHint : item.hint),
     cat: item.cat,
     catName: item.catName,
     glb: item.glb
@@ -592,7 +767,8 @@ function playAudio(path, onEnded) {
 
 function getAudioPath(name) {
   const isSouth = state.voice === 'south';
-  return isSouth ? `audio_south/${name}.mp3` : `audio/${name}.mp3`;
+  const isCentral = state.voice === 'central';
+  return isCentral ? `audio_central/${name}.mp3` : (isSouth ? `audio_south/${name}.mp3` : `audio/${name}.mp3`);
 }
 
 // CONFETTI CANNON SYSTEM
@@ -661,7 +837,8 @@ function updateConfetti() {
 
 function playFanfare() {
   const isSouth = state.voice === 'south';
-  const a = new Audio(isSouth ? 'audio_south/applause.wav' : 'audio/applause.wav');
+  const isCentral = state.voice === 'central';
+  const a = new Audio(isCentral ? 'audio_central/applause.wav' : (isSouth ? 'audio_south/applause.wav' : 'audio/applause.wav'));
   a.play().catch(() => {});
   fireConfetti(window.innerWidth / 2, window.innerHeight / 3, 100);
 }
@@ -1036,8 +1213,10 @@ $('#fcPrev').addEventListener('click', () => {
 
 function applyVoiceUI() {
   const isSouth = state.voice === 'south';
+  const isCentral = state.voice === 'central';
   $('#btnVoiceSouth').classList.toggle('active', isSouth);
-  $('#btnVoiceNorth').classList.toggle('active', !isSouth);
+  $('#btnVoiceCentral').classList.toggle('active', isCentral);
+  $('#btnVoiceNorth').classList.toggle('active', !isSouth && !isCentral);
 
   if (isSouth) {
     $('#heroChip').textContent = '🌴 Đang dùng: Giọng Miền Nam thân thương';
@@ -1046,6 +1225,13 @@ function applyVoiceUI() {
     $('#quizQuestion').textContent = 'Con lắng nghe và chọn đúng hình nghen!';
     $('#challengeDesc').textContent = 'Hai chế độ đố vui thông minh với giọng đọc miền Nam gần gũi, giúp bé phản xạ tự nhiên.';
     $('#learn').textContent = '⭐ Con nói được từ này rồi!';
+  } else if (isCentral) {
+    $('#heroChip').textContent = '🏮 Đang dùng: Giọng Miền Trung gần gũi';
+    $('#subHeading').textContent = 'Hôm ni bé muốn tập nói từ gì hè?';
+    $('#greeting').textContent = '🔊 Nghe cô chào con';
+    $('#quizQuestion').textContent = 'Con nghe rồi chọn đúng hình nghe!';
+    $('#challengeDesc').textContent = 'Hai chế độ đố vui với sắc thái miền Trung thân thương, giúp bé nghe đa dạng giọng Việt.';
+    $('#learn').textContent = '⭐ Con nói được từ ni rồi!';
   } else {
     $('#heroChip').textContent = '🌸 Đang dùng: Giọng Miền Bắc chuẩn mực';
     $('#subHeading').textContent = 'Hôm nay bé muốn tập nói từ gì nhé?';
@@ -1164,10 +1350,11 @@ function setVoiceRegion(region) {
   renderGrid();
   renderPark();
   playAudio(getAudioPath('greeting'));
-  showToast(region === 'south' ? '🌴 Đã chuyển sang Giọng Miền Nam' : '🌸 Đã chuyển sang Giọng Miền Bắc');
+  showToast(region === 'south' ? '🌴 Đã chuyển sang Giọng Miền Nam' : (region === 'central' ? '🏮 Đã chuyển sang Giọng Miền Trung' : '🌸 Đã chuyển sang Giọng Miền Bắc'));
 }
 
 $('#btnVoiceSouth').addEventListener('click', () => setVoiceRegion('south'));
+$('#btnVoiceCentral').addEventListener('click', () => setVoiceRegion('central'));
 $('#btnVoiceNorth').addEventListener('click', () => setVoiceRegion('north'));
 
 document.querySelectorAll('.tabs button').forEach((btn) => {

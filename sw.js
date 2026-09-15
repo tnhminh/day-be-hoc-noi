@@ -45,6 +45,7 @@ self.addEventListener('fetch', (event) => {
   if (
     url.pathname.startsWith('/models/') ||
     url.pathname.startsWith('/audio/') ||
+    url.pathname.startsWith('/audio_central/') ||
     url.pathname.startsWith('/audio_south/') ||
     url.pathname.endsWith('.glb') ||
     url.pathname.endsWith('.mp3') || url.pathname.endsWith('.wav')
@@ -84,4 +85,5 @@ self.addEventListener('fetch', (event) => {
     })
   );
 });
+
 

@@ -2,7 +2,7 @@
 
 Ứng dụng web tương tác 3D và phát âm chuẩn tiếng Việt giúp trẻ mầm non tập nói, mở rộng vốn từ vựng và luyện phản xạ ngôn ngữ tự nhiên.
 
-Hỗ trợ chuẩn cả **Giọng Miền Nam** và **Giọng Miền Bắc**, tích hợp 29 mô hình 3D thực tế, chức năng thu âm giọng bé, 2 trò chơi đố vui thông minh, khóa phụ huynh và khả năng hoạt động offline 100% (PWA).
+Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **Giọng Miền Bắc**, tích hợp 29 mô hình 3D thực tế, chức năng thu âm giọng bé, 2 trò chơi đố vui thông minh, khóa phụ huynh và khả năng hoạt động offline 100% (PWA).
 
 ---
 
@@ -12,10 +12,12 @@ Hỗ trợ chuẩn cả **Giọng Miền Nam** và **Giọng Miền Bắc**, tí
    - 5 chủ đề thân thuộc: Con vật (7), Đồ ăn & Uống (7), Đồ chơi (5), Xe cộ & Đi lại (3), Đồ dùng & Quần áo (7).
    - Bé có thể dùng tay vuốt xoay tròn, ngắm nghía mọi góc cạnh để kích thích thị giác và trí tò mò.
 
-2. **Hỗ Trợ Chuẩn Giọng Miền Nam & Giọng Miền Bắc**
+2. **Hỗ Trợ Chuẩn 3 Giọng Vùng Miền Việt Nam**
    - Chuyển đổi linh hoạt tức thì ngay trên giao diện.
-   - Khi chọn **Giọng Miền Nam**: Từ vựng và phát âm chuyển sang chuẩn phương ngữ miền Nam (*Trái táo, Trái dưa hấu, Trái bơ, Trái banh, Cái ly, Xe hơi, Kính mát, Bông hoa, Người máy...*).
-   - Tích hợp sẵn 128 file âm thanh chất lượng cao cho cả từ đơn ngắn và cụm từ đầy đủ.
+   - Khi chọn **Giọng Miền Nam**: Từ vựng và phát âm chuyển sang sắc thái miền Nam (*Trái táo, Trái dưa hấu, Trái bơ, Trái banh, Cái ly, Xe hơi, Kính mát, Bông hoa, Người máy...*).
+   - Khi chọn **Giọng Miền Trung**: Bổ sung giọng đọc miền Trung gần gũi, kèm một số cách gọi thân quen như *trái banh, cái ly, bông hoa*.
+   - Khi chọn **Giọng Miền Bắc**: Dùng bộ từ chuẩn phổ thông miền Bắc để bé nghe rõ âm chuẩn.
+   - Tích hợp sẵn 288 file âm thanh chất lượng cao cho cả từ đơn ngắn, từ đầy đủ, câu mẫu, lời nhắc và hiệu ứng.
 
 3. **Chức Năng Ghi Âm "Bé Tập Nói & Nghe Lại Giọng Mình"**
    - Bé bấm nút ghi âm nói thử -> Hệ thống tự động phát lại giọng nói non nớt của bé và phát lời khen ngợi kích lệ tinh thần.
@@ -43,6 +45,7 @@ Hỗ trợ chuẩn cả **Giọng Miền Nam** và **Giọng Miền Bắc**, tí
 day-be-hoc-noi/
 ├── models/                     # 29 tệp 3D binary (.glb) chuẩn glTF 2.0
 ├── audio/                      # Âm thanh phát âm Giọng Miền Bắc (.mp3)
+├── audio_central/              # Âm thanh phát âm Giọng Miền Trung (.mp3)
 ├── audio_south/                # Âm thanh phát âm Giọng Miền Nam (.mp3)
 ├── test/                       # Bộ kiểm thử tự động (Catalog, PWA, Server)
 ├── index.html                  # Giao diện chính responsive, semantic HTML5
@@ -144,6 +147,8 @@ npm test
 Bao gồm:
 - Kiểm tra toàn vẹn danh mục từ vựng (29 mục across 5 danh mục).
 - Kiểm tra sự tồn tại và dung lượng của toàn bộ 29 mô hình GLB.
-- Kiểm tra đầy đủ file phát âm Giọng Bắc và Giọng Nam.
+- Kiểm tra đầy đủ file phát âm Giọng Bắc, Giọng Trung và Giọng Nam.
 - Kiểm tra tính hợp lệ của Manifest PWA và Service Worker.
 - Kiểm tra server HTTP Range streaming và headers bảo mật.
+
+
