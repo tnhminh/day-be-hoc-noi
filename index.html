@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Bé Học Nói Tiếng Việt 3D • Game Tập Nói Chuẩn Giọng Miền Nam & Miền Bắc</title>
+  
+  <!-- SEO & Open Graph Meta Tags -->
+  <meta name="description" content="Trò chơi 3D tương tác dạy bé mầm non tập nói tiếng Việt với 29 mô hình 3D sinh động, AR thực tế tăng cường, phát âm chuẩn Giọng Miền Nam & Miền Bắc, ghi âm giọng bé và đố vui thông minh.">
+  <meta name="keywords" content="bé học nói, dạy bé học nói, tiếng việt, giọng miền nam, mô hình 3d, thực tế tăng cường ar, trẻ em, mầm non">
+  <meta name="author" content="Bé Học Nói 3D">
+  <meta property="og:title" content="Bé Học Nói Tiếng Việt 3D">
+  <meta property="og:description" content="Khám phá 29 mô hình 3D xoay 360°, chiếu AR ra đời thực, phát âm chuẩn giọng miền Nam và miền Bắc giúp bé tự tin tập nói.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/icon.svg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#6c5ce7">
+  
+  <!-- PWA Manifest & Icons -->
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/icon.svg">
+  
+  <!-- Fonts & 3D Web Component -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="model-viewer.min.js"></script>
+</head>
+<body>
+  <!-- CANVAS HIỆU ỨNG PHÁO HOA GIẤY (CONFETTI CANNON) -->
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <div class="app">
+    <header>
+      <div class="brand">
+        <div class="logo">🧸</div>
+        <div>
+          <small class="tagline">PHÁT ÂM TIẾNG VIỆT CHUẨN CHO BÉ</small>
+          <h1>Bé Học Nói Tiếng Việt 3D</h1>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <!-- BỘ CHỌN GIỌNG NÓI MIỀN NAM / MIỀN BẮC -->
+        <div class="voice-selector">
+          <span class="voice-label">Giọng đọc:</span>
+          <div class="voice-switch" role="radiogroup" aria-label="Chọn giọng miền Nam hoặc miền Bắc">
+            <button class="voice-btn active" data-voice="south" id="btnVoiceSouth">🌴 Miền Nam</button>
+            <button class="voice-btn" data-voice="north" id="btnVoiceNorth">🌸 Miền Bắc</button>
+          </div>
+        </div>
+
+        <!-- NÚT CHIẾU FLASHCARD TỰ ĐỘNG -->
+        <button class="icon-btn btn-flashcard-auto" id="btnOpenFlashcard" title="Chiếu Flashcard 3D tự động">
+          <span>📺 Flashcard</span>
+        </button>
+
+        <!-- BẬT/TẮT NHẠC NỀN DU DƯƠNG -->
+        <button class="icon-btn" id="btnBgm" title="Bật/Tắt nhạc nền du dương" aria-label="Bật/Tắt nhạc nền">
+          <span id="bgmIcon">🎵</span>
+        </button>
+
+        <!-- CÀI ĐẶT GÓC BA MẸ -->
+        <button class="icon-btn" id="btnParentGate" title="Cài đặt cho Ba Mẹ" aria-label="Cài đặt góc ba mẹ">
+          <span>⚙️ Ba Mẹ</span>
+        </button>
+
+        <div class="streak" title="Số ngày bé đã chăm chỉ học">🔥 <b>3</b> ngày</div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-text">
+          <span class="chip" id="heroChip">🌴 Đang dùng: Giọng Miền Nam thân thương</span>
+          <h2 id="heroHeading">Chạm & Xoay Hình 3D Để Tập Nói!</h2>
+          <p id="heroDesc">Bé hãy chạm vào từng con vật, đồ ăn, đồ chơi... nghe cô phát âm chuẩn rồi nhắc lại theo nghen.</p>
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span id="progressLabel">Bé đã tập nói hôm nay</span>
+              <b id="progressText">0 / 5 từ</b>
+            </div>
+            <div class="progress">
+              <i id="progressBar"></i>
+            </div>
+          </div>
+        </div>
+        <div class="hero-3d">
+          <div class="hero-viewer-wrap">
+            <model-viewer
+              id="heroViewer"
+              src="models/duck.glb"
+              alt="Mô hình 3D vui nhộn"
+              auto-rotate
+              rotation-per-second="35deg"
+              camera-controls
+              interaction-prompt="none"
+              shadow-intensity="1.5"
+              exposure="1.1"
+              touch-action="pan-y">
+            </model-viewer>
+          </div>
+          <div class="hero-actions">
+            <button class="hero-sound-btn" id="heroSpeak">🔊 Nghe bạn chào bé</button>
+            <button class="hero-sound-btn hero-switch-btn" id="heroSwitch" title="Đổi mô hình 3D khác">🔄 Đổi hình 3D</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- KHU VƯỜN 3D KỲ DIỆU CỦA BÉ -->
+      <section class="park-section" id="parkSection">
+        <div class="park-header">
+          <div>
+            <small class="park-badge">🌳 KHU VƯỜN KỲ DIỆU</small>
+            <h2>Bộ Sưu Tập Bạn 3D Của Bé</h2>
+            <p id="parkSummary">Bé đã mở khóa được 0 / 29 bạn nhỏ vào khu vườn</p>
+          </div>
+          <button class="park-interact-btn" id="btnParkCheer">🎉 Chúc mừng các bạn 3D</button>
+        </div>
+        <div class="park-grid" id="parkGrid"></div>
+      </section>
+
+      <section class="heading">
+        <div>
+          <small id="subHeadingSmall">CHỦ ĐỀ BÉ YÊU THÍCH</small>
+          <h2 id="subHeading">Hôm nay bé muốn tập nói từ gì nè?</h2>
+        </div>
+        <button id="greeting" class="btn-sound">🔊 Nghe cô chào con</button>
+      </section>
+
+      <nav class="tabs" aria-label="Danh mục chủ đề">
+        <button class="active" data-cat="all">✨ Tất cả (29 từ)</button>
+        <button data-cat="animals">🐶 Con vật (7)</button>
+        <button data-cat="food">🍎 Đồ ăn & Uống (7)</button>
+        <button data-cat="toys">🧸 Đồ chơi (5)</button>
+        <button data-cat="vehicles">🚗 Xe cộ & Đi lại (3)</button>
+        <button data-cat="objects">👕 Đồ dùng & Quần áo (7)</button>
+      </nav>
+
+      <section class="grid" id="grid" aria-label="Danh sách từ vựng 3D"></section>
+
+      <!-- KHU VỰC 2 MINI GAME -->
+      <section class="challenge">
+        <div class="target">🎯</div>
+        <div class="challenge-info">
+          <small id="challengeSmall">TRÒ CHƠI LUYỆN TẬP ĐA NĂNG</small>
+          <h2 id="challengeTitle">Cùng Chơi Đố Vui Cùng Bạn 3D</h2>
+          <p id="challengeDesc">Hai chế độ chơi rèn luyện trí nhớ và phản xạ nhanh cho bé với 29 mô hình sinh động.</p>
+        </div>
+        <div class="challenge-buttons">
+          <button class="primary" id="startQuiz">🎯 Đố Vui Nghe Tiếng →</button>
+          <button class="secondary-game-btn" id="startShadowGame">🕵️ Đoán Bóng Bí Ẩn →</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-left">
+        <span>💛 <b>Bé Học Nói Tiếng Việt 3D</b> • Đầy Đủ 3 Cấp Độ Tập Nói • Hỗ Trợ AR Thực Tế Tăng Cường</span>
+        <small>Hỗ trợ chuẩn <b>Giọng Miền Nam</b> & <b>Giọng Miền Bắc</b> • Hoạt động Offline 100%</small>
+      </div>
+      <div class="footer-right">
+        <span class="pwa-status" id="pwaStatus">🟢 Đã sẵn sàng chơi Offline</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- POP-UP XEM CHI TIẾT TỪ VỰNG: 3 CẤP ĐỘ PHÁT ÂM, AR, NHẢY MÚA, GHI ÂM -->
+  <div class="overlay hidden" id="wordModal" role="dialog" aria-modal="true" aria-labelledby="modalWord">
+    <div class="modal">
+      <button class="close" title="Đóng" aria-label="Đóng pop-up">×</button>
+      
+      <div class="modal-3d-box">
+        <model-viewer
+          id="modalViewer"
+          src=""
+          alt="Mô hình 3D từ vựng"
+          auto-rotate
+          camera-controls
+          shadow-intensity="1.5"
+          exposure="1.05"
+          ar
+          ar-modes="webxr scene-viewer quick-look"
+          touch-action="pan-y">
+        </model-viewer>
+
+        <!-- NÚT AR & NÚT NHẢY MÚA NẰM TRONG KHUNG 3D -->
+        <div class="viewer-floating-actions">
+          <button class="viewer-float-btn" id="btnArView" title="Xem ngoài đời thực bằng camera AR">
+            📱 Xem AR
+          </button>
+          <button class="viewer-float-btn" id="btnDance3D" title="Mô hình cử động nhảy múa">
+            💃 Nhảy múa
+          </button>
+        </div>
+      </div>
+
+      <small id="modalCat">CON VẬT</small>
+      <h2 id="modalWord">Con vịt</h2>
+      <p id="modalHint" class="word-desc">Quác quác! Chú vịt vàng bơi dưới nước</p>
+
+      <!-- 3 TẦNG PHÁT ÂM CHUẨN: ÂM ĐƠN -> TỪ GHÉP -> CÂU GIAO TIẾP -->
+      <div class="levels-wrap">
+        <div class="level-badge-title">3 BƯỚC TẬP NÓI:</div>
+        <div class="modal-audio-row">
+          <button id="hearShort" class="btn-sound btn-accent">
+            <span>🗣️ Bước 1 (Âm đơn):</span>
+            <strong id="modalShort">"Vịt"</strong>
+          </button>
+          <button id="hearFull" class="btn-sound">
+            <span>🔊 Bước 2 (Từ ghép):</span>
+            <strong id="modalFull">"Con vịt"</strong>
+          </button>
+        </div>
+        <button id="hearSentence" class="btn-sentence" title="Nghe câu hoàn chỉnh">
+          <span>💬 Bước 3 (Câu giao tiếp):</span>
+          <strong id="modalSentence">“Con vịt đang bơi dưới nước”</strong>
+        </button>
+      </div>
+
+      <!-- TÍNH NĂNG BÉ GHI ÂM & CHẤM ĐIỂM BẰNG AI -->
+      <div class="recorder-box">
+        <div class="recorder-header">
+          <span>🎤 BÉ TẬP NÓI THỬ NHA</span>
+          <div class="ai-stars" id="aiStars">⭐⭐⭐</div>
+        </div>
+        <div class="recorder-buttons">
+          <button id="btnRecord" class="btn-record">
+            <span class="mic-icon">🎙️</span>
+            <span id="recordText">Bé Nói Thử Nha (Bấm Ghi Âm)</span>
+          </button>
+          <button id="btnPlayRecorded" class="btn-play-recorded hidden">
+            <span>▶️ Nghe lại giọng con nè!</span>
+          </button>
+        </div>
+        <div class="ai-speech-result hidden" id="aiSpeechResult"></div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="primary btn-learned" id="learn">⭐ Con nói được từ này rồi!</button>
+      </div>
+      <p class="guide-tip">💡 <i>Ba mẹ cùng bé nhắc lại theo 3 bước để bé nhanh nói thành câu hoàn chỉnh nghen!</i></p>
+    </div>
+  </div>
+
+  <!-- POP-UP CHẾ ĐỘ CHIẾU FLASHCARD 3D TỰ ĐỘNG (GLENN DOMAN) -->
+  <div class="overlay hidden" id="flashcardModal" role="dialog" aria-modal="true" aria-labelledby="fcWord">
+    <div class="modal flashcard-modal">
+      <button class="close" id="btnCloseFlashcard" title="Đóng">×</button>
+      <div class="fc-topbar">
+        <span class="chip">📺 Flashcard 3D Tự Động</span>
+        <span id="fcProgress">1 / 29</span>
+      </div>
+      
+      <div class="fc-viewer-box">
+        <model-viewer
+          id="fcViewer"
+          src=""
+          alt="Mô hình Flashcard"
+          auto-rotate
+          rotation-per-second="45deg"
+          camera-controls
+          shadow-intensity="1.5"
+          exposure="1.1">
+        </model-viewer>
+      </div>
+
+      <h1 id="fcWord" class="fc-word">Con vịt</h1>
+      <p id="fcSentence" class="fc-sentence">“Con vịt đang bơi dưới nước”</p>
+
+      <div class="fc-controls">
+        <button class="fc-btn" id="fcPrev">⏮️ Trước</button>
+        <button class="fc-btn fc-btn-play" id="fcPlayPause">⏸️ Tạm dừng</button>
+        <button class="fc-btn" id="fcNext">Kế tiếp ⏭️</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- POP-UP TRÒ CHƠI 1: ĐỐ VUI NGHE TIẾNG -->
+  <div class="overlay hidden" id="quizModal" role="dialog" aria-modal="true" aria-labelledby="quizQuestion">
+    <div class="modal quiz-modal">
+      <button class="close" title="Đóng" aria-label="Đóng trò chơi">×</button>
+      <div class="quiz-head">
+        <span class="chip">🎯 Đố vui tiếng Việt</span>
+        <b id="score">0 / 5</b>
+      </div>
+      <h2 id="quizQuestion">Con lắng nghe và chọn đúng hình nghen!</h2>
+      <button class="listen" id="listen">🔊 Nghe lại câu hỏi</button>
+      <div class="quiz-grid" id="options"></div>
+      <p id="feedback"></p>
+    </div>
+  </div>
+
+  <!-- POP-UP TRÒ CHƠI 2: ĐOÁN BÓNG 3D BÍ ẨN -->
+  <div class="overlay hidden" id="shadowModal" role="dialog" aria-modal="true" aria-labelledby="shadowTitle">
+    <div class="modal shadow-modal">
+      <button class="close" title="Đóng" aria-label="Đóng trò chơi đoán bóng">×</button>
+      <div class="quiz-head">
+        <span class="chip chip-shadow">🕵️ Đoán bóng bí ẩn</span>
+        <b id="shadowScore">0 / 5</b>
+      </div>
+      <h2 id="shadowTitle">Đố bé đây là bóng của ai nào?</h2>
+      
+      <div class="shadow-viewer-box">
+        <model-viewer
+          id="shadowViewer"
+          src=""
+          alt="Bóng bí ẩn"
+          auto-rotate
+          rotation-per-second="40deg"
+          camera-controls
+          disable-zoom
+          interaction-prompt="none"
+          shadow-intensity="0"
+          exposure="0">
+        </model-viewer>
+      </div>
+
+      <div class="shadow-choices" id="shadowChoices"></div>
+      <p id="shadowFeedback"></p>
+    </div>
+  </div>
+
+  <!-- MODAL CÀI ĐẶT CHO BA MẸ (CÓ KHÓA PHỤ HUYNH) -->
+  <div class="overlay hidden" id="parentModal" role="dialog" aria-modal="true" aria-labelledby="parentTitle">
+    <div class="modal parent-modal">
+      <button class="close" title="Đóng" aria-label="Đóng cài đặt">×</button>
+      
+      <!-- MÀN HÌNH KHÓA PHỤ HUYNH -->
+      <div id="parentGateScreen">
+        <span class="parent-badge">🔒 KHÓA PHỤ HUYNH</span>
+        <h2>Ba Mẹ Hãy Làm Phép Tính Nhé</h2>
+        <p class="parent-gate-hint">Để đảm bảo bé không bấm nhầm vào phần cài đặt:</p>
+        <div class="math-question" id="mathQuestion">3 + 4 = ?</div>
+        <div class="math-input-row">
+          <input type="number" id="mathAnswerInput" class="math-input" placeholder="Nhập kết quả" pattern="[0-9]*" inputmode="numeric">
+          <button class="primary" id="btnVerifyMath">Xác nhận</button>
+        </div>
+        <p class="math-error hidden" id="mathError">Kết quả chưa đúng, ba mẹ thử lại nhé!</p>
+      </div>
+
+      <!-- MÀN HÌNH CÀI ĐẶT SAU KHI MỞ KHÓA -->
+      <div id="parentSettingsScreen" class="hidden">
+        <span class="parent-badge">⚙️ CÀI ĐẶT CHO BA MẸ</span>
+        <h2 id="parentTitle">Tùy Chỉnh Giờ Chơi & Giọng Nói</h2>
+        
+        <div class="setting-item">
+          <label><b>Tốc độ giọng đọc</b><br><small>Chậm hơn giúp bé dễ bắt chước khẩu hình</small></label>
+          <select id="settingRate" class="setting-select">
+            <option value="1.0" selected>Tự nhiên, chuẩn tiếng Việt (1.0x - Khuyên dùng)</option>
+            <option value="1.1">Nhanh nhẹn, rộn ràng (1.1x)</option>
+            <option value="0.85">Chậm rãi (0.85x)</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label><b>Nhạc nền du dương (BGM)</b><br><small>Giai điệu ru nhẹ nhàng kích thích thư giãn</small></label>
+          <div class="switch-toggle">
+            <input type="checkbox" id="settingBgmToggle" checked>
+            <label for="settingBgmToggle" class="switch-label"></label>
+          </div>
+        </div>
+
+        <div class="setting-item">
+          <label><b>Giới hạn thời gian chơi (Bảo vệ mắt)</b><br><small>Tự động nhắc nhở bé nghỉ ngơi khi hết giờ</small></label>
+          <select id="settingTimeLimit" class="setting-select">
+            <option value="0">Không giới hạn</option>
+            <option value="15">15 phút (Khuyên dùng)</option>
+            <option value="30">30 phút</option>
+          </select>
+        </div>
+
+        <div class="setting-item">
+          <label><b>Tiến độ học tập của bé</b><br><small id="settingLearnedSummary">Đã hoàn thành 0 / 29 từ vựng</small></label>
+          <button class="danger-btn" id="btnResetProgress">Đặt lại toàn bộ sao</button>
+        </div>
+
+        <div class="modal-actions" style="margin-top: 20px;">
+          <button class="primary" id="btnSaveParentSettings" style="width: 100%;">Lưu & Quay Lại Chơi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MÀN HÌNH NHẮC NHỞ HẾT GIỜ CHƠI (BẢO VỆ MẮT) -->
+  <div class="overlay hidden" id="timeUpModal" role="dialog" aria-modal="true">
+    <div class="modal timeup-modal">
+      <div class="timeup-icon">🌙 ⭐</div>
+      <h2>Bé Ơi, Nghỉ Ngơi Thôi Nào!</h2>
+      <p>Mắt của bé đã chăm chỉ làm việc rồi. Ba mẹ hãy cùng bé vươn vai vận động và chơi trò chơi ngoài trời nhé!</p>
+      <button class="primary" id="btnDismissTimeUp">Ba Mẹ Mở Lại</button>
+    </div>
+  </div>
+
+  <!-- THÔNG BÁO TOAST -->
+  <div class="toast hidden" id="toast">⭐ Bé giỏi quá!</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6c5ce7"/>
+      <stop offset="100%" stop-color="#8c7ae6"/>
+    </linearGradient>
+    <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fed330"/>
+      <stop offset="100%" stop-color="#ffa801"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1e184a" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  
+  <!-- Rounded App Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle decorative stars -->
+  <circle cx="90" cy="110" r="14" fill="#ffffff" opacity="0.4"/>
+  <circle cx="430" cy="130" r="18" fill="#ffffff" opacity="0.3"/>
+  <circle cx="410" cy="390" r="12" fill="#ffffff" opacity="0.35"/>
+  
+  <!-- 3D Speech bubble -->
+  <g filter="url(#shadow)">
+    <path d="M 120 180 C 120 120, 392 120, 392 180 C 392 240, 290 250, 240 270 L 190 310 L 205 260 C 140 250, 120 220, 120 180 Z" fill="url(#bubbleGrad)"/>
+    <text x="256" y="205" font-family="'Be Vietnam Pro', -apple-system, sans-serif" font-weight="900" font-size="44" fill="#594400" text-anchor="middle">3D</text>
+  </g>
+  
+  <!-- Cute Bunny / Character Face -->
+  <!-- Bunny ears -->
+  <ellipse cx="200" cy="270" rx="26" ry="60" fill="#ffffff" filter="url(#shadow)"/>
+  <ellipse cx="200" cy="270" rx="14" ry="40" fill="#ff9ff3"/>
+  <ellipse cx="312" cy="270" rx="26" ry="60" fill="#ffffff" filter="url(#shadow)"/>
+  <ellipse cx="312" cy="270" rx="14" ry="40" fill="#ff9ff3"/>
+  
+  <!-- Head -->
+  <circle cx="256" cy="350" r="95" fill="#ffffff" filter="url(#shadow)"/>
+  
+  <!-- Cheeks -->
+  <circle cx="195" cy="365" r="18" fill="#ffb8b8" opacity="0.7"/>
+  <circle cx="317" cy="365" r="18" fill="#ffb8b8" opacity="0.7"/>
+  
+  <!-- Eyes -->
+  <circle cx="215" cy="340" r="10" fill="#2c2c54"/>
+  <circle cx="218" cy="337" r="3.5" fill="#ffffff"/>
+  <circle cx="297" cy="340" r="10" fill="#2c2c54"/>
+  <circle cx="300" cy="337" r="3.5" fill="#ffffff"/>
+  
+  <!-- Nose and mouth -->
+  <polygon points="256,360 250,352 262,352" fill="#ff7675"/>
+  <path d="M 256 360 Q 256 372 246 372 M 256 360 Q 256 372 266 372" stroke="#2c2c54" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+</svg>

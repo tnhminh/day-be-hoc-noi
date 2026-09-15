@@ -1,0 +1,26 @@
+{
+  "name": "Bé Học Nói Tiếng Việt 3D",
+  "short_name": "Bé Học Nói",
+  "description": "Ứng dụng tương tác 3D và phát âm chuẩn tiếng Việt giúp bé mầm non tập nói mỗi ngày.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f8f8fc",
+  "theme_color": "#6c5ce7",
+  "categories": ["education", "kids", "games"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

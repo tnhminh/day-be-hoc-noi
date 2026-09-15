@@ -1,0 +1,17 @@
+{
+  "name": "day-be-hoc-noi-3d",
+  "version": "1.0.0",
+  "description": "Game 3D tương tác dạy bé học nói tiếng Việt (Giọng Miền Nam & Miền Bắc)",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test"
+  },
+  "keywords": ["kids", "vietnamese", "3d", "pwa", "education", "toddler"],
+  "author": "OpenAI / ChatGPT",
+  "license": "MIT",
+  "dependencies": {
+    "three": "^0.186.0"
+  }
+}

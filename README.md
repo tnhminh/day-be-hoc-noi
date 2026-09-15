@@ -1,0 +1,149 @@
+# Bé Học Nói Tiếng Việt 3D (Live Production Ready)
+
+Ứng dụng web tương tác 3D và phát âm chuẩn tiếng Việt giúp trẻ mầm non tập nói, mở rộng vốn từ vựng và luyện phản xạ ngôn ngữ tự nhiên.
+
+Hỗ trợ chuẩn cả **Giọng Miền Nam** và **Giọng Miền Bắc**, tích hợp 29 mô hình 3D thực tế, chức năng thu âm giọng bé, 2 trò chơi đố vui thông minh, khóa phụ huynh và khả năng hoạt động offline 100% (PWA).
+
+---
+
+## Tính Năng Nổi Bật
+
+1. **29 Mô Hình 3D GLB Tương Tác Xoay 360°**
+   - 5 chủ đề thân thuộc: Con vật (7), Đồ ăn & Uống (7), Đồ chơi (5), Xe cộ & Đi lại (3), Đồ dùng & Quần áo (7).
+   - Bé có thể dùng tay vuốt xoay tròn, ngắm nghía mọi góc cạnh để kích thích thị giác và trí tò mò.
+
+2. **Hỗ Trợ Chuẩn Giọng Miền Nam & Giọng Miền Bắc**
+   - Chuyển đổi linh hoạt tức thì ngay trên giao diện.
+   - Khi chọn **Giọng Miền Nam**: Từ vựng và phát âm chuyển sang chuẩn phương ngữ miền Nam (*Trái táo, Trái dưa hấu, Trái bơ, Trái banh, Cái ly, Xe hơi, Kính mát, Bông hoa, Người máy...*).
+   - Tích hợp sẵn 128 file âm thanh chất lượng cao cho cả từ đơn ngắn và cụm từ đầy đủ.
+
+3. **Chức Năng Ghi Âm "Bé Tập Nói & Nghe Lại Giọng Mình"**
+   - Bé bấm nút ghi âm nói thử -> Hệ thống tự động phát lại giọng nói non nớt của bé và phát lời khen ngợi kích lệ tinh thần.
+
+4. **2 Chế Độ Mini Game Đa Dạng**
+   - **🎯 Đố Vui Nghe Tiếng**: Nghe phát âm câu hỏi và chọn đúng mô hình 3D.
+   - **🕵️ Đoán Bóng 3D Bí Ẩn**: Mô hình 3D hiển thị dưới dạng bóng đen bí ẩn, khi bé đoán đúng thì ánh sáng bừng sáng kèm hiệu ứng chúc mừng rực rỡ.
+
+5. **Góc Ba Mẹ & Khóa Phụ Huynh An Toàn (Parental Controls)**
+   - Khóa phụ huynh bằng phép tính toán học ngẫu nhiên ngăn trẻ bấm nhầm.
+   - Điều chỉnh tốc độ giọng đọc: Chậm (0.8x cho bé mới bắt đầu) hoặc Tự nhiên (1.0x).
+   - Giới hạn giờ chơi bảo vệ mắt: Nhắc nhở nghỉ ngơi sau 15 hoặc 30 phút.
+   - Bật/tắt nhạc nền du dương (Web Audio synthesizer ru nhẹ nhàng).
+   - Xem và đặt lại tiến độ học tập.
+
+6. **PWA Offline 100% (Progressive Web App)**
+   - Tự động cài đặt thành ứng dụng trên điện thoại, máy tính bảng (iPad, Android, Windows, Mac).
+   - Service Worker lưu đệm toàn bộ mô hình và âm thanh, chơi mượt mà ngay cả khi không có mạng Internet.
+
+---
+
+## Kiến Trúc Hệ Thống (Architecture)
+
+```
+day-be-hoc-noi/
+├── models/                     # 29 tệp 3D binary (.glb) chuẩn glTF 2.0
+├── audio/                      # Âm thanh phát âm Giọng Miền Bắc (.mp3)
+├── audio_south/                # Âm thanh phát âm Giọng Miền Nam (.mp3)
+├── test/                       # Bộ kiểm thử tự động (Catalog, PWA, Server)
+├── index.html                  # Giao diện chính responsive, semantic HTML5
+├── styles.css                  # Thiết kế hiện đại, animation mượt mà
+├── app.js                      # Logic ứng dụng, audio player, recorder, state
+├── server.js                   # Production Node.js server (HTTP Range, Gzip, Healthcheck)
+├── sw.js                       # Service Worker offline caching
+├── manifest.webmanifest        # Cấu hình PWA App Manifest
+├── icon.svg & favicon.svg      # Vector icons
+├── Dockerfile                  # Multi-stage production container
+└── docker-compose.yml          # Docker Compose orchestration
+```
+
+---
+
+## Hướng Dẫn Triển Khai Production (Deployment Guide)
+
+### Cách 1: Chạy trực tiếp với Node.js (Production Server)
+
+```bash
+# Cài đặt dependencies
+npm ci --omit=dev
+
+# Chạy kiểm thử tự động
+npm test
+
+# Khởi chạy server production (mặc định cổng 5173 hoặc cấu hình biến môi trường PORT)
+PORT=80 node server.js
+```
+
+### Cách 2: Triển khai bằng Docker / Docker Compose (Khuyên dùng)
+
+```bash
+# Build và chạy container ngầm trong nền
+docker compose up -d --build
+
+# Kiểm tra trạng thái container và healthcheck
+docker ps
+
+# Xem log
+docker compose logs -f
+```
+
+### Cách 3: Cấu hình Nginx Reverse Proxy (Kèm HTTPS SSL)
+
+```nginx
+server {
+    listen 80;
+    server_name behocnoi.yourdomain.com;
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name behocnoi.yourdomain.com;
+
+    ssl_certificate /etc/letsencrypt/live/behocnoi.yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/behocnoi.yourdomain.com/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:5173;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+---
+
+## Kiểm Tra Sức Khỏe Hệ Thống (Healthchecks)
+
+- Endpoint kiểm tra hoạt động: `GET http://localhost:5173/healthz`
+- Phản hồi mẫu:
+  ```json
+  {
+    "status": "ok",
+    "uptimeSec": 3600,
+    "timestamp": "2026-09-15T12:00:00.000Z",
+    "modelsCount": 29
+  }
+  ```
+
+---
+
+## Kiểm Thử Tự Động (Automated Testing)
+
+Chạy bộ test suite với Node.js native test runner:
+
+```bash
+npm test
+```
+
+Bao gồm:
+- Kiểm tra toàn vẹn danh mục từ vựng (29 mục across 5 danh mục).
+- Kiểm tra sự tồn tại và dung lượng của toàn bộ 29 mô hình GLB.
+- Kiểm tra đầy đủ file phát âm Giọng Bắc và Giọng Nam.
+- Kiểm tra tính hợp lệ của Manifest PWA và Service Worker.
+- Kiểm tra server HTTP Range streaming và headers bảo mật.
