@@ -46,8 +46,18 @@ Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **
    - Giới hạn giờ chơi bảo vệ mắt: Nhắc nhở nghỉ ngơi sau 15 hoặc 30 phút.
    - Bật/tắt nhạc nền du dương (Web Audio synthesizer ru nhẹ nhàng).
    - Xem và đặt lại tiến độ học tập.
+   - Nút liên kết bảo mật mở trực tiếp Trang CMS Quản Trị Hệ Thống.
 
-6. **PWA Offline 100% (Progressive Web App)**
+6. **Hệ Thống CMS Vận Hành Toàn Diện (Admin CMS Dashboard)**
+   - Truy cập ngay tại đường dẫn: `http://localhost:5173/admin` (hoặc `/cms`).
+   - Bảo mật bằng mã PIN quản trị viên (Mặc định: **2026**, có thể tùy chỉnh).
+   - **📊 Tổng Quan (Dashboard)**: Thống kê số lượng từ vựng, mô hình 3D, tệp âm thanh 3 miền, tài nguyên RAM và thời gian máy chủ chạy.
+   - **📚 Quản Lý Từ Vựng & 3D (Full CRUD)**: Thêm, sửa, xóa từ vựng; tùy biến tên gọi 3 miền (Bắc/Trung/Nam); xem trước mô hình 3D xoay 360°; nghe thử âm thanh trực tiếp.
+   - **🎮 Vận Hành 6 Mini Game**: Bật/tắt từng trò chơi độc lập, tùy chỉnh số câu hỏi đố vui, số cặp bài trí nhớ, thời gian phản xạ, tốc độ chiếu Flashcard.
+   - **🎙️ Kiểm Tra Âm Thanh 3 Miền**: Quét và đối soát độ toàn vẹn của tệp phát âm Miền Bắc, Miền Trung và Miền Nam.
+   - **⚙️ Cài Đặt & Sao Lưu Toàn Diện**: Tùy chỉnh thông điệp Hero banner, xuất sao lưu dữ liệu ra file JSON dự phòng và khôi phục nhanh chóng.
+
+7. **PWA Offline 100% (Progressive Web App)**
    - Tự động cài đặt thành ứng dụng trên điện thoại, máy tính bảng (iPad, Android, Windows, Mac).
    - Service Worker lưu đệm toàn bộ mô hình và âm thanh, chơi mượt mà ngay cả khi không có mạng Internet.
 
@@ -65,7 +75,13 @@ day-be-hoc-noi/
 ├── index.html                  # Giao diện chính responsive, semantic HTML5
 ├── styles.css                  # Thiết kế hiện đại, animation mượt mà
 ├── app.js                      # Logic ứng dụng, audio player, recorder, state
-├── server.js                   # Production Node.js server (HTTP Range, Gzip, Healthcheck)
+├── admin.html                  # Giao diện Trang Quản Trị CMS Vận Hành
+├── admin.css                   # Định kiểu giao diện Dashboard CMS
+├── admin.js                    # Logic xử lý nghiệp vụ CMS & API Client
+├── data/                       # Cơ sở dữ liệu JSON (Từ vựng & Cấu hình game)
+│   ├── words.json              # Danh mục từ vựng & mô hình 3D
+│   └── config.json             # Cấu hình 6 mini game & thông điệp
+├── server.js                   # Production Node.js server (RESTful API, HTTP Range, Gzip)
 ├── sw.js                       # Service Worker offline caching
 ├── manifest.webmanifest        # Cấu hình PWA App Manifest
 ├── icon.svg & favicon.svg      # Vector icons

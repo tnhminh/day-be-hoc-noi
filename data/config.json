@@ -1,0 +1,39 @@
+{
+  "heroTitle": "Chạm & Xoay Hình 3D Để Tập Nói!",
+  "heroDesc": "Bé hãy chạm vào từng con vật, đồ ăn, đồ chơi... nghe cô phát âm chuẩn rồi nhắc lại theo nghen.",
+  "games": {
+    "quiz": {
+      "enabled": true,
+      "name": "Đố Vui Nghe Tiếng",
+      "rounds": 5
+    },
+    "shadow": {
+      "enabled": true,
+      "name": "Đoán Bóng 3D",
+      "rounds": 5
+    },
+    "memory": {
+      "enabled": true,
+      "name": "Lật Thẻ Trí Nhớ 3D",
+      "pairs": 3
+    },
+    "basket": {
+      "enabled": true,
+      "name": "Thu Hoạch Bỏ Giỏ",
+      "targetCount": 3
+    },
+    "whack": {
+      "enabled": true,
+      "name": "Bắt Bạn Nhanh Tay",
+      "durationSec": 30
+    },
+    "cinema": {
+      "enabled": true,
+      "name": "Rạp Phim Flashcard",
+      "speedSec": 4.5
+    }
+  },
+  "defaultVoice": "south",
+  "defaultSpeechRate": 1,
+  "adminPin": "2026"
+}

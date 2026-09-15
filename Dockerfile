@@ -19,6 +19,10 @@ COPY server.js ./
 COPY index.html ./
 COPY styles.css ./
 COPY app.js ./
+COPY admin.html ./
+COPY admin.css ./
+COPY admin.js ./
+COPY data/ ./data/
 COPY sw.js ./
 COPY manifest.webmanifest ./
 COPY model-viewer.min.js ./
