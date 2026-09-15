@@ -27,6 +27,17 @@ Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **
    - Đặt tại cuối mỗi vương quốc và trên thanh tiêu đề: Rương báu vàng phát sáng tia sét ma thuật.
    - Cơ chế mở hộp tương tác 3 lần chạm (*Tap 1: Rung lắc -> Tap 2: Nứt sáng -> Tap 3: Bùng nổ pháo hoa confetti*), bạn nhỏ 3D bất ngờ xuất hiện nhảy múa ăn mừng!
 
+5. **💡 Hướng Dẫn Trực Quan Cách Sử Dụng Trong Đời Sống (Interactive Practical Life Simulation)**
+   - Trang bị bộ quy trình 3 bước trực quan sinh động cho 100% 29 vật phẩm theo phương pháp giáo dục mầm non sớm.
+   - Nút **`✨ Thử Dùng Ngay`** mô phỏng hành vi thực tế ngay trên mô hình 3D:
+     - 🥤 **Ly / Bình nước**: Nghiêng góc 35° rót nước kèm âm thanh nước róc rách & tiếng bé uống ực ực sảng khoái.
+     - 🍎 **Trái cây / Đồ ăn**: Mô hình nảy tưng bừng kèm tiếng cắn giòn tan rộp rộp.
+     - 📸 **Máy ảnh**: Toàn màn hình chớp sáng trắng (*Camera Flash FX*) kèm âm thanh tiếng chụp ảnh *"Tách!"*.
+     - 🚴 **Xe đạp / Ô tô / Xe tải**: Phóng vút về phía trước kèm tiếng còi xe *"Bíp bíp! Bon bon!"*.
+     - 👟 **Giày / Kính mắt**: Bước đi lộc cộc hoặc chống chói bảo vệ mắt.
+     - 🌸 **Cây xanh**: Phun sương tưới nước tí tách cho hoa tươi tốt.
+     - 🐾 **Con vật**: Kích hoạt hoạt họa bơi lội, sải cánh, phi nước đại kèm tiếng kêu và lời khích lệ của Mascot.
+
 ## Tính Năng Nổi Bật Khác
 
 1. **29 Mô Hình 3D GLB Tương Tác Xoay 360°**

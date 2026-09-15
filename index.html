@@ -331,6 +331,18 @@
           <strong id="modalSentence">“Con vịt đang bơi dưới nước”</strong>
         </button>
       </div>
+      <!-- HƯỚNG DẪN TRỰC QUAN CÁCH SỬ DỤNG TRONG ĐỜI SỐNG -->
+      <div class="usage-guide-card" id="modalUsageCard">
+        <div class="usage-guide-top">
+          <span class="usage-tag">💡 CÁCH BÉ SỬ DỤNG TRONG ĐỜI THỰC</span>
+          <button type="button" class="btn-try-action btn-jelly" id="btnTryAction" title="Mô phỏng hành động thực tế">
+            <span id="tryActionIcon">✨</span>
+            <b id="tryActionText">Thử Dùng Ngay</b>
+          </button>
+        </div>
+        <h4 id="usageTitle">Bé dùng như thế nào?</h4>
+        <div class="usage-steps-list" id="usageStepsList"></div>
+      </div>
 
       <!-- TÍNH NĂNG BÉ GHI ÂM & CHẤM ĐIỂM BẰNG AI -->
       <div class="recorder-box">
@@ -382,6 +394,7 @@
 
       <h1 id="fcWord" class="fc-word">Con vịt</h1>
       <p id="fcSentence" class="fc-sentence">“Con vịt đang bơi dưới nước”</p>
+      <div class="fc-usage-pill" id="fcUsagePill">💡 <b>Cách dùng:</b> <span id="fcUsageText">Bé ngắm bạn Vịt bơi lội</span></div>
 
       <div class="fc-controls">
         <button class="fc-btn" id="fcPrev">⏮️ Trước</button>
@@ -643,6 +656,8 @@
     </div>
   </div>
 
+  <!-- HIỆU ỨNG CHỚP SÁNG MÁY ẢNH (CAMERA FLASH FX) -->
+  <div id="cameraFlashOverlay" class="camera-flash-overlay"></div>
 </body>
 </html>
 

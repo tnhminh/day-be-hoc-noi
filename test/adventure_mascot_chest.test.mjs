@@ -5,6 +5,7 @@ import assert from 'node:assert';
 const html = fs.readFileSync('index.html', 'utf8');
 const appJs = fs.readFileSync('app.js', 'utf8');
 const css = fs.readFileSync('styles.css', 'utf8');
+const words = JSON.parse(fs.readFileSync('data/words.json', 'utf8'));
 
 test('50K Upgrade: Touch Particle Canvas & Game Juice exist in index.html', () => {
   assert.ok(html.includes('id="particleCanvas"'), 'particleCanvas must exist in HTML');
@@ -43,4 +44,23 @@ test('50K Upgrade: Cartoon Web Audio SFX Synthesizers are implemented', () => {
   assert.ok(appJs.includes('function playCartoonPop()'), 'playCartoonPop must be in app.js');
   assert.ok(appJs.includes('function playCartoonSparkle()'), 'playCartoonSparkle must be in app.js');
   assert.ok(appJs.includes('function playCartoonTadaa()'), 'playCartoonTadaa must be in app.js');
+});
+
+test('Visual Usage Simulation: All 29 items have rich 3-step practical life guides', () => {
+  assert.strictEqual(words.length, 29);
+  for (const w of words) {
+    assert.ok(w.usage, `Item ${w.id} must have usage metadata`);
+    assert.ok(w.usage.actionBtn, `Item ${w.id} must have actionBtn`);
+    assert.ok(w.usage.title, `Item ${w.id} must have title`);
+    assert.ok(Array.isArray(w.usage.steps) && w.usage.steps.length === 3, `Item ${w.id} must have 3 visual steps`);
+  }
+});
+
+test('Visual Usage Simulation: UI components and interactive handler exist', () => {
+  assert.ok(html.includes('id="modalUsageCard"'), 'modalUsageCard must exist in index.html');
+  assert.ok(html.includes('id="btnTryAction"'), 'btnTryAction must exist in index.html');
+  assert.ok(html.includes('id="cameraFlashOverlay"'), 'cameraFlashOverlay must exist in index.html');
+  assert.ok(appJs.includes("$('#btnTryAction')"), 'btnTryAction logic must be handled in app.js');
+  assert.ok(appJs.includes('function playUsageWaterSound()'), 'playUsageWaterSound must exist in app.js');
+  assert.ok(appJs.includes('function playCameraSound()'), 'playCameraSound must exist in app.js');
 });

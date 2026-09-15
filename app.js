@@ -1,704 +1,925 @@
 const rawWords = [
-  // CON VẬT (7)
   {
-    id: 'duck',
-    word: 'Con vịt',
-    shortWord: 'Vịt',
-    sentence: 'Con vịt đang bơi dưới nước',
-    southSentence: 'Con vịt bơi dưới nước nè',
-    cat: 'animals',
-    catName: 'Con vật',
-    glb: 'models/duck.glb',
-    audio: 'audio/duck.mp3',
-    audioShort: 'audio/duck_short.mp3',
-    sentenceAudio: 'audio/duck_sentence.mp3',
-    southAudio: 'audio_south/duck.mp3',
-    southShortAudio: 'audio_south/duck_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/duck.mp3',
-    centralShortAudio: 'audio_central/duck_short.mp3',
-    centralSentenceAudio: 'audio_central/duck_sentence.mp3',
-    southSentenceAudio: 'audio_south/duck_sentence.mp3',
-    hint: 'Quác quác! Chú vịt vàng bơi dưới nước'
+    "id": "duck",
+    "word": "Con vịt",
+    "shortWord": "Vịt",
+    "sentence": "Con vịt đang bơi dưới nước",
+    "southSentence": "Con vịt bơi dưới nước nè",
+    "cat": "animals",
+    "catName": "Con vật",
+    "glb": "models/duck.glb",
+    "audio": "audio/duck.mp3",
+    "audioShort": "audio/duck_short.mp3",
+    "sentenceAudio": "audio/duck_sentence.mp3",
+    "southAudio": "audio_south/duck.mp3",
+    "southShortAudio": "audio_south/duck_short.mp3",
+    "centralAudio": "audio_central/duck.mp3",
+    "centralShortAudio": "audio_central/duck_short.mp3",
+    "centralSentenceAudio": "audio_central/duck_sentence.mp3",
+    "southSentenceAudio": "audio_south/duck_sentence.mp3",
+    "hint": "Quác quác! Chú vịt vàng bơi dưới nước",
+    "usage": {
+      "actionBtn": "🦆 Cho Vịt Bơi Lội",
+      "actionType": "animal",
+      "title": "Bé ngắm bạn Vịt bơi lội và học tiếng quác quác",
+      "steps": [
+        "🌾 Rắc nắm cám thơm xuống mép hồ nước trong",
+        "🌊 Xem bạn vịt quạt chân bơi lạch bạch",
+        "🗣️ Bé bắt chước tiếng kêu: Quác quác!"
+      ]
+    }
   },
   {
-    id: 'fish',
-    word: 'Con cá',
-    shortWord: 'Cá',
-    sentence: 'Con cá bơi lội tung tăng',
-    southSentence: 'Con cá bơi tung tăng dưới nước',
-    cat: 'animals',
-    catName: 'Con vật',
-    glb: 'models/fish.glb',
-    audio: 'audio/fish.mp3',
-    audioShort: 'audio/fish_short.mp3',
-    sentenceAudio: 'audio/fish_sentence.mp3',
-    southAudio: 'audio_south/fish.mp3',
-    southShortAudio: 'audio_south/fish_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/fish.mp3',
-    centralShortAudio: 'audio_central/fish_short.mp3',
-    centralSentenceAudio: 'audio_central/fish_sentence.mp3',
-    southSentenceAudio: 'audio_south/fish_sentence.mp3',
-    hint: 'Bơi lội tung tăng trong làn nước trong veo'
+    "id": "fish",
+    "word": "Con cá",
+    "shortWord": "Cá",
+    "sentence": "Con cá bơi lội tung tăng",
+    "southSentence": "Con cá bơi tung tăng dưới nước",
+    "cat": "animals",
+    "catName": "Con vật",
+    "glb": "models/fish.glb",
+    "audio": "audio/fish.mp3",
+    "audioShort": "audio/fish_short.mp3",
+    "sentenceAudio": "audio/fish_sentence.mp3",
+    "southAudio": "audio_south/fish.mp3",
+    "southShortAudio": "audio_south/fish_short.mp3",
+    "centralAudio": "audio_central/fish.mp3",
+    "centralShortAudio": "audio_central/fish_short.mp3",
+    "centralSentenceAudio": "audio_central/fish_sentence.mp3",
+    "southSentenceAudio": "audio_south/fish_sentence.mp3",
+    "hint": "Bơi lội tung tăng trong làn nước trong veo",
+    "usage": {
+      "actionBtn": "🐟 Cho Cá Bơi Lội",
+      "actionType": "animal",
+      "title": "Bé chăm sóc đàn cá bơi lượn trong bể nước",
+      "steps": [
+        "🐠 Nuôi cá trong bể nước mát sạch sẽ",
+        "🍱 Rắc chút thức ăn hạt nhỏ li ti trên mặt nước",
+        "👀 Ngắm bạn cá quẫy đuôi bơi lượn tung tăng"
+      ]
+    }
   },
   {
-    id: 'fox',
-    word: 'Con cáo',
-    shortWord: 'Cáo',
-    sentence: 'Chú cáo có chiếc đuôi dài',
-    southSentence: 'Chú cáo có cái đuôi dài ghê',
-    cat: 'animals',
-    catName: 'Con vật',
-    glb: 'models/fox.glb',
-    audio: 'audio/fox.mp3',
-    audioShort: 'audio/fox_short.mp3',
-    sentenceAudio: 'audio/fox_sentence.mp3',
-    southAudio: 'audio_south/fox.mp3',
-    southShortAudio: 'audio_south/fox_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/fox.mp3',
-    centralShortAudio: 'audio_central/fox_short.mp3',
-    centralSentenceAudio: 'audio_central/fox_sentence.mp3',
-    southSentenceAudio: 'audio_south/fox_sentence.mp3',
-    hint: 'Chú cáo thông minh có chiếc đuôi dài'
+    "id": "fox",
+    "word": "Con cáo",
+    "shortWord": "Cáo",
+    "sentence": "Chú cáo có chiếc đuôi dài",
+    "southSentence": "Chú cáo có cái đuôi dài ghê",
+    "cat": "animals",
+    "catName": "Con vật",
+    "glb": "models/fox.glb",
+    "audio": "audio/fox.mp3",
+    "audioShort": "audio/fox_short.mp3",
+    "sentenceAudio": "audio/fox_sentence.mp3",
+    "southAudio": "audio_south/fox.mp3",
+    "southShortAudio": "audio_south/fox_short.mp3",
+    "centralAudio": "audio_central/fox.mp3",
+    "centralShortAudio": "audio_central/fox_short.mp3",
+    "centralSentenceAudio": "audio_central/fox_sentence.mp3",
+    "southSentenceAudio": "audio_south/fox_sentence.mp3",
+    "hint": "Chú cáo thông minh có chiếc đuôi dài",
+    "usage": {
+      "actionBtn": "🦊 Cùng Cáo Đi Dạo",
+      "actionType": "animal",
+      "title": "Bạn Cáo thông minh tinh nghịch trong rừng xanh",
+      "steps": [
+        "🌲 Bạn Cáo có bộ lông đỏ cam sống trong rừng",
+        "👂 Vểnh đôi tai nhọn lắng nghe tiếng chim hót",
+        "🐾 Bước những bước chân nhẹ nhàng khéo léo"
+      ]
+    }
   },
   {
-    id: 'horse',
-    word: 'Con ngựa',
-    shortWord: 'Ngựa',
-    sentence: 'Con ngựa phi nhanh trên đồng cỏ',
-    southSentence: 'Con ngựa chạy nhanh dữ ta',
-    cat: 'animals',
-    catName: 'Con vật',
-    glb: 'models/horse.glb',
-    audio: 'audio/horse.mp3',
-    audioShort: 'audio/horse_short.mp3',
-    sentenceAudio: 'audio/horse_sentence.mp3',
-    southAudio: 'audio_south/horse.mp3',
-    southShortAudio: 'audio_south/horse_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/horse.mp3',
-    centralShortAudio: 'audio_central/horse_short.mp3',
-    centralSentenceAudio: 'audio_central/horse_sentence.mp3',
-    southSentenceAudio: 'audio_south/horse_sentence.mp3',
-    hint: 'Phi nhanh lạch cạch trên đồng cỏ'
+    "id": "horse",
+    "word": "Con ngựa",
+    "shortWord": "Ngựa",
+    "sentence": "Con ngựa phi nhanh trên đồng cỏ",
+    "southSentence": "Con ngựa chạy nhanh dữ ta",
+    "cat": "animals",
+    "catName": "Con vật",
+    "glb": "models/horse.glb",
+    "audio": "audio/horse.mp3",
+    "audioShort": "audio/horse_short.mp3",
+    "sentenceAudio": "audio/horse_sentence.mp3",
+    "southAudio": "audio_south/horse.mp3",
+    "southShortAudio": "audio_south/horse_short.mp3",
+    "centralAudio": "audio_central/horse.mp3",
+    "centralShortAudio": "audio_central/horse_short.mp3",
+    "centralSentenceAudio": "audio_central/horse_sentence.mp3",
+    "southSentenceAudio": "audio_south/horse_sentence.mp3",
+    "hint": "Phi nhanh lạch cạch trên đồng cỏ",
+    "usage": {
+      "actionBtn": "🐎 Phi Nước Đại",
+      "actionType": "animal",
+      "title": "Bé cưỡi ngựa dũng cảm phi nước đại trên đồng cỏ",
+      "steps": [
+        "🥕 Cho chú ngựa ăn cỏ non và cà rốt ngọt",
+        "🏇 Cầm dây cương ngồi thật vững trên lưng ngựa",
+        "💨 Lắc nhẹ cương phi nước đại lộc cộc"
+      ]
+    }
   },
   {
-    id: 'parrot',
-    word: 'Con vẹt',
-    shortWord: 'Vẹt',
-    sentence: 'Chú vẹt biết nói tiếng người',
-    southSentence: 'Chú vẹt biết nói chuyện nữa nè',
-    cat: 'animals',
-    catName: 'Con vật',
-    glb: 'models/parrot.glb',
-    audio: 'audio/parrot.mp3',
-    audioShort: 'audio/parrot_short.mp3',
-    sentenceAudio: 'audio/parrot_sentence.mp3',
-    southAudio: 'audio_south/parrot.mp3',
-    southShortAudio: 'audio_south/parrot_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/parrot.mp3',
-    centralShortAudio: 'audio_central/parrot_short.mp3',
-    centralSentenceAudio: 'audio_central/parrot_sentence.mp3',
-    southSentenceAudio: 'audio_south/parrot_sentence.mp3',
-    hint: 'Chú vẹt rực rỡ biết nhại tiếng người'
+    "id": "parrot",
+    "word": "Con vẹt",
+    "shortWord": "Vẹt",
+    "sentence": "Chú vẹt biết nói tiếng người",
+    "southSentence": "Chú vẹt biết nói chuyện nữa nè",
+    "cat": "animals",
+    "catName": "Con vật",
+    "glb": "models/parrot.glb",
+    "audio": "audio/parrot.mp3",
+    "audioShort": "audio/parrot_short.mp3",
+    "sentenceAudio": "audio/parrot_sentence.mp3",
+    "southAudio": "audio_south/parrot.mp3",
+    "southShortAudio": "audio_south/parrot_short.mp3",
+    "centralAudio": "audio_central/parrot.mp3",
+    "centralShortAudio": "audio_central/parrot_short.mp3",
+    "centralSentenceAudio": "audio_central/parrot_sentence.mp3",
+    "southSentenceAudio": "audio_south/parrot_sentence.mp3",
+    "hint": "Chú vẹt rực rỡ biết nhại tiếng người",
+    "usage": {
+      "actionBtn": "🦜 Dạy Vẹt Tập Nói",
+      "actionType": "animal",
+      "title": "Bé trò chuyện và dạy chú Vẹt lặp lại tiếng nói",
+      "steps": [
+        "🍌 Cho vẹt ăn chuối chín và hạt ngô thơm",
+        "🗣️ Bé nói thật to: Vẹt ơi xin chào!",
+        "🎶 Lắng nghe chú vẹt nhại lại câu nói của bé"
+      ]
+    }
   },
   {
-    id: 'flamingo',
-    word: 'Chim hồng hạc',
-    shortWord: 'Hồng hạc',
-    sentence: 'Chim hồng hạc có bộ lông màu hồng',
-    southSentence: 'Chim hồng hạc lông màu hồng đẹp quá',
-    cat: 'animals',
-    catName: 'Con vật',
-    glb: 'models/flamingo.glb',
-    audio: 'audio/flamingo.mp3',
-    audioShort: 'audio/flamingo_short.mp3',
-    sentenceAudio: 'audio/flamingo_sentence.mp3',
-    southAudio: 'audio_south/flamingo.mp3',
-    southShortAudio: 'audio_south/flamingo_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/flamingo.mp3',
-    centralShortAudio: 'audio_central/flamingo_short.mp3',
-    centralSentenceAudio: 'audio_central/flamingo_sentence.mp3',
-    southSentenceAudio: 'audio_south/flamingo_sentence.mp3',
-    hint: 'Loài chim lông hồng duyên dáng'
+    "id": "flamingo",
+    "word": "Chim hồng hạc",
+    "shortWord": "Hồng hạc",
+    "sentence": "Chim hồng hạc có bộ lông màu hồng",
+    "southSentence": "Chim hồng hạc lông màu hồng đẹp quá",
+    "cat": "animals",
+    "catName": "Con vật",
+    "glb": "models/flamingo.glb",
+    "audio": "audio/flamingo.mp3",
+    "audioShort": "audio/flamingo_short.mp3",
+    "sentenceAudio": "audio/flamingo_sentence.mp3",
+    "southAudio": "audio_south/flamingo.mp3",
+    "southShortAudio": "audio_south/flamingo_short.mp3",
+    "centralAudio": "audio_central/flamingo.mp3",
+    "centralShortAudio": "audio_central/flamingo_short.mp3",
+    "centralSentenceAudio": "audio_central/flamingo_sentence.mp3",
+    "southSentenceAudio": "audio_south/flamingo_sentence.mp3",
+    "hint": "Loài chim lông hồng duyên dáng",
+    "usage": {
+      "actionBtn": "🦩 Ngắm Hồng Hạc",
+      "actionType": "animal",
+      "title": "Bé ngắm nhìn chú Hồng Hạc sải cánh tuyệt đẹp",
+      "steps": [
+        "🦩 Quan sát chú hồng hạc đứng co một chân",
+        "🌊 Xem chim sải cánh lượn bên đầm nước mát",
+        "🎨 Học cách nhận biết màu lông hồng rực rỡ"
+      ]
+    }
   },
   {
-    id: 'stork',
-    word: 'Con cò',
-    shortWord: 'Cò',
-    sentence: 'Con cò bay lả bay la',
-    southSentence: 'Con cò trắng bay lả bay la',
-    cat: 'animals',
-    catName: 'Con vật',
-    glb: 'models/stork.glb',
-    audio: 'audio/stork.mp3',
-    audioShort: 'audio/stork_short.mp3',
-    sentenceAudio: 'audio/stork_sentence.mp3',
-    southAudio: 'audio_south/stork.mp3',
-    southShortAudio: 'audio_south/stork_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/stork.mp3',
-    centralShortAudio: 'audio_central/stork_short.mp3',
-    centralSentenceAudio: 'audio_central/stork_sentence.mp3',
-    southSentenceAudio: 'audio_south/stork_sentence.mp3',
-    hint: 'Chú cò trắng bay lả bay la'
-  },
-
-  // ĐỒ ĂN & UỐNG (7)
-  {
-    id: 'apple',
-    word: 'Quả táo',
-    shortWord: 'Táo',
-    sentence: 'Bé thích ăn quả táo đỏ',
-    southWord: 'Trái táo',
-    southShort: 'Táo',
-    southSentence: 'Bé thích ăn trái táo đỏ ngọt lịm',
-    cat: 'food',
-    catName: 'Đồ ăn',
-    glb: 'models/apple.glb',
-    audio: 'audio/apple.mp3',
-    audioShort: 'audio/apple_short.mp3',
-    sentenceAudio: 'audio/apple_sentence.mp3',
-    southAudio: 'audio_south/apple.mp3',
-    southShortAudio: 'audio_south/apple_short.mp3',
-    centralWord: 'Trái táo',
-    centralShort: 'Táo',
-    centralSentence: 'Bé ăn trái táo đỏ ngọt lịm',
-    centralAudio: 'audio_central/apple.mp3',
-    centralShortAudio: 'audio_central/apple_short.mp3',
-    centralSentenceAudio: 'audio_central/apple_sentence.mp3',
-    southSentenceAudio: 'audio_south/apple_sentence.mp3',
-    hint: 'Quả táo đỏ giòn ngọt, thơm ngon',
-    southHint: 'Trái táo đỏ tươi giòn ngọt ngon lành'
+    "id": "stork",
+    "word": "Con cò",
+    "shortWord": "Cò",
+    "sentence": "Con cò bay lả bay la",
+    "southSentence": "Con cò trắng bay lả bay la",
+    "cat": "animals",
+    "catName": "Con vật",
+    "glb": "models/stork.glb",
+    "audio": "audio/stork.mp3",
+    "audioShort": "audio/stork_short.mp3",
+    "sentenceAudio": "audio/stork_sentence.mp3",
+    "southAudio": "audio_south/stork.mp3",
+    "southShortAudio": "audio_south/stork_short.mp3",
+    "centralAudio": "audio_central/stork.mp3",
+    "centralShortAudio": "audio_central/stork_short.mp3",
+    "centralSentenceAudio": "audio_central/stork_sentence.mp3",
+    "southSentenceAudio": "audio_south/stork_sentence.mp3",
+    "hint": "Chú cò trắng bay lả bay la",
+    "usage": {
+      "actionBtn": "🕊️ Xem Cò Bay Lượn",
+      "actionType": "animal",
+      "title": "Chú cò trắng chăm chỉ gắn liền với đồng quê",
+      "steps": [
+        "🌾 Ngắm đàn cò trắng sải cánh trên cánh đồng lúa",
+        "☁️ Tung đôi cánh rộng bay vút lên bầu trời xanh",
+        "🎵 Cùng cất tiếng hát bài ca: Con cò bé bé"
+      ]
+    }
   },
   {
-    id: 'watermelon',
-    word: 'Quả dưa hấu',
-    shortWord: 'Dưa hấu',
-    sentence: 'Quả dưa hấu ngọt mát mùa hè',
-    southWord: 'Trái dưa hấu',
-    southShort: 'Dưa hấu',
-    southSentence: 'Trái dưa hấu ngọt mát ăn đã quá',
-    cat: 'food',
-    catName: 'Đồ ăn',
-    glb: 'models/watermelon.glb',
-    audio: 'audio/watermelon.mp3',
-    audioShort: 'audio/watermelon_short.mp3',
-    sentenceAudio: 'audio/watermelon_sentence.mp3',
-    southAudio: 'audio_south/watermelon.mp3',
-    southShortAudio: 'audio_south/watermelon_short.mp3',
-    centralWord: 'Trái dưa hấu',
-    centralShort: 'Dưa hấu',
-    centralSentence: 'Trái dưa hấu ngọt mát mùa hè',
-    centralAudio: 'audio_central/watermelon.mp3',
-    centralShortAudio: 'audio_central/watermelon_short.mp3',
-    centralSentenceAudio: 'audio_central/watermelon_sentence.mp3',
-    southSentenceAudio: 'audio_south/watermelon_sentence.mp3',
-    hint: 'Dưa hấu vỏ xanh ruột đỏ mát lành',
-    southHint: 'Trái dưa hấu vỏ xanh ruột đỏ ngọt mát'
+    "id": "apple",
+    "word": "Quả táo",
+    "shortWord": "Táo",
+    "sentence": "Bé thích ăn quả táo đỏ",
+    "southWord": "Trái táo",
+    "southShort": "Táo",
+    "southSentence": "Bé thích ăn trái táo đỏ ngọt lịm",
+    "cat": "food",
+    "catName": "Đồ ăn",
+    "glb": "models/apple.glb",
+    "audio": "audio/apple.mp3",
+    "audioShort": "audio/apple_short.mp3",
+    "sentenceAudio": "audio/apple_sentence.mp3",
+    "southAudio": "audio_south/apple.mp3",
+    "southShortAudio": "audio_south/apple_short.mp3",
+    "centralWord": "Trái táo",
+    "centralShort": "Táo",
+    "centralSentence": "Bé ăn trái táo đỏ ngọt lịm",
+    "centralAudio": "audio_central/apple.mp3",
+    "centralShortAudio": "audio_central/apple_short.mp3",
+    "centralSentenceAudio": "audio_central/apple_sentence.mp3",
+    "southSentenceAudio": "audio_south/apple_sentence.mp3",
+    "hint": "Quả táo đỏ giòn ngọt, thơm ngon",
+    "southHint": "Trái táo đỏ tươi giòn ngọt ngon lành",
+    "usage": {
+      "actionBtn": "🍎 Cắn Táo Giòn Rụm",
+      "actionType": "eat",
+      "title": "Bé ăn táo ngọt giòn để bổ sung vitamin bổ dưỡng",
+      "steps": [
+        "🧼 Rửa sạch quả táo dưới vòi nước mát",
+        "🔪 Nhờ ba mẹ gọt vỏ và cắt thành từng miếng nhỏ",
+        "😋 Cắn giòn rụm rộp rộp tăng cường sức khỏe"
+      ]
+    }
   },
   {
-    id: 'avocado',
-    word: 'Quả bơ',
-    shortWord: 'Bơ',
-    sentence: 'Quả bơ béo ngậy thơm ngon',
-    southWord: 'Trái bơ',
-    southShort: 'Bơ',
-    southSentence: 'Trái bơ dầm sữa béo thơm ngon lành',
-    cat: 'food',
-    catName: 'Đồ ăn',
-    glb: 'models/avocado.glb',
-    audio: 'audio/avocado.mp3',
-    audioShort: 'audio/avocado_short.mp3',
-    sentenceAudio: 'audio/avocado_sentence.mp3',
-    southAudio: 'audio_south/avocado.mp3',
-    southShortAudio: 'audio_south/avocado_short.mp3',
-    centralWord: 'Trái bơ',
-    centralShort: 'Bơ',
-    centralSentence: 'Trái bơ béo thơm ngon lành',
-    centralAudio: 'audio_central/avocado.mp3',
-    centralShortAudio: 'audio_central/avocado_short.mp3',
-    centralSentenceAudio: 'audio_central/avocado_sentence.mp3',
-    southSentenceAudio: 'audio_south/avocado_sentence.mp3',
-    hint: 'Trái bơ béo thơm và giàu dinh dưỡng'
+    "id": "watermelon",
+    "word": "Quả dưa hấu",
+    "shortWord": "Dưa hấu",
+    "sentence": "Quả dưa hấu ngọt mát mùa hè",
+    "southWord": "Trái dưa hấu",
+    "southShort": "Dưa hấu",
+    "southSentence": "Trái dưa hấu ngọt mát ăn đã quá",
+    "cat": "food",
+    "catName": "Đồ ăn",
+    "glb": "models/watermelon.glb",
+    "audio": "audio/watermelon.mp3",
+    "audioShort": "audio/watermelon_short.mp3",
+    "sentenceAudio": "audio/watermelon_sentence.mp3",
+    "southAudio": "audio_south/watermelon.mp3",
+    "southShortAudio": "audio_south/watermelon_short.mp3",
+    "centralWord": "Trái dưa hấu",
+    "centralShort": "Dưa hấu",
+    "centralSentence": "Trái dưa hấu ngọt mát mùa hè",
+    "centralAudio": "audio_central/watermelon.mp3",
+    "centralShortAudio": "audio_central/watermelon_short.mp3",
+    "centralSentenceAudio": "audio_central/watermelon_sentence.mp3",
+    "southSentenceAudio": "audio_south/watermelon_sentence.mp3",
+    "hint": "Dưa hấu vỏ xanh ruột đỏ mát lành",
+    "southHint": "Trái dưa hấu vỏ xanh ruột đỏ ngọt mát",
+    "usage": {
+      "actionBtn": "🍉 Ăn Dưa Hấu Mát Lạnh",
+      "actionType": "eat",
+      "title": "Bé thưởng thức miếng dưa hấu đỏ mọng giải nhiệt",
+      "steps": [
+        "🍉 Bổ quả dưa hấu thấy ruột đỏ tươi ngọt lịm",
+        "🤲 Dùng thìa hoặc cầm hai tay miếng dưa mát",
+        "😋 Nhai từng miếng ngọt mát ngày hè oi ả"
+      ]
+    }
   },
   {
-    id: 'cake',
-    word: 'Bánh kem',
-    shortWord: 'Bánh',
-    sentence: 'Bé chúc mừng sinh nhật với bánh kem',
-    southSentence: 'Bánh kem sinh nhật ngọt ngào ngon ghê',
-    cat: 'food',
-    catName: 'Đồ ăn',
-    glb: 'models/cake.glb',
-    audio: 'audio/cake.mp3',
-    audioShort: 'audio/cake_short.mp3',
-    sentenceAudio: 'audio/cake_sentence.mp3',
-    southAudio: 'audio_south/cake.mp3',
-    southShortAudio: 'audio_south/cake_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/cake.mp3',
-    centralShortAudio: 'audio_central/cake_short.mp3',
-    centralSentenceAudio: 'audio_central/cake_sentence.mp3',
-    southSentenceAudio: 'audio_south/cake_sentence.mp3',
-    hint: 'Bánh sinh nhật ngọt ngào phủ kem tươi'
+    "id": "avocado",
+    "word": "Quả bơ",
+    "shortWord": "Bơ",
+    "sentence": "Quả bơ béo ngậy thơm ngon",
+    "southWord": "Trái bơ",
+    "southShort": "Bơ",
+    "southSentence": "Trái bơ dầm sữa béo thơm ngon lành",
+    "cat": "food",
+    "catName": "Đồ ăn",
+    "glb": "models/avocado.glb",
+    "audio": "audio/avocado.mp3",
+    "audioShort": "audio/avocado_short.mp3",
+    "sentenceAudio": "audio/avocado_sentence.mp3",
+    "southAudio": "audio_south/avocado.mp3",
+    "southShortAudio": "audio_south/avocado_short.mp3",
+    "centralWord": "Trái bơ",
+    "centralShort": "Bơ",
+    "centralSentence": "Trái bơ béo thơm ngon lành",
+    "centralAudio": "audio_central/avocado.mp3",
+    "centralShortAudio": "audio_central/avocado_short.mp3",
+    "centralSentenceAudio": "audio_central/avocado_sentence.mp3",
+    "southSentenceAudio": "audio_south/avocado_sentence.mp3",
+    "hint": "Trái bơ béo thơm và giàu dinh dưỡng",
+    "usage": {
+      "actionBtn": "🥑 Dầm Quả Bơ Béo Ngậy",
+      "actionType": "eat",
+      "title": "Quả bơ béo ngậy giúp bé thông minh và cao lớn",
+      "steps": [
+        "🥑 Bóc lớp vỏ xanh mịn thấy lớp thịt bơ vàng ươm",
+        "🥛 Thêm một chút sữa tươi dầm nhuyễn thơm lừng",
+        "🥄 Dùng thìa múc từng miếng ăn ngon miệng"
+      ]
+    }
   },
   {
-    id: 'donut',
-    word: 'Bánh ngọt',
-    shortWord: 'Bánh',
-    sentence: 'Chiếc bánh donut phủ kem dâu',
-    southSentence: 'Bánh donut phủ kem dâu thơm lừng',
-    cat: 'food',
-    catName: 'Đồ ăn',
-    glb: 'models/donut.glb',
-    audio: 'audio/donut.mp3',
-    audioShort: 'audio/donut_short.mp3',
-    sentenceAudio: 'audio/donut_sentence.mp3',
-    southAudio: 'audio_south/donut.mp3',
-    southShortAudio: 'audio_south/donut_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/donut.mp3',
-    centralShortAudio: 'audio_central/donut_short.mp3',
-    centralSentenceAudio: 'audio_central/donut_sentence.mp3',
-    southSentenceAudio: 'audio_south/donut_sentence.mp3',
-    hint: 'Bánh vòng phủ kem dâu hồng rực rỡ'
+    "id": "cake",
+    "word": "Bánh kem",
+    "shortWord": "Bánh",
+    "sentence": "Bé chúc mừng sinh nhật với bánh kem",
+    "southSentence": "Bánh kem sinh nhật ngọt ngào ngon ghê",
+    "cat": "food",
+    "catName": "Đồ ăn",
+    "glb": "models/cake.glb",
+    "audio": "audio/cake.mp3",
+    "audioShort": "audio/cake_short.mp3",
+    "sentenceAudio": "audio/cake_sentence.mp3",
+    "southAudio": "audio_south/cake.mp3",
+    "southShortAudio": "audio_south/cake_short.mp3",
+    "centralAudio": "audio_central/cake.mp3",
+    "centralShortAudio": "audio_central/cake_short.mp3",
+    "centralSentenceAudio": "audio_central/cake_sentence.mp3",
+    "southSentenceAudio": "audio_south/cake_sentence.mp3",
+    "hint": "Bánh sinh nhật ngọt ngào phủ kem tươi",
+    "usage": {
+      "actionBtn": "🎂 Thổi Nến Bánh Kem",
+      "actionType": "eat",
+      "title": "Bé thổi nến mừng sinh nhật và thưởng thức bánh kem",
+      "steps": [
+        "🕯️ Cắm ngọn nến lung linh trên chiếc bánh sinh nhật",
+        "🌬️ Thổi tắt ngọn nến và ước một điều ước ngoan",
+        "🍰 Cắt từng phần bánh ngọt ngào chia cho cả nhà"
+      ]
+    }
   },
   {
-    id: 'kebab',
-    word: 'Xiên thịt nướng',
-    shortWord: 'Thịt',
-    sentence: 'Xiên thịt nướng thơm lừng nóng hổi',
-    southSentence: 'Xiên thịt nướng thơm phức ăn ngon ghê',
-    cat: 'food',
-    catName: 'Đồ ăn',
-    glb: 'models/kebab.glb',
-    audio: 'audio/kebab.mp3',
-    audioShort: 'audio/kebab_short.mp3',
-    sentenceAudio: 'audio/kebab_sentence.mp3',
-    southAudio: 'audio_south/kebab.mp3',
-    southShortAudio: 'audio_south/kebab_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/kebab.mp3',
-    centralShortAudio: 'audio_central/kebab_short.mp3',
-    centralSentenceAudio: 'audio_central/kebab_sentence.mp3',
-    southSentenceAudio: 'audio_south/kebab_sentence.mp3',
-    hint: 'Món xiên thịt nướng thơm lừng'
+    "id": "donut",
+    "word": "Bánh ngọt",
+    "shortWord": "Bánh",
+    "sentence": "Chiếc bánh donut phủ kem dâu",
+    "southSentence": "Bánh donut phủ kem dâu thơm lừng",
+    "cat": "food",
+    "catName": "Đồ ăn",
+    "glb": "models/donut.glb",
+    "audio": "audio/donut.mp3",
+    "audioShort": "audio/donut_short.mp3",
+    "sentenceAudio": "audio/donut_sentence.mp3",
+    "southAudio": "audio_south/donut.mp3",
+    "southShortAudio": "audio_south/donut_short.mp3",
+    "centralAudio": "audio_central/donut.mp3",
+    "centralShortAudio": "audio_central/donut_short.mp3",
+    "centralSentenceAudio": "audio_central/donut_sentence.mp3",
+    "southSentenceAudio": "audio_south/donut_sentence.mp3",
+    "hint": "Bánh vòng phủ kem dâu hồng rực rỡ",
+    "usage": {
+      "actionBtn": "🍩 Cắn Bánh Donut",
+      "actionType": "eat",
+      "title": "Chiếc bánh vòng xinh xắn phủ kẹo ngọt ngào",
+      "steps": [
+        "🍩 Chọn chiếc bánh vòng có rắc kẹo cốm sắc màu",
+        "🤲 Cầm bằng hai bàn tay sạch sẽ",
+        "😋 Cắn một miếng mềm xốp thơm mùi bơ sữa"
+      ]
+    }
   },
   {
-    id: 'teacup',
-    word: 'Tách trà',
-    shortWord: 'Trà',
-    sentence: 'Tách trà ấm áp tỏa hương thơm',
-    southSentence: 'Tách trà ấm thơm lừng',
-    cat: 'food',
-    catName: 'Đồ ăn',
-    glb: 'models/teacup.glb',
-    audio: 'audio/teacup.mp3',
-    audioShort: 'audio/teacup_short.mp3',
-    sentenceAudio: 'audio/teacup_sentence.mp3',
-    southAudio: 'audio_south/teacup.mp3',
-    southShortAudio: 'audio_south/teacup_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/teacup.mp3',
-    centralShortAudio: 'audio_central/teacup_short.mp3',
-    centralSentenceAudio: 'audio_central/teacup_sentence.mp3',
-    southSentenceAudio: 'audio_south/teacup_sentence.mp3',
-    hint: 'Tách trà ấm áp tỏa ngát hương'
-  },
-
-  // ĐỒ CHƠI (5)
-  {
-    id: 'robot',
-    word: 'Chú rô bốt',
-    shortWord: 'Rô bốt',
-    sentence: 'Chú rô bốt thông minh biết nhảy múa',
-    southWord: 'Người máy',
-    southShort: 'Người máy',
-    southSentence: 'Người máy thông minh biết nhảy múa nè',
-    cat: 'toys',
-    catName: 'Đồ chơi',
-    glb: 'models/robot.glb',
-    audio: 'audio/robot.mp3',
-    audioShort: 'audio/robot_short.mp3',
-    sentenceAudio: 'audio/robot_sentence.mp3',
-    southAudio: 'audio_south/robot.mp3',
-    southShortAudio: 'audio_south/robot_short.mp3',
-    centralWord: 'Người máy',
-    centralShort: 'Người máy',
-    centralSentence: 'Người máy thông minh biết nhảy múa',
-    centralAudio: 'audio_central/robot.mp3',
-    centralShortAudio: 'audio_central/robot_short.mp3',
-    centralSentenceAudio: 'audio_central/robot_sentence.mp3',
-    southSentenceAudio: 'audio_south/robot_sentence.mp3',
-    hint: 'Người máy thông minh biết nhảy múa'
+    "id": "kebab",
+    "word": "Xiên thịt nướng",
+    "shortWord": "Thịt",
+    "sentence": "Xiên thịt nướng thơm lừng nóng hổi",
+    "southSentence": "Xiên thịt nướng thơm phức ăn ngon ghê",
+    "cat": "food",
+    "catName": "Đồ ăn",
+    "glb": "models/kebab.glb",
+    "audio": "audio/kebab.mp3",
+    "audioShort": "audio/kebab_short.mp3",
+    "sentenceAudio": "audio/kebab_sentence.mp3",
+    "southAudio": "audio_south/kebab.mp3",
+    "southShortAudio": "audio_south/kebab_short.mp3",
+    "centralAudio": "audio_central/kebab.mp3",
+    "centralShortAudio": "audio_central/kebab_short.mp3",
+    "centralSentenceAudio": "audio_central/kebab_sentence.mp3",
+    "southSentenceAudio": "audio_south/kebab_sentence.mp3",
+    "hint": "Món xiên thịt nướng thơm lừng",
+    "usage": {
+      "actionBtn": "🍢 Thưởng Thức Xiên Nướng",
+      "actionType": "eat",
+      "title": "Món thịt nướng xiên que thơm lừng cùng rau củ",
+      "steps": [
+        "🍢 Nướng thịt và ớt chuông vàng ươm trên bếp",
+        "🌬️ Thổi nhẹ cho bớt nóng trước khi ăn",
+        "😋 Cắn từng miếng thịt ngọt mềm đậm đà"
+      ]
+    }
   },
   {
-    id: 'ball',
-    word: 'Quả bóng',
-    shortWord: 'Bóng',
-    sentence: 'Bé cùng đá quả bóng tròn',
-    southWord: 'Trái banh',
-    southShort: 'Banh',
-    southSentence: 'Bé thích đá trái banh lăn tăn',
-    cat: 'toys',
-    catName: 'Đồ chơi',
-    glb: 'models/ball.glb',
-    audio: 'audio/ball.mp3',
-    audioShort: 'audio/ball_short.mp3',
-    sentenceAudio: 'audio/ball_sentence.mp3',
-    southAudio: 'audio_south/ball.mp3',
-    southShortAudio: 'audio_south/ball_short.mp3',
-    centralWord: 'Trái banh',
-    centralShort: 'Banh',
-    centralSentence: 'Bé đá trái banh lăn tăn trong sân',
-    centralAudio: 'audio_central/ball.mp3',
-    centralShortAudio: 'audio_central/ball_short.mp3',
-    centralSentenceAudio: 'audio_central/ball_sentence.mp3',
-    southSentenceAudio: 'audio_south/ball_sentence.mp3',
-    hint: 'Quả bóng tròn xoe bé thích lăn tăn',
-    southHint: 'Trái banh tròn xoe bé thích đá lăn tăn'
+    "id": "teacup",
+    "word": "Tách trà",
+    "shortWord": "Trà",
+    "sentence": "Tách trà ấm áp tỏa hương thơm",
+    "southSentence": "Tách trà ấm thơm lừng",
+    "cat": "food",
+    "catName": "Đồ ăn",
+    "glb": "models/teacup.glb",
+    "audio": "audio/teacup.mp3",
+    "audioShort": "audio/teacup_short.mp3",
+    "sentenceAudio": "audio/teacup_sentence.mp3",
+    "southAudio": "audio_south/teacup.mp3",
+    "southShortAudio": "audio_south/teacup_short.mp3",
+    "centralAudio": "audio_central/teacup.mp3",
+    "centralShortAudio": "audio_central/teacup_short.mp3",
+    "centralSentenceAudio": "audio_central/teacup_sentence.mp3",
+    "southSentenceAudio": "audio_south/teacup_sentence.mp3",
+    "hint": "Tách trà ấm áp tỏa ngát hương",
+    "usage": {
+      "actionBtn": "☕ Uống Ngụm Nước Ấm",
+      "actionType": "drink",
+      "title": "Bé dùng tách nhỏ nhấp từng ngụm nước ấm thanh lọc",
+      "steps": [
+        "💧 Rót nước lọc ấm vào lòng chiếc tách sứ",
+        "🤲 Dùng các ngón tay khéo léo cầm chắc quai",
+        "☕ Nhấp từng ngụm nhỏ uống từ tốn lịch sự"
+      ]
+    }
   },
   {
-    id: 'astronaut',
-    word: 'Phi hành gia',
-    shortWord: 'Phi hành gia',
-    sentence: 'Chú phi hành gia bay vào vũ trụ',
-    southSentence: 'Chú phi hành gia bay lên cung trăng',
-    cat: 'toys',
-    catName: 'Đồ chơi',
-    glb: 'models/astronaut.glb',
-    audio: 'audio/astronaut.mp3',
-    audioShort: 'audio/astronaut_short.mp3',
-    sentenceAudio: 'audio/astronaut_sentence.mp3',
-    southAudio: 'audio_south/astronaut.mp3',
-    southShortAudio: 'audio_south/astronaut_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/astronaut.mp3',
-    centralShortAudio: 'audio_central/astronaut_short.mp3',
-    centralSentenceAudio: 'audio_central/astronaut_sentence.mp3',
-    southSentenceAudio: 'audio_south/astronaut_sentence.mp3',
-    hint: 'Chú phi hành gia bay vào vũ trụ'
+    "id": "robot",
+    "word": "Chú rô bốt",
+    "shortWord": "Rô bốt",
+    "sentence": "Chú rô bốt thông minh biết nhảy múa",
+    "southWord": "Người máy",
+    "southShort": "Người máy",
+    "southSentence": "Người máy thông minh biết nhảy múa nè",
+    "cat": "toys",
+    "catName": "Đồ chơi",
+    "glb": "models/robot.glb",
+    "audio": "audio/robot.mp3",
+    "audioShort": "audio/robot_short.mp3",
+    "sentenceAudio": "audio/robot_sentence.mp3",
+    "southAudio": "audio_south/robot.mp3",
+    "southShortAudio": "audio_south/robot_short.mp3",
+    "centralWord": "Người máy",
+    "centralShort": "Người máy",
+    "centralSentence": "Người máy thông minh biết nhảy múa",
+    "centralAudio": "audio_central/robot.mp3",
+    "centralShortAudio": "audio_central/robot_short.mp3",
+    "centralSentenceAudio": "audio_central/robot_sentence.mp3",
+    "southSentenceAudio": "audio_south/robot_sentence.mp3",
+    "hint": "Người máy thông minh biết nhảy múa",
+    "usage": {
+      "actionBtn": "🤖 Bấm Nút Điều Khiển",
+      "actionType": "toy",
+      "title": "Bé bấm điều khiển để người máy biểu diễn nhảy múa",
+      "steps": [
+        "🔘 Bật công tắc nguồn ở phía sau lưng người máy",
+        "🎮 Cầm bộ điều khiển từ xa bấm nút tiến lùi",
+        "💃 Xem người máy vẫy tay và nhảy múa chào bé"
+      ]
+    }
   },
   {
-    id: 'star',
-    word: 'Ngôi sao',
-    shortWord: 'Sao',
-    sentence: 'Ngôi sao vàng năm cánh lấp lánh',
-    southSentence: 'Ngôi sao vàng lấp lánh trên trời cao',
-    cat: 'toys',
-    catName: 'Đồ chơi',
-    glb: 'models/star.glb',
-    audio: 'audio/star.mp3',
-    audioShort: 'audio/star_short.mp3',
-    sentenceAudio: 'audio/star_sentence.mp3',
-    southAudio: 'audio_south/star.mp3',
-    southShortAudio: 'audio_south/star_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/star.mp3',
-    centralShortAudio: 'audio_central/star_short.mp3',
-    centralSentenceAudio: 'audio_central/star_sentence.mp3',
-    southSentenceAudio: 'audio_south/star_sentence.mp3',
-    hint: 'Ngôi sao vàng năm cánh lấp lánh'
+    "id": "ball",
+    "word": "Quả bóng",
+    "shortWord": "Bóng",
+    "sentence": "Bé cùng đá quả bóng tròn",
+    "southWord": "Trái banh",
+    "southShort": "Banh",
+    "southSentence": "Bé thích đá trái banh lăn tăn",
+    "cat": "toys",
+    "catName": "Đồ chơi",
+    "glb": "models/ball.glb",
+    "audio": "audio/ball.mp3",
+    "audioShort": "audio/ball_short.mp3",
+    "sentenceAudio": "audio/ball_sentence.mp3",
+    "southAudio": "audio_south/ball.mp3",
+    "southShortAudio": "audio_south/ball_short.mp3",
+    "centralWord": "Trái banh",
+    "centralShort": "Banh",
+    "centralSentence": "Bé đá trái banh lăn tăn trong sân",
+    "centralAudio": "audio_central/ball.mp3",
+    "centralShortAudio": "audio_central/ball_short.mp3",
+    "centralSentenceAudio": "audio_central/ball_sentence.mp3",
+    "southSentenceAudio": "audio_south/ball_sentence.mp3",
+    "hint": "Quả bóng tròn xoe bé thích lăn tăn",
+    "southHint": "Trái banh tròn xoe bé thích đá lăn tăn",
+    "usage": {
+      "actionBtn": "⚽ Sút Bóng Vào Gôn",
+      "actionType": "play",
+      "title": "Bé đá bóng hoặc ném bóng cùng các bạn rèn luyện thể thao",
+      "steps": [
+        "👐 Ôm bóng chuyền tay cho ba mẹ cùng chơi",
+        "⚽ Đặt bóng xuống sân cỏ và sút thẳng vào gôn",
+        "🏃 Chạy thật nhanh đuổi theo bóng rèn luyện đôi chân"
+      ]
+    }
   },
   {
-    id: 'boombox',
-    word: 'Loa nghe nhạc',
-    shortWord: 'Loa',
-    sentence: 'Chiếc loa phát nhạc rộn ràng vui tai',
-    southSentence: 'Cái loa mở nhạc nghe vui tai ghê',
-    cat: 'toys',
-    catName: 'Đồ chơi',
-    glb: 'models/boombox.glb',
-    audio: 'audio/boombox.mp3',
-    audioShort: 'audio/boombox_short.mp3',
-    sentenceAudio: 'audio/boombox_sentence.mp3',
-    southAudio: 'audio_south/boombox.mp3',
-    southShortAudio: 'audio_south/boombox_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/boombox.mp3',
-    centralShortAudio: 'audio_central/boombox_short.mp3',
-    centralSentenceAudio: 'audio_central/boombox_sentence.mp3',
-    southSentenceAudio: 'audio_south/boombox_sentence.mp3',
-    hint: 'Chiếc máy phát nhạc rộn ràng vui tai'
-  },
-
-  // XE CỘ & GIAO THÔNG (3)
-  {
-    id: 'toy_car',
-    word: 'Xe ô tô',
-    shortWord: 'Xe',
-    sentence: 'Chiếc xe ô tô chạy bon bon',
-    southWord: 'Xe hơi',
-    southShort: 'Xe',
-    southSentence: 'Chiếc xe hơi chạy bon bon trên đường',
-    cat: 'vehicles',
-    catName: 'Xe cộ',
-    glb: 'models/toy_car.glb',
-    audio: 'audio/toy_car.mp3',
-    audioShort: 'audio/toy_car_short.mp3',
-    sentenceAudio: 'audio/toy_car_sentence.mp3',
-    southAudio: 'audio_south/toy_car.mp3',
-    southShortAudio: 'audio_south/toy_car_short.mp3',
-    centralWord: 'Xe hơi',
-    centralShort: 'Xe',
-    centralSentence: 'Chiếc xe hơi chạy bon bon trên đường',
-    centralAudio: 'audio_central/toy_car.mp3',
-    centralShortAudio: 'audio_central/toy_car_short.mp3',
-    centralSentenceAudio: 'audio_central/toy_car_sentence.mp3',
-    southSentenceAudio: 'audio_south/toy_car_sentence.mp3',
-    hint: 'Brum brum! Chiếc xe bốn bánh bon bon',
-    southHint: 'Brum brum! Chiếc xe hơi chạy bon bon'
+    "id": "astronaut",
+    "word": "Phi hành gia",
+    "shortWord": "Phi hành gia",
+    "sentence": "Chú phi hành gia bay vào vũ trụ",
+    "southSentence": "Chú phi hành gia bay lên cung trăng",
+    "cat": "toys",
+    "catName": "Đồ chơi",
+    "glb": "models/astronaut.glb",
+    "audio": "audio/astronaut.mp3",
+    "audioShort": "audio/astronaut_short.mp3",
+    "sentenceAudio": "audio/astronaut_sentence.mp3",
+    "southAudio": "audio_south/astronaut.mp3",
+    "southShortAudio": "audio_south/astronaut_short.mp3",
+    "centralAudio": "audio_central/astronaut.mp3",
+    "centralShortAudio": "audio_central/astronaut_short.mp3",
+    "centralSentenceAudio": "audio_central/astronaut_sentence.mp3",
+    "southSentenceAudio": "audio_south/astronaut_sentence.mp3",
+    "hint": "Chú phi hành gia bay vào vũ trụ",
+    "usage": {
+      "actionBtn": "🚀 Khám Phá Không Gian",
+      "actionType": "toy",
+      "title": "Bé hóa thân thành phi hành gia bay lên vũ trụ",
+      "steps": [
+        "🚀 Bước vào tàu con thoi thắt dây an toàn",
+        "👨‍🚀 Mặc bộ quần áo vũ trụ đội mũ kính tròn",
+        "🌌 Bay lơ lửng ngoài không gian ngắm các vì sao"
+      ]
+    }
   },
   {
-    id: 'bike',
-    word: 'Xe đạp',
-    shortWord: 'Xe đạp',
-    sentence: 'Bé cùng đạp xe rèn luyện sức khỏe',
-    southSentence: 'Bé chạy xe đạp vòng vòng sân nhà',
-    cat: 'vehicles',
-    catName: 'Xe cộ',
-    glb: 'models/bike.glb',
-    audio: 'audio/bike.mp3',
-    audioShort: 'audio/bike_short.mp3',
-    sentenceAudio: 'audio/bike_sentence.mp3',
-    southAudio: 'audio_south/bike.mp3',
-    southShortAudio: 'audio_south/bike_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/bike.mp3',
-    centralShortAudio: 'audio_central/bike_short.mp3',
-    centralSentenceAudio: 'audio_central/bike_sentence.mp3',
-    southSentenceAudio: 'audio_south/bike_sentence.mp3',
-    hint: 'Bé đạp xe rèn luyện sức khỏe dẻo dai'
+    "id": "star",
+    "word": "Ngôi sao",
+    "shortWord": "Sao",
+    "sentence": "Ngôi sao vàng năm cánh lấp lánh",
+    "southSentence": "Ngôi sao vàng lấp lánh trên trời cao",
+    "cat": "toys",
+    "catName": "Đồ chơi",
+    "glb": "models/star.glb",
+    "audio": "audio/star.mp3",
+    "audioShort": "audio/star_short.mp3",
+    "sentenceAudio": "audio/star_sentence.mp3",
+    "southAudio": "audio_south/star.mp3",
+    "southShortAudio": "audio_south/star_short.mp3",
+    "centralAudio": "audio_central/star.mp3",
+    "centralShortAudio": "audio_central/star_short.mp3",
+    "centralSentenceAudio": "audio_central/star_sentence.mp3",
+    "southSentenceAudio": "audio_south/star_sentence.mp3",
+    "hint": "Ngôi sao vàng năm cánh lấp lánh",
+    "usage": {
+      "actionBtn": "⭐ Nhận Sao Bé Ngoan",
+      "actionType": "play",
+      "title": "Ngôi sao vàng thưởng cho bé khi tập nói to rõ",
+      "steps": [
+        "🗣️ Cố gắng phát âm chuẩn từng từ vựng thật giỏi",
+        "⭐ Nhận ngôi sao vàng lấp lánh dán vào bảng bé ngoan",
+        "🏆 Gom đủ sao vàng để mở khóa rương kho báu"
+      ]
+    }
   },
   {
-    id: 'milk_truck',
-    word: 'Xe tải',
-    shortWord: 'Xe tải',
-    sentence: 'Chiếc xe tải chở sữa đi giao hàng',
-    southSentence: 'Xe tải to lớn chở sữa bon bon',
-    cat: 'vehicles',
-    catName: 'Xe cộ',
-    glb: 'models/milk_truck.glb',
-    audio: 'audio/milk_truck.mp3',
-    audioShort: 'audio/milk_truck_short.mp3',
-    sentenceAudio: 'audio/milk_truck_sentence.mp3',
-    southAudio: 'audio_south/milk_truck.mp3',
-    southShortAudio: 'audio_south/milk_truck_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/milk_truck.mp3',
-    centralShortAudio: 'audio_central/milk_truck_short.mp3',
-    centralSentenceAudio: 'audio_central/milk_truck_sentence.mp3',
-    southSentenceAudio: 'audio_south/milk_truck_sentence.mp3',
-    hint: 'Xe tải to lớn chở hàng hóa bon bon'
-  },
-
-  // ĐỒ DÙNG & QUẦN ÁO (7)
-  {
-    id: 'cup',
-    word: 'Cái cốc',
-    shortWord: 'Cốc',
-    sentence: 'Bé dùng cốc để uống nước lọc',
-    southWord: 'Cái ly',
-    southShort: 'Ly',
-    southSentence: 'Bé uống nước bằng cái ly xinh xinh',
-    cat: 'objects',
-    catName: 'Đồ dùng',
-    glb: 'models/cup.glb',
-    audio: 'audio/cup.mp3',
-    audioShort: 'audio/cup_short.mp3',
-    sentenceAudio: 'audio/cup_sentence.mp3',
-    southAudio: 'audio_south/cup.mp3',
-    southShortAudio: 'audio_south/cup_short.mp3',
-    centralWord: 'Cái ly',
-    centralShort: 'Ly',
-    centralSentence: 'Bé uống nước bằng cái ly xinh xinh',
-    centralAudio: 'audio_central/cup.mp3',
-    centralShortAudio: 'audio_central/cup_short.mp3',
-    centralSentenceAudio: 'audio_central/cup_sentence.mp3',
-    southSentenceAudio: 'audio_south/cup_sentence.mp3',
-    hint: 'Cốc dùng để bé uống nước mỗi ngày',
-    southHint: 'Cái ly dùng để bé uống nước, uống sữa'
+    "id": "boombox",
+    "word": "Loa nghe nhạc",
+    "shortWord": "Loa",
+    "sentence": "Chiếc loa phát nhạc rộn ràng vui tai",
+    "southSentence": "Cái loa mở nhạc nghe vui tai ghê",
+    "cat": "toys",
+    "catName": "Đồ chơi",
+    "glb": "models/boombox.glb",
+    "audio": "audio/boombox.mp3",
+    "audioShort": "audio/boombox_short.mp3",
+    "sentenceAudio": "audio/boombox_sentence.mp3",
+    "southAudio": "audio_south/boombox.mp3",
+    "southShortAudio": "audio_south/boombox_short.mp3",
+    "centralAudio": "audio_central/boombox.mp3",
+    "centralShortAudio": "audio_central/boombox_short.mp3",
+    "centralSentenceAudio": "audio_central/boombox_sentence.mp3",
+    "southSentenceAudio": "audio_south/boombox_sentence.mp3",
+    "hint": "Chiếc máy phát nhạc rộn ràng vui tai",
+    "usage": {
+      "actionBtn": "📻 Bật Nhạc Nhún Nhảy",
+      "actionType": "music",
+      "title": "Bé bật loa nghe bài hát thiếu nhi và nhún nhảy theo",
+      "steps": [
+        "🔘 Bấm nút Play hình tam giác trên mặt máy",
+        "🔊 Vặn núm tròn xoay để âm lượng vừa nghe",
+        "🎶 Nhún nhảy múa may theo điệu nhạc rộn ràng"
+      ]
+    }
   },
   {
-    id: 'bottle',
-    word: 'Bình nước',
-    shortWord: 'Bình',
-    sentence: 'Bình nước tiện lợi bé mang đi học',
-    southSentence: 'Bình nước mát bé mang theo đi học',
-    cat: 'objects',
-    catName: 'Đồ dùng',
-    glb: 'models/bottle.glb',
-    audio: 'audio/bottle.mp3',
-    audioShort: 'audio/bottle_short.mp3',
-    sentenceAudio: 'audio/bottle_sentence.mp3',
-    southAudio: 'audio_south/bottle.mp3',
-    southShortAudio: 'audio_south/bottle_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/bottle.mp3',
-    centralShortAudio: 'audio_central/bottle_short.mp3',
-    centralSentenceAudio: 'audio_central/bottle_sentence.mp3',
-    southSentenceAudio: 'audio_south/bottle_sentence.mp3',
-    hint: 'Bình nước tiện lợi bé mang đi học'
+    "id": "toy_car",
+    "word": "Xe ô tô",
+    "shortWord": "Xe",
+    "sentence": "Chiếc xe ô tô chạy bon bon",
+    "southWord": "Xe hơi",
+    "southShort": "Xe",
+    "southSentence": "Chiếc xe hơi chạy bon bon trên đường",
+    "cat": "vehicles",
+    "catName": "Xe cộ",
+    "glb": "models/toy_car.glb",
+    "audio": "audio/toy_car.mp3",
+    "audioShort": "audio/toy_car_short.mp3",
+    "sentenceAudio": "audio/toy_car_sentence.mp3",
+    "southAudio": "audio_south/toy_car.mp3",
+    "southShortAudio": "audio_south/toy_car_short.mp3",
+    "centralWord": "Xe hơi",
+    "centralShort": "Xe",
+    "centralSentence": "Chiếc xe hơi chạy bon bon trên đường",
+    "centralAudio": "audio_central/toy_car.mp3",
+    "centralShortAudio": "audio_central/toy_car_short.mp3",
+    "centralSentenceAudio": "audio_central/toy_car_sentence.mp3",
+    "southSentenceAudio": "audio_south/toy_car_sentence.mp3",
+    "hint": "Brum brum! Chiếc xe bốn bánh bon bon",
+    "southHint": "Brum brum! Chiếc xe hơi chạy bon bon",
+    "usage": {
+      "actionBtn": "🏎️ Kéo Xe Lăn Bánh",
+      "actionType": "vehicle",
+      "title": "Chiếc xe ô tô dây cót phóng vút trên đường",
+      "steps": [
+        "🖐️ Đặt xe xuống sàn kéo lùi về sau lấy đà",
+        "💨 Thả tay ra xem xe lao vút về phía trước",
+        "🏁 Cùng bạn bè thi đua xem xe ai chạy xa nhất"
+      ]
+    }
   },
   {
-    id: 'shoe',
-    word: 'Đôi giày',
-    shortWord: 'Giày',
-    sentence: 'Đôi giày xinh xắn bảo vệ chân bé',
-    southSentence: 'Đôi giày xinh xắn mang vào êm chân',
-    cat: 'objects',
-    catName: 'Đồ dùng',
-    glb: 'models/shoe.glb',
-    audio: 'audio/shoe.mp3',
-    audioShort: 'audio/shoe_short.mp3',
-    sentenceAudio: 'audio/shoe_sentence.mp3',
-    southAudio: 'audio_south/shoe.mp3',
-    southShortAudio: 'audio_south/shoe_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/shoe.mp3',
-    centralShortAudio: 'audio_central/shoe_short.mp3',
-    centralSentenceAudio: 'audio_central/shoe_sentence.mp3',
-    southSentenceAudio: 'audio_south/shoe_sentence.mp3',
-    hint: 'Đôi giày xinh bảo vệ đôi chân bé'
+    "id": "bike",
+    "word": "Xe đạp",
+    "shortWord": "Xe đạp",
+    "sentence": "Bé cùng đạp xe rèn luyện sức khỏe",
+    "southSentence": "Bé chạy xe đạp vòng vòng sân nhà",
+    "cat": "vehicles",
+    "catName": "Xe cộ",
+    "glb": "models/bike.glb",
+    "audio": "audio/bike.mp3",
+    "audioShort": "audio/bike_short.mp3",
+    "sentenceAudio": "audio/bike_sentence.mp3",
+    "southAudio": "audio_south/bike.mp3",
+    "southShortAudio": "audio_south/bike_short.mp3",
+    "centralAudio": "audio_central/bike.mp3",
+    "centralShortAudio": "audio_central/bike_short.mp3",
+    "centralSentenceAudio": "audio_central/bike_sentence.mp3",
+    "southSentenceAudio": "audio_south/bike_sentence.mp3",
+    "hint": "Bé đạp xe rèn luyện sức khỏe dẻo dai",
+    "usage": {
+      "actionBtn": "🚴 Đạp Xe Bon Bon",
+      "actionType": "vehicle",
+      "title": "Bé tập đạp xe giữ thăng bằng và rèn luyện đôi chân",
+      "steps": [
+        "⛑️ Đội mũ bảo hiểm vừa vặn để bảo vệ đầu",
+        "🦶 Đặt hai chân lên bàn đạp tay giữ chặt ghi-đông",
+        "🚴 Đạp đều chân cho xe bon bon lăn bánh quanh sân"
+      ]
+    }
   },
   {
-    id: 'glasses',
-    word: 'Kính mắt',
-    shortWord: 'Kính',
-    sentence: 'Chiếc kính mát che nắng rất đẹp',
-    southWord: 'Kính mát',
-    southShort: 'Kính',
-    southSentence: 'Chiếc kính mát sành điệu che nắng',
-    cat: 'objects',
-    catName: 'Đồ dùng',
-    glb: 'models/glasses.glb',
-    audio: 'audio/glasses.mp3',
-    audioShort: 'audio/glasses_short.mp3',
-    sentenceAudio: 'audio/glasses_sentence.mp3',
-    southAudio: 'audio_south/glasses.mp3',
-    southShortAudio: 'audio_south/glasses_short.mp3',
-    centralWord: 'Kính mát',
-    centralShort: 'Kính',
-    centralSentence: 'Chiếc kính mát che nắng rất đẹp',
-    centralAudio: 'audio_central/glasses.mp3',
-    centralShortAudio: 'audio_central/glasses_short.mp3',
-    centralSentenceAudio: 'audio_central/glasses_sentence.mp3',
-    southSentenceAudio: 'audio_south/glasses_sentence.mp3',
-    hint: 'Chiếc kính sành điệu che nắng cho mắt',
-    southHint: 'Chiếc kính mát che nắng sành điệu'
+    "id": "milk_truck",
+    "word": "Xe tải",
+    "shortWord": "Xe tải",
+    "sentence": "Chiếc xe tải chở sữa đi giao hàng",
+    "southSentence": "Xe tải to lớn chở sữa bon bon",
+    "cat": "vehicles",
+    "catName": "Xe cộ",
+    "glb": "models/milk_truck.glb",
+    "audio": "audio/milk_truck.mp3",
+    "audioShort": "audio/milk_truck_short.mp3",
+    "sentenceAudio": "audio/milk_truck_sentence.mp3",
+    "southAudio": "audio_south/milk_truck.mp3",
+    "southShortAudio": "audio_south/milk_truck_short.mp3",
+    "centralAudio": "audio_central/milk_truck.mp3",
+    "centralShortAudio": "audio_central/milk_truck_short.mp3",
+    "centralSentenceAudio": "audio_central/milk_truck_sentence.mp3",
+    "southSentenceAudio": "audio_south/milk_truck_sentence.mp3",
+    "hint": "Xe tải to lớn chở hàng hóa bon bon",
+    "usage": {
+      "actionBtn": "🚚 Bấm Còi Xe Tải",
+      "actionType": "vehicle",
+      "title": "Xe bồn chở sữa tươi thơm ngon từ nông trại về",
+      "steps": [
+        "🥛 Nạp đầy sữa bò tươi nguyên chất từ trang trại",
+        "🚚 Lái xe bon bon vượt qua các cung đường an toàn",
+        "🏪 Giao sữa tươi bổ dưỡng đến tận tay các em nhỏ"
+      ]
+    }
   },
   {
-    id: 'camera',
-    word: 'Máy ảnh',
-    shortWord: 'Máy ảnh',
-    sentence: 'Máy ảnh chụp lại nụ cười của bé',
-    southSentence: 'Máy ảnh chụp nụ cười của con nè',
-    cat: 'objects',
-    catName: 'Đồ dùng',
-    glb: 'models/camera.glb',
-    audio: 'audio/camera.mp3',
-    audioShort: 'audio/camera_short.mp3',
-    sentenceAudio: 'audio/camera_sentence.mp3',
-    southAudio: 'audio_south/camera.mp3',
-    southShortAudio: 'audio_south/camera_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/camera.mp3',
-    centralShortAudio: 'audio_central/camera_short.mp3',
-    centralSentenceAudio: 'audio_central/camera_sentence.mp3',
-    southSentenceAudio: 'audio_south/camera_sentence.mp3',
-    hint: 'Tách tách! Máy ảnh lưu giữ kỷ niệm đẹp'
+    "id": "cup",
+    "word": "Cái cốc",
+    "shortWord": "Cốc",
+    "sentence": "Bé dùng cốc để uống nước lọc",
+    "southWord": "Cái ly",
+    "southShort": "Ly",
+    "southSentence": "Bé uống nước bằng cái ly xinh xinh",
+    "cat": "objects",
+    "catName": "Đồ dùng",
+    "glb": "models/cup.glb",
+    "audio": "audio/cup.mp3",
+    "audioShort": "audio/cup_short.mp3",
+    "sentenceAudio": "audio/cup_sentence.mp3",
+    "southAudio": "audio_south/cup.mp3",
+    "southShortAudio": "audio_south/cup_short.mp3",
+    "centralWord": "Cái ly",
+    "centralShort": "Ly",
+    "centralSentence": "Bé uống nước bằng cái ly xinh xinh",
+    "centralAudio": "audio_central/cup.mp3",
+    "centralShortAudio": "audio_central/cup_short.mp3",
+    "centralSentenceAudio": "audio_central/cup_sentence.mp3",
+    "southSentenceAudio": "audio_south/cup_sentence.mp3",
+    "hint": "Cốc dùng để bé uống nước mỗi ngày",
+    "southHint": "Cái ly dùng để bé uống nước, uống sữa",
+    "usage": {
+      "actionBtn": "🥤 Rót Nước Uống Ực",
+      "actionType": "drink",
+      "title": "Chiếc cốc xinh xắn giúp bé uống nước đầy đủ mỗi ngày",
+      "steps": [
+        "💧 Rót nước lọc mát vừa đủ vào lòng cốc",
+        "🤲 Dùng hai bàn tay nâng cốc cẩn thận không làm đổ",
+        "🥤 Uống từng ngụm mát lành giúp cơ thể khỏe mạnh"
+      ]
+    }
   },
   {
-    id: 'lantern',
-    word: 'Cái đèn',
-    shortWord: 'Đèn',
-    sentence: 'Chiếc đèn phát ra ánh sáng lung linh',
-    southSentence: 'Cái đèn sáng rực rỡ ấm cúng',
-    cat: 'objects',
-    catName: 'Đồ dùng',
-    glb: 'models/lantern.glb',
-    audio: 'audio/lantern.mp3',
-    audioShort: 'audio/lantern_short.mp3',
-    sentenceAudio: 'audio/lantern_sentence.mp3',
-    southAudio: 'audio_south/lantern.mp3',
-    southShortAudio: 'audio_south/lantern_short.mp3',
-    centralWord: undefined,
-    centralShort: undefined,
-    centralSentence: undefined,
-    centralAudio: 'audio_central/lantern.mp3',
-    centralShortAudio: 'audio_central/lantern_short.mp3',
-    centralSentenceAudio: 'audio_central/lantern_sentence.mp3',
-    southSentenceAudio: 'audio_south/lantern_sentence.mp3',
-    hint: 'Chiếc đèn chiếu ánh sáng ấm áp'
+    "id": "bottle",
+    "word": "Bình nước",
+    "shortWord": "Bình",
+    "sentence": "Bình nước tiện lợi bé mang đi học",
+    "southSentence": "Bình nước mát bé mang theo đi học",
+    "cat": "objects",
+    "catName": "Đồ dùng",
+    "glb": "models/bottle.glb",
+    "audio": "audio/bottle.mp3",
+    "audioShort": "audio/bottle_short.mp3",
+    "sentenceAudio": "audio/bottle_sentence.mp3",
+    "southAudio": "audio_south/bottle.mp3",
+    "southShortAudio": "audio_south/bottle_short.mp3",
+    "centralAudio": "audio_central/bottle.mp3",
+    "centralShortAudio": "audio_central/bottle_short.mp3",
+    "centralSentenceAudio": "audio_central/bottle_sentence.mp3",
+    "southSentenceAudio": "audio_south/bottle_sentence.mp3",
+    "hint": "Bình nước tiện lợi bé mang đi học",
+    "usage": {
+      "actionBtn": "🍶 Vặn Nắp Rót Nước",
+      "actionType": "drink",
+      "title": "Bình nước tiện lợi mang theo khi bé đi học đi chơi",
+      "steps": [
+        "🔄 Vặn nắp mở miệng bình nước cẩn thận",
+        "💧 Rút ống hút hoặc rót nước mát ra ly nhỏ",
+        "🔒 Đóng chặt nắp cài then và bỏ vào ngăn balo"
+      ]
+    }
   },
   {
-    id: 'plant',
-    word: 'Chậu hoa cây cảnh',
-    shortWord: 'Cây hoa',
-    sentence: 'Chậu hoa xanh mát nở hoa xinh đẹp',
-    southWord: 'Bông hoa',
-    southShort: 'Hoa',
-    southSentence: 'Bông hoa tươi thắm nở đẹp quá chừng',
-    cat: 'objects',
-    catName: 'Đồ dùng',
-    glb: 'models/plant.glb',
-    audio: 'audio/plant.mp3',
-    audioShort: 'audio/plant_short.mp3',
-    sentenceAudio: 'audio/plant_sentence.mp3',
-    southAudio: 'audio_south/plant.mp3',
-    southShortAudio: 'audio_south/plant_short.mp3',
-    centralWord: 'Bông hoa',
-    centralShort: 'Hoa',
-    centralSentence: 'Bông hoa tươi thắm nở đẹp quá chừng',
-    centralAudio: 'audio_central/plant.mp3',
-    centralShortAudio: 'audio_central/plant_short.mp3',
-    centralSentenceAudio: 'audio_central/plant_sentence.mp3',
-    southSentenceAudio: 'audio_south/plant_sentence.mp3',
-    hint: 'Chậu hoa xanh mát làm đẹp căn phòng',
-    southHint: 'Bông hoa xinh xắn làm đẹp căn phòng'
+    "id": "shoe",
+    "word": "Đôi giày",
+    "shortWord": "Giày",
+    "sentence": "Đôi giày xinh xắn bảo vệ chân bé",
+    "southSentence": "Đôi giày xinh xắn mang vào êm chân",
+    "cat": "objects",
+    "catName": "Đồ dùng",
+    "glb": "models/shoe.glb",
+    "audio": "audio/shoe.mp3",
+    "audioShort": "audio/shoe_short.mp3",
+    "sentenceAudio": "audio/shoe_sentence.mp3",
+    "southAudio": "audio_south/shoe.mp3",
+    "southShortAudio": "audio_south/shoe_short.mp3",
+    "centralAudio": "audio_central/shoe.mp3",
+    "centralShortAudio": "audio_central/shoe_short.mp3",
+    "centralSentenceAudio": "audio_central/shoe_sentence.mp3",
+    "southSentenceAudio": "audio_south/shoe_sentence.mp3",
+    "hint": "Đôi giày xinh bảo vệ đôi chân bé",
+    "usage": {
+      "actionBtn": "👟 Xỏ Giày Bước Đi",
+      "actionType": "wear",
+      "title": "Đôi giày bảo vệ bàn chân xinh khi bé chạy nhảy",
+      "steps": [
+        "🧦 Đi đôi tất (vớ) mềm mại êm ái vào chân",
+        "👟 Xỏ mũi chân vào giày rồi kéo nhẹ phần gót",
+        "🚶 Dán quai dính chắc chắn rồi tự tin bước đi dạo"
+      ]
+    }
+  },
+  {
+    "id": "glasses",
+    "word": "Kính mắt",
+    "shortWord": "Kính",
+    "sentence": "Chiếc kính mát che nắng rất đẹp",
+    "southWord": "Kính mát",
+    "southShort": "Kính",
+    "southSentence": "Chiếc kính mát sành điệu che nắng",
+    "cat": "objects",
+    "catName": "Đồ dùng",
+    "glb": "models/glasses.glb",
+    "audio": "audio/glasses.mp3",
+    "audioShort": "audio/glasses_short.mp3",
+    "sentenceAudio": "audio/glasses_sentence.mp3",
+    "southAudio": "audio_south/glasses.mp3",
+    "southShortAudio": "audio_south/glasses_short.mp3",
+    "centralWord": "Kính mát",
+    "centralShort": "Kính",
+    "centralSentence": "Chiếc kính mát che nắng rất đẹp",
+    "centralAudio": "audio_central/glasses.mp3",
+    "centralShortAudio": "audio_central/glasses_short.mp3",
+    "centralSentenceAudio": "audio_central/glasses_sentence.mp3",
+    "southSentenceAudio": "audio_south/glasses_sentence.mp3",
+    "hint": "Chiếc kính sành điệu che nắng cho mắt",
+    "southHint": "Chiếc kính mát che nắng sành điệu",
+    "usage": {
+      "actionBtn": "👓 Đeo Kính Chống Nắng",
+      "actionType": "wear",
+      "title": "Kính mát bảo vệ mắt bé khỏi ánh nắng chói chang",
+      "steps": [
+        "👐 Dùng hai tay cầm hai gọng kính mở rộng vừa phải",
+        "👃 Đặt nhẹ phần đệm kính lên sống mũi thẳng",
+        "😎 Cài hai gọng qua vành tai giúp nhìn rõ không chói"
+      ]
+    }
+  },
+  {
+    "id": "camera",
+    "word": "Máy ảnh",
+    "shortWord": "Máy ảnh",
+    "sentence": "Máy ảnh chụp lại nụ cười của bé",
+    "southSentence": "Máy ảnh chụp nụ cười của con nè",
+    "cat": "objects",
+    "catName": "Đồ dùng",
+    "glb": "models/camera.glb",
+    "audio": "audio/camera.mp3",
+    "audioShort": "audio/camera_short.mp3",
+    "sentenceAudio": "audio/camera_sentence.mp3",
+    "southAudio": "audio_south/camera.mp3",
+    "southShortAudio": "audio_south/camera_short.mp3",
+    "centralAudio": "audio_central/camera.mp3",
+    "centralShortAudio": "audio_central/camera_short.mp3",
+    "centralSentenceAudio": "audio_central/camera_sentence.mp3",
+    "southSentenceAudio": "audio_south/camera_sentence.mp3",
+    "hint": "Tách tách! Máy ảnh lưu giữ kỷ niệm đẹp",
+    "usage": {
+      "actionBtn": "📸 Bấm Tách Chụp Hình",
+      "actionType": "camera",
+      "title": "Bé ngắm ống kính và chụp lại nụ cười rạng rỡ của cả nhà",
+      "steps": [
+        "👀 Hướng ống kính máy ảnh về phía người thân bạn bè",
+        "😁 Cười thật tươi và hô to: Kim chi một hai ba!",
+        "🔘 Bấm nút Tách một cái để lưu lại bức ảnh kỷ niệm"
+      ]
+    }
+  },
+  {
+    "id": "lantern",
+    "word": "Cái đèn",
+    "shortWord": "Đèn",
+    "sentence": "Chiếc đèn phát ra ánh sáng lung linh",
+    "southSentence": "Cái đèn sáng rực rỡ ấm cúng",
+    "cat": "objects",
+    "catName": "Đồ dùng",
+    "glb": "models/lantern.glb",
+    "audio": "audio/lantern.mp3",
+    "audioShort": "audio/lantern_short.mp3",
+    "sentenceAudio": "audio/lantern_sentence.mp3",
+    "southAudio": "audio_south/lantern.mp3",
+    "southShortAudio": "audio_south/lantern_short.mp3",
+    "centralAudio": "audio_central/lantern.mp3",
+    "centralShortAudio": "audio_central/lantern_short.mp3",
+    "centralSentenceAudio": "audio_central/lantern_sentence.mp3",
+    "southSentenceAudio": "audio_south/lantern_sentence.mp3",
+    "hint": "Chiếc đèn chiếu ánh sáng ấm áp",
+    "usage": {
+      "actionBtn": "🏮 Thắp Sáng Đèn Lồng",
+      "actionType": "light",
+      "title": "Chiếc lồng đèn lung linh thắp sáng đêm hội Trung Thu",
+      "steps": [
+        "🏮 Bật công tắc cho bóng đèn bên trong sáng rực rỡ",
+        "🚶 Cầm cán đèn cùng các bạn rước đèn quanh phố",
+        "🌕 Cùng phá cỗ bánh dẻo bánh nướng dưới ánh trăng rằm"
+      ]
+    }
+  },
+  {
+    "id": "plant",
+    "word": "Chậu hoa cây cảnh",
+    "shortWord": "Cây hoa",
+    "sentence": "Chậu hoa xanh mát nở hoa xinh đẹp",
+    "southWord": "Bông hoa",
+    "southShort": "Hoa",
+    "southSentence": "Bông hoa tươi thắm nở đẹp quá chừng",
+    "cat": "objects",
+    "catName": "Đồ dùng",
+    "glb": "models/plant.glb",
+    "audio": "audio/plant.mp3",
+    "audioShort": "audio/plant_short.mp3",
+    "sentenceAudio": "audio/plant_sentence.mp3",
+    "southAudio": "audio_south/plant.mp3",
+    "southShortAudio": "audio_south/plant_short.mp3",
+    "centralWord": "Bông hoa",
+    "centralShort": "Hoa",
+    "centralSentence": "Bông hoa tươi thắm nở đẹp quá chừng",
+    "centralAudio": "audio_central/plant.mp3",
+    "centralShortAudio": "audio_central/plant_short.mp3",
+    "centralSentenceAudio": "audio_central/plant_sentence.mp3",
+    "southSentenceAudio": "audio_south/plant_sentence.mp3",
+    "hint": "Chậu hoa xanh mát làm đẹp căn phòng",
+    "southHint": "Bông hoa xinh xắn làm đẹp căn phòng",
+    "usage": {
+      "actionBtn": "🌱 Tưới Nước Cho Cây",
+      "actionType": "plant",
+      "title": "Bé tưới nước chăm sóc cây xanh giúp môi trường trong lành",
+      "steps": [
+        "☀️ Đặt chậu cây ở ban công nơi có ánh nắng ban mai",
+        "🚿 Dùng bình tưới phun từng hạt nước li ti lên lá",
+        "🌸 Ngắm nhìn cây đâm chồi nảy lộc nở những đóa hoa xinh"
+      ]
+    }
   }
 ];
 
@@ -749,7 +970,8 @@ function getItemData(item) {
     hint: isCentral && item.centralHint ? item.centralHint : (isSouth && item.southHint ? item.southHint : item.hint),
     cat: item.cat,
     catName: item.catName,
-    glb: item.glb
+    glb: item.glb,
+    usage: item.usage || null
   };
 }
 
@@ -920,6 +1142,82 @@ function playCartoonSparkle() {
       osc.start(now);
       osc.stop(now + 0.22);
     }, idx * 45);
+  });
+}
+
+
+// PRACTICAL LIFE SIMULATION SOUNDS (WEB AUDIO)
+function playUsageWaterSound() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  const freqs = [350, 480, 620, 520, 400];
+  freqs.forEach((f, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(f, now + i * 0.08);
+    osc.frequency.exponentialRampToValueAtTime(f * 1.3, now + i * 0.08 + 0.07);
+    gain.gain.setValueAtTime(0.06, now + i * 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.08 + 0.07);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now + i * 0.08);
+    osc.stop(now + i * 0.08 + 0.07);
+  });
+}
+
+function playUsageEatSound() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  for (let i = 0; i < 3; i++) {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(800 + Math.random() * 400, now + i * 0.06);
+    gain.gain.setValueAtTime(0.05, now + i * 0.06);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.06 + 0.05);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now + i * 0.06);
+    osc.stop(now + i * 0.06 + 0.05);
+  }
+}
+
+function playCameraSound() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(1200, now);
+  osc.frequency.exponentialRampToValueAtTime(100, now + 0.05);
+  gain.gain.setValueAtTime(0.1, now);
+  gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start(now);
+  osc.stop(now + 0.06);
+}
+
+function playCarHonk() {
+  initAudioContext();
+  if (!audioCtx) return;
+  const now = audioCtx.currentTime;
+  [440, 554].forEach(f => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(f, now);
+    gain.gain.setValueAtTime(0.06, now);
+    gain.gain.setValueAtTime(0.06, now + 0.12);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(now);
+    osc.stop(now + 0.14);
   });
 }
 
@@ -1293,6 +1591,80 @@ $('#btnAnimPlayPause').addEventListener('click', (e) => {
 
 $('#modalViewer').addEventListener('load', updateModalAnimations);
 
+// PRACTICAL LIFE SIMULATION INTERACTIVE HANDLER
+$('#btnTryAction')?.addEventListener('click', () => {
+  if (!state.current) return;
+  const item = state.current;
+  const viewer = $('#modalViewer');
+  if (!viewer) return;
+
+  const usage = item.usage || {};
+  const actionType = usage.actionType || 'default';
+  const isSouth = state.voice === 'south';
+
+  playFanfare();
+  launchConfetti();
+
+  if (actionType === 'drink') {
+    playUsageWaterSound();
+    viewer.style.transition = 'transform 0.45s ease';
+    viewer.style.transform = 'scale(1.15) rotate(32deg) translateY(-14px)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) rotate(0) translateY(0)'; }, 650);
+    showToast(isSouth ? '🥤 Ực ực! Con uống nước mát lành sảng khoái ghê!' : '🥤 Ực ực! Bé uống nước mát lành sảng khoái ghê!');
+  } else if (actionType === 'eat') {
+    playUsageEatSound();
+    viewer.style.transition = 'transform 0.3s ease';
+    viewer.style.transform = 'scale(1.22) rotate(-8deg)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) rotate(0)'; }, 450);
+    showToast(isSouth ? '😋 Ngon quá! Con cắn một miếng bổ dưỡng nghen!' : '😋 Ngon quá! Bé cắn một miếng bổ dưỡng nhé!');
+  } else if (actionType === 'camera') {
+    playCameraSound();
+    const fl = $('#cameraFlashOverlay');
+    if (fl) {
+      fl.classList.add('active');
+      setTimeout(() => fl.classList.remove('active'), 220);
+    }
+    showToast(isSouth ? '📸 Tách! Con cười tươi xinh xắn quá nè!' : '📸 Tách! Bé cười tươi xinh xắn quá nè!');
+  } else if (actionType === 'vehicle') {
+    playCarHonk();
+    viewer.style.transition = 'transform 0.35s ease';
+    viewer.style.transform = 'scale(1.14) translateX(36px)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) translateX(0)'; }, 500);
+    showToast(isSouth ? '🚗 Bon bon! Xe lăn bánh an toàn trên đường nghen!' : '🚗 Bon bon! Xe lăn bánh an toàn trên đường nhé!');
+  } else if (actionType === 'plant') {
+    playUsageWaterSound();
+    viewer.style.transition = 'transform 0.35s ease';
+    viewer.style.transform = 'scale(1.12) translateY(-12px)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0)'; }, 400);
+    showToast(isSouth ? '🌸 Tí tách! Cây xanh tươi tốt nở những bông hoa xinh!' : '🌸 Tí tách! Cây xanh tươi tốt nở những bông hoa xinh!');
+  } else if (actionType === 'wear') {
+    playCartoonSparkle();
+    viewer.style.transition = 'transform 0.3s ease';
+    viewer.style.transform = 'scale(1.15) translateY(-16px)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0)'; }, 450);
+    showToast(isSouth ? '👟 Con mang vào người tự tin bước đi dạo nè!' : '👟 Bé mang vào người tự tin bước đi dạo nhé!');
+  } else if (actionType === 'music') {
+    playCartoonSparkle();
+    viewer.style.transition = 'transform 0.3s ease';
+    viewer.style.transform = 'scale(1.18) rotate(12deg)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) rotate(0)'; }, 450);
+    showToast(isSouth ? '🎶 Giai điệu rộn ràng, cùng nhún nhảy theo nhạc nào!' : '🎶 Giai điệu rộn ràng, cùng nhún nhảy theo nhạc nào!');
+  } else if (actionType === 'animal') {
+    if (viewer.play) viewer.play();
+    viewer.style.transition = 'transform 0.4s ease';
+    viewer.style.transform = 'scale(1.15) translateY(-18px) rotate(-6deg)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0) rotate(0)'; }, 500);
+    showToast(isSouth ? '🐾 Bạn nhỏ vui vẻ chạy nhảy cùng con nè!' : '🐾 Bạn nhỏ vui vẻ chạy nhảy cùng bé nè!');
+  } else {
+    playCartoonBoing();
+    viewer.style.transition = 'transform 0.35s ease';
+    viewer.style.transform = 'scale(1.15) translateY(-15px)';
+    setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0)'; }, 400);
+    showToast(isSouth ? '✨ Con đã khám phá cách sử dụng bạn này rồi!' : '✨ Bé đã khám phá cách sử dụng bạn này rồi!');
+  }
+});
+
+
 // Baby 3D Toy Park
 function renderPark() {
   const parkGrid = $('#parkGrid');
@@ -1360,6 +1732,7 @@ function updateFlashcardSlide() {
   $('#fcViewer').setAttribute('src', current.glb);
   $('#fcWord').textContent = current.word;
   $('#fcSentence').textContent = `“${current.sentence}”`;
+  if ($('#fcUsageText') && current.usage) $('#fcUsageText').textContent = current.usage.title;
   $('#fcProgress').textContent = `${state.flashcardIndex + 1} / ${all.length}`;
 
   playAudio(current.audio, () => {
@@ -1518,6 +1891,27 @@ function openWord(rawItem) {
   $('#modalFull').textContent = `"${item.word}"`;
   $('#modalSentence').textContent = `“${item.sentence}”`;
   $('#modalHint').textContent = item.hint;
+
+  // Render Practical Usage Guide
+  const usageCard = $('#modalUsageCard');
+  if (usageCard && item.usage) {
+    usageCard.classList.remove('hidden');
+    $('#usageTitle').textContent = item.usage.title || 'Bé dùng như thế nào?';
+    $('#tryActionText').textContent = item.usage.actionBtn || 'Thử Dùng Ngay';
+
+    const stepsList = $('#usageStepsList');
+    if (stepsList && item.usage.steps) {
+      stepsList.innerHTML = item.usage.steps.map((step, idx) => `
+        <div class="usage-step-item">
+          <span class="usage-step-num">${idx + 1}</span>
+          <span>${step}</span>
+        </div>
+      `).join('');
+    }
+  } else if (usageCard) {
+    usageCard.classList.add('hidden');
+  }
+
 
   if (btnPlayRecorded) btnPlayRecorded.classList.add('hidden');
   if (recordText) recordText.textContent = 'Bé Nói Thử Nha (Bấm Ghi Âm)';

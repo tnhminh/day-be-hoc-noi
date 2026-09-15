@@ -17,7 +17,17 @@
     "centralShortAudio": "audio_central/duck_short.mp3",
     "centralSentenceAudio": "audio_central/duck_sentence.mp3",
     "southSentenceAudio": "audio_south/duck_sentence.mp3",
-    "hint": "Quác quác! Chú vịt vàng bơi dưới nước"
+    "hint": "Quác quác! Chú vịt vàng bơi dưới nước",
+    "usage": {
+      "actionBtn": "🦆 Cho Vịt Bơi Lội",
+      "actionType": "animal",
+      "title": "Bé ngắm bạn Vịt bơi lội và học tiếng quác quác",
+      "steps": [
+        "🌾 Rắc nắm cám thơm xuống mép hồ nước trong",
+        "🌊 Xem bạn vịt quạt chân bơi lạch bạch",
+        "🗣️ Bé bắt chước tiếng kêu: Quác quác!"
+      ]
+    }
   },
   {
     "id": "fish",
@@ -37,7 +47,17 @@
     "centralShortAudio": "audio_central/fish_short.mp3",
     "centralSentenceAudio": "audio_central/fish_sentence.mp3",
     "southSentenceAudio": "audio_south/fish_sentence.mp3",
-    "hint": "Bơi lội tung tăng trong làn nước trong veo"
+    "hint": "Bơi lội tung tăng trong làn nước trong veo",
+    "usage": {
+      "actionBtn": "🐟 Cho Cá Bơi Lội",
+      "actionType": "animal",
+      "title": "Bé chăm sóc đàn cá bơi lượn trong bể nước",
+      "steps": [
+        "🐠 Nuôi cá trong bể nước mát sạch sẽ",
+        "🍱 Rắc chút thức ăn hạt nhỏ li ti trên mặt nước",
+        "👀 Ngắm bạn cá quẫy đuôi bơi lượn tung tăng"
+      ]
+    }
   },
   {
     "id": "fox",
@@ -57,7 +77,17 @@
     "centralShortAudio": "audio_central/fox_short.mp3",
     "centralSentenceAudio": "audio_central/fox_sentence.mp3",
     "southSentenceAudio": "audio_south/fox_sentence.mp3",
-    "hint": "Chú cáo thông minh có chiếc đuôi dài"
+    "hint": "Chú cáo thông minh có chiếc đuôi dài",
+    "usage": {
+      "actionBtn": "🦊 Cùng Cáo Đi Dạo",
+      "actionType": "animal",
+      "title": "Bạn Cáo thông minh tinh nghịch trong rừng xanh",
+      "steps": [
+        "🌲 Bạn Cáo có bộ lông đỏ cam sống trong rừng",
+        "👂 Vểnh đôi tai nhọn lắng nghe tiếng chim hót",
+        "🐾 Bước những bước chân nhẹ nhàng khéo léo"
+      ]
+    }
   },
   {
     "id": "horse",
@@ -77,7 +107,17 @@
     "centralShortAudio": "audio_central/horse_short.mp3",
     "centralSentenceAudio": "audio_central/horse_sentence.mp3",
     "southSentenceAudio": "audio_south/horse_sentence.mp3",
-    "hint": "Phi nhanh lạch cạch trên đồng cỏ"
+    "hint": "Phi nhanh lạch cạch trên đồng cỏ",
+    "usage": {
+      "actionBtn": "🐎 Phi Nước Đại",
+      "actionType": "animal",
+      "title": "Bé cưỡi ngựa dũng cảm phi nước đại trên đồng cỏ",
+      "steps": [
+        "🥕 Cho chú ngựa ăn cỏ non và cà rốt ngọt",
+        "🏇 Cầm dây cương ngồi thật vững trên lưng ngựa",
+        "💨 Lắc nhẹ cương phi nước đại lộc cộc"
+      ]
+    }
   },
   {
     "id": "parrot",
@@ -97,7 +137,17 @@
     "centralShortAudio": "audio_central/parrot_short.mp3",
     "centralSentenceAudio": "audio_central/parrot_sentence.mp3",
     "southSentenceAudio": "audio_south/parrot_sentence.mp3",
-    "hint": "Chú vẹt rực rỡ biết nhại tiếng người"
+    "hint": "Chú vẹt rực rỡ biết nhại tiếng người",
+    "usage": {
+      "actionBtn": "🦜 Dạy Vẹt Tập Nói",
+      "actionType": "animal",
+      "title": "Bé trò chuyện và dạy chú Vẹt lặp lại tiếng nói",
+      "steps": [
+        "🍌 Cho vẹt ăn chuối chín và hạt ngô thơm",
+        "🗣️ Bé nói thật to: Vẹt ơi xin chào!",
+        "🎶 Lắng nghe chú vẹt nhại lại câu nói của bé"
+      ]
+    }
   },
   {
     "id": "flamingo",
@@ -117,7 +167,17 @@
     "centralShortAudio": "audio_central/flamingo_short.mp3",
     "centralSentenceAudio": "audio_central/flamingo_sentence.mp3",
     "southSentenceAudio": "audio_south/flamingo_sentence.mp3",
-    "hint": "Loài chim lông hồng duyên dáng"
+    "hint": "Loài chim lông hồng duyên dáng",
+    "usage": {
+      "actionBtn": "🦩 Ngắm Hồng Hạc",
+      "actionType": "animal",
+      "title": "Bé ngắm nhìn chú Hồng Hạc sải cánh tuyệt đẹp",
+      "steps": [
+        "🦩 Quan sát chú hồng hạc đứng co một chân",
+        "🌊 Xem chim sải cánh lượn bên đầm nước mát",
+        "🎨 Học cách nhận biết màu lông hồng rực rỡ"
+      ]
+    }
   },
   {
     "id": "stork",
@@ -137,7 +197,17 @@
     "centralShortAudio": "audio_central/stork_short.mp3",
     "centralSentenceAudio": "audio_central/stork_sentence.mp3",
     "southSentenceAudio": "audio_south/stork_sentence.mp3",
-    "hint": "Chú cò trắng bay lả bay la"
+    "hint": "Chú cò trắng bay lả bay la",
+    "usage": {
+      "actionBtn": "🕊️ Xem Cò Bay Lượn",
+      "actionType": "animal",
+      "title": "Chú cò trắng chăm chỉ gắn liền với đồng quê",
+      "steps": [
+        "🌾 Ngắm đàn cò trắng sải cánh trên cánh đồng lúa",
+        "☁️ Tung đôi cánh rộng bay vút lên bầu trời xanh",
+        "🎵 Cùng cất tiếng hát bài ca: Con cò bé bé"
+      ]
+    }
   },
   {
     "id": "apple",
@@ -163,7 +233,17 @@
     "centralSentenceAudio": "audio_central/apple_sentence.mp3",
     "southSentenceAudio": "audio_south/apple_sentence.mp3",
     "hint": "Quả táo đỏ giòn ngọt, thơm ngon",
-    "southHint": "Trái táo đỏ tươi giòn ngọt ngon lành"
+    "southHint": "Trái táo đỏ tươi giòn ngọt ngon lành",
+    "usage": {
+      "actionBtn": "🍎 Cắn Táo Giòn Rụm",
+      "actionType": "eat",
+      "title": "Bé ăn táo ngọt giòn để bổ sung vitamin bổ dưỡng",
+      "steps": [
+        "🧼 Rửa sạch quả táo dưới vòi nước mát",
+        "🔪 Nhờ ba mẹ gọt vỏ và cắt thành từng miếng nhỏ",
+        "😋 Cắn giòn rụm rộp rộp tăng cường sức khỏe"
+      ]
+    }
   },
   {
     "id": "watermelon",
@@ -189,7 +269,17 @@
     "centralSentenceAudio": "audio_central/watermelon_sentence.mp3",
     "southSentenceAudio": "audio_south/watermelon_sentence.mp3",
     "hint": "Dưa hấu vỏ xanh ruột đỏ mát lành",
-    "southHint": "Trái dưa hấu vỏ xanh ruột đỏ ngọt mát"
+    "southHint": "Trái dưa hấu vỏ xanh ruột đỏ ngọt mát",
+    "usage": {
+      "actionBtn": "🍉 Ăn Dưa Hấu Mát Lạnh",
+      "actionType": "eat",
+      "title": "Bé thưởng thức miếng dưa hấu đỏ mọng giải nhiệt",
+      "steps": [
+        "🍉 Bổ quả dưa hấu thấy ruột đỏ tươi ngọt lịm",
+        "🤲 Dùng thìa hoặc cầm hai tay miếng dưa mát",
+        "😋 Nhai từng miếng ngọt mát ngày hè oi ả"
+      ]
+    }
   },
   {
     "id": "avocado",
@@ -214,7 +304,17 @@
     "centralShortAudio": "audio_central/avocado_short.mp3",
     "centralSentenceAudio": "audio_central/avocado_sentence.mp3",
     "southSentenceAudio": "audio_south/avocado_sentence.mp3",
-    "hint": "Trái bơ béo thơm và giàu dinh dưỡng"
+    "hint": "Trái bơ béo thơm và giàu dinh dưỡng",
+    "usage": {
+      "actionBtn": "🥑 Dầm Quả Bơ Béo Ngậy",
+      "actionType": "eat",
+      "title": "Quả bơ béo ngậy giúp bé thông minh và cao lớn",
+      "steps": [
+        "🥑 Bóc lớp vỏ xanh mịn thấy lớp thịt bơ vàng ươm",
+        "🥛 Thêm một chút sữa tươi dầm nhuyễn thơm lừng",
+        "🥄 Dùng thìa múc từng miếng ăn ngon miệng"
+      ]
+    }
   },
   {
     "id": "cake",
@@ -234,7 +334,17 @@
     "centralShortAudio": "audio_central/cake_short.mp3",
     "centralSentenceAudio": "audio_central/cake_sentence.mp3",
     "southSentenceAudio": "audio_south/cake_sentence.mp3",
-    "hint": "Bánh sinh nhật ngọt ngào phủ kem tươi"
+    "hint": "Bánh sinh nhật ngọt ngào phủ kem tươi",
+    "usage": {
+      "actionBtn": "🎂 Thổi Nến Bánh Kem",
+      "actionType": "eat",
+      "title": "Bé thổi nến mừng sinh nhật và thưởng thức bánh kem",
+      "steps": [
+        "🕯️ Cắm ngọn nến lung linh trên chiếc bánh sinh nhật",
+        "🌬️ Thổi tắt ngọn nến và ước một điều ước ngoan",
+        "🍰 Cắt từng phần bánh ngọt ngào chia cho cả nhà"
+      ]
+    }
   },
   {
     "id": "donut",
@@ -254,7 +364,17 @@
     "centralShortAudio": "audio_central/donut_short.mp3",
     "centralSentenceAudio": "audio_central/donut_sentence.mp3",
     "southSentenceAudio": "audio_south/donut_sentence.mp3",
-    "hint": "Bánh vòng phủ kem dâu hồng rực rỡ"
+    "hint": "Bánh vòng phủ kem dâu hồng rực rỡ",
+    "usage": {
+      "actionBtn": "🍩 Cắn Bánh Donut",
+      "actionType": "eat",
+      "title": "Chiếc bánh vòng xinh xắn phủ kẹo ngọt ngào",
+      "steps": [
+        "🍩 Chọn chiếc bánh vòng có rắc kẹo cốm sắc màu",
+        "🤲 Cầm bằng hai bàn tay sạch sẽ",
+        "😋 Cắn một miếng mềm xốp thơm mùi bơ sữa"
+      ]
+    }
   },
   {
     "id": "kebab",
@@ -274,7 +394,17 @@
     "centralShortAudio": "audio_central/kebab_short.mp3",
     "centralSentenceAudio": "audio_central/kebab_sentence.mp3",
     "southSentenceAudio": "audio_south/kebab_sentence.mp3",
-    "hint": "Món xiên thịt nướng thơm lừng"
+    "hint": "Món xiên thịt nướng thơm lừng",
+    "usage": {
+      "actionBtn": "🍢 Thưởng Thức Xiên Nướng",
+      "actionType": "eat",
+      "title": "Món thịt nướng xiên que thơm lừng cùng rau củ",
+      "steps": [
+        "🍢 Nướng thịt và ớt chuông vàng ươm trên bếp",
+        "🌬️ Thổi nhẹ cho bớt nóng trước khi ăn",
+        "😋 Cắn từng miếng thịt ngọt mềm đậm đà"
+      ]
+    }
   },
   {
     "id": "teacup",
@@ -294,7 +424,17 @@
     "centralShortAudio": "audio_central/teacup_short.mp3",
     "centralSentenceAudio": "audio_central/teacup_sentence.mp3",
     "southSentenceAudio": "audio_south/teacup_sentence.mp3",
-    "hint": "Tách trà ấm áp tỏa ngát hương"
+    "hint": "Tách trà ấm áp tỏa ngát hương",
+    "usage": {
+      "actionBtn": "☕ Uống Ngụm Nước Ấm",
+      "actionType": "drink",
+      "title": "Bé dùng tách nhỏ nhấp từng ngụm nước ấm thanh lọc",
+      "steps": [
+        "💧 Rót nước lọc ấm vào lòng chiếc tách sứ",
+        "🤲 Dùng các ngón tay khéo léo cầm chắc quai",
+        "☕ Nhấp từng ngụm nhỏ uống từ tốn lịch sự"
+      ]
+    }
   },
   {
     "id": "robot",
@@ -319,7 +459,17 @@
     "centralShortAudio": "audio_central/robot_short.mp3",
     "centralSentenceAudio": "audio_central/robot_sentence.mp3",
     "southSentenceAudio": "audio_south/robot_sentence.mp3",
-    "hint": "Người máy thông minh biết nhảy múa"
+    "hint": "Người máy thông minh biết nhảy múa",
+    "usage": {
+      "actionBtn": "🤖 Bấm Nút Điều Khiển",
+      "actionType": "toy",
+      "title": "Bé bấm điều khiển để người máy biểu diễn nhảy múa",
+      "steps": [
+        "🔘 Bật công tắc nguồn ở phía sau lưng người máy",
+        "🎮 Cầm bộ điều khiển từ xa bấm nút tiến lùi",
+        "💃 Xem người máy vẫy tay và nhảy múa chào bé"
+      ]
+    }
   },
   {
     "id": "ball",
@@ -345,7 +495,17 @@
     "centralSentenceAudio": "audio_central/ball_sentence.mp3",
     "southSentenceAudio": "audio_south/ball_sentence.mp3",
     "hint": "Quả bóng tròn xoe bé thích lăn tăn",
-    "southHint": "Trái banh tròn xoe bé thích đá lăn tăn"
+    "southHint": "Trái banh tròn xoe bé thích đá lăn tăn",
+    "usage": {
+      "actionBtn": "⚽ Sút Bóng Vào Gôn",
+      "actionType": "play",
+      "title": "Bé đá bóng hoặc ném bóng cùng các bạn rèn luyện thể thao",
+      "steps": [
+        "👐 Ôm bóng chuyền tay cho ba mẹ cùng chơi",
+        "⚽ Đặt bóng xuống sân cỏ và sút thẳng vào gôn",
+        "🏃 Chạy thật nhanh đuổi theo bóng rèn luyện đôi chân"
+      ]
+    }
   },
   {
     "id": "astronaut",
@@ -365,7 +525,17 @@
     "centralShortAudio": "audio_central/astronaut_short.mp3",
     "centralSentenceAudio": "audio_central/astronaut_sentence.mp3",
     "southSentenceAudio": "audio_south/astronaut_sentence.mp3",
-    "hint": "Chú phi hành gia bay vào vũ trụ"
+    "hint": "Chú phi hành gia bay vào vũ trụ",
+    "usage": {
+      "actionBtn": "🚀 Khám Phá Không Gian",
+      "actionType": "toy",
+      "title": "Bé hóa thân thành phi hành gia bay lên vũ trụ",
+      "steps": [
+        "🚀 Bước vào tàu con thoi thắt dây an toàn",
+        "👨‍🚀 Mặc bộ quần áo vũ trụ đội mũ kính tròn",
+        "🌌 Bay lơ lửng ngoài không gian ngắm các vì sao"
+      ]
+    }
   },
   {
     "id": "star",
@@ -385,7 +555,17 @@
     "centralShortAudio": "audio_central/star_short.mp3",
     "centralSentenceAudio": "audio_central/star_sentence.mp3",
     "southSentenceAudio": "audio_south/star_sentence.mp3",
-    "hint": "Ngôi sao vàng năm cánh lấp lánh"
+    "hint": "Ngôi sao vàng năm cánh lấp lánh",
+    "usage": {
+      "actionBtn": "⭐ Nhận Sao Bé Ngoan",
+      "actionType": "play",
+      "title": "Ngôi sao vàng thưởng cho bé khi tập nói to rõ",
+      "steps": [
+        "🗣️ Cố gắng phát âm chuẩn từng từ vựng thật giỏi",
+        "⭐ Nhận ngôi sao vàng lấp lánh dán vào bảng bé ngoan",
+        "🏆 Gom đủ sao vàng để mở khóa rương kho báu"
+      ]
+    }
   },
   {
     "id": "boombox",
@@ -405,7 +585,17 @@
     "centralShortAudio": "audio_central/boombox_short.mp3",
     "centralSentenceAudio": "audio_central/boombox_sentence.mp3",
     "southSentenceAudio": "audio_south/boombox_sentence.mp3",
-    "hint": "Chiếc máy phát nhạc rộn ràng vui tai"
+    "hint": "Chiếc máy phát nhạc rộn ràng vui tai",
+    "usage": {
+      "actionBtn": "📻 Bật Nhạc Nhún Nhảy",
+      "actionType": "music",
+      "title": "Bé bật loa nghe bài hát thiếu nhi và nhún nhảy theo",
+      "steps": [
+        "🔘 Bấm nút Play hình tam giác trên mặt máy",
+        "🔊 Vặn núm tròn xoay để âm lượng vừa nghe",
+        "🎶 Nhún nhảy múa may theo điệu nhạc rộn ràng"
+      ]
+    }
   },
   {
     "id": "toy_car",
@@ -431,7 +621,17 @@
     "centralSentenceAudio": "audio_central/toy_car_sentence.mp3",
     "southSentenceAudio": "audio_south/toy_car_sentence.mp3",
     "hint": "Brum brum! Chiếc xe bốn bánh bon bon",
-    "southHint": "Brum brum! Chiếc xe hơi chạy bon bon"
+    "southHint": "Brum brum! Chiếc xe hơi chạy bon bon",
+    "usage": {
+      "actionBtn": "🏎️ Kéo Xe Lăn Bánh",
+      "actionType": "vehicle",
+      "title": "Chiếc xe ô tô dây cót phóng vút trên đường",
+      "steps": [
+        "🖐️ Đặt xe xuống sàn kéo lùi về sau lấy đà",
+        "💨 Thả tay ra xem xe lao vút về phía trước",
+        "🏁 Cùng bạn bè thi đua xem xe ai chạy xa nhất"
+      ]
+    }
   },
   {
     "id": "bike",
@@ -451,7 +651,17 @@
     "centralShortAudio": "audio_central/bike_short.mp3",
     "centralSentenceAudio": "audio_central/bike_sentence.mp3",
     "southSentenceAudio": "audio_south/bike_sentence.mp3",
-    "hint": "Bé đạp xe rèn luyện sức khỏe dẻo dai"
+    "hint": "Bé đạp xe rèn luyện sức khỏe dẻo dai",
+    "usage": {
+      "actionBtn": "🚴 Đạp Xe Bon Bon",
+      "actionType": "vehicle",
+      "title": "Bé tập đạp xe giữ thăng bằng và rèn luyện đôi chân",
+      "steps": [
+        "⛑️ Đội mũ bảo hiểm vừa vặn để bảo vệ đầu",
+        "🦶 Đặt hai chân lên bàn đạp tay giữ chặt ghi-đông",
+        "🚴 Đạp đều chân cho xe bon bon lăn bánh quanh sân"
+      ]
+    }
   },
   {
     "id": "milk_truck",
@@ -471,7 +681,17 @@
     "centralShortAudio": "audio_central/milk_truck_short.mp3",
     "centralSentenceAudio": "audio_central/milk_truck_sentence.mp3",
     "southSentenceAudio": "audio_south/milk_truck_sentence.mp3",
-    "hint": "Xe tải to lớn chở hàng hóa bon bon"
+    "hint": "Xe tải to lớn chở hàng hóa bon bon",
+    "usage": {
+      "actionBtn": "🚚 Bấm Còi Xe Tải",
+      "actionType": "vehicle",
+      "title": "Xe bồn chở sữa tươi thơm ngon từ nông trại về",
+      "steps": [
+        "🥛 Nạp đầy sữa bò tươi nguyên chất từ trang trại",
+        "🚚 Lái xe bon bon vượt qua các cung đường an toàn",
+        "🏪 Giao sữa tươi bổ dưỡng đến tận tay các em nhỏ"
+      ]
+    }
   },
   {
     "id": "cup",
@@ -497,7 +717,17 @@
     "centralSentenceAudio": "audio_central/cup_sentence.mp3",
     "southSentenceAudio": "audio_south/cup_sentence.mp3",
     "hint": "Cốc dùng để bé uống nước mỗi ngày",
-    "southHint": "Cái ly dùng để bé uống nước, uống sữa"
+    "southHint": "Cái ly dùng để bé uống nước, uống sữa",
+    "usage": {
+      "actionBtn": "🥤 Rót Nước Uống Ực",
+      "actionType": "drink",
+      "title": "Chiếc cốc xinh xắn giúp bé uống nước đầy đủ mỗi ngày",
+      "steps": [
+        "💧 Rót nước lọc mát vừa đủ vào lòng cốc",
+        "🤲 Dùng hai bàn tay nâng cốc cẩn thận không làm đổ",
+        "🥤 Uống từng ngụm mát lành giúp cơ thể khỏe mạnh"
+      ]
+    }
   },
   {
     "id": "bottle",
@@ -517,7 +747,17 @@
     "centralShortAudio": "audio_central/bottle_short.mp3",
     "centralSentenceAudio": "audio_central/bottle_sentence.mp3",
     "southSentenceAudio": "audio_south/bottle_sentence.mp3",
-    "hint": "Bình nước tiện lợi bé mang đi học"
+    "hint": "Bình nước tiện lợi bé mang đi học",
+    "usage": {
+      "actionBtn": "🍶 Vặn Nắp Rót Nước",
+      "actionType": "drink",
+      "title": "Bình nước tiện lợi mang theo khi bé đi học đi chơi",
+      "steps": [
+        "🔄 Vặn nắp mở miệng bình nước cẩn thận",
+        "💧 Rút ống hút hoặc rót nước mát ra ly nhỏ",
+        "🔒 Đóng chặt nắp cài then và bỏ vào ngăn balo"
+      ]
+    }
   },
   {
     "id": "shoe",
@@ -537,7 +777,17 @@
     "centralShortAudio": "audio_central/shoe_short.mp3",
     "centralSentenceAudio": "audio_central/shoe_sentence.mp3",
     "southSentenceAudio": "audio_south/shoe_sentence.mp3",
-    "hint": "Đôi giày xinh bảo vệ đôi chân bé"
+    "hint": "Đôi giày xinh bảo vệ đôi chân bé",
+    "usage": {
+      "actionBtn": "👟 Xỏ Giày Bước Đi",
+      "actionType": "wear",
+      "title": "Đôi giày bảo vệ bàn chân xinh khi bé chạy nhảy",
+      "steps": [
+        "🧦 Đi đôi tất (vớ) mềm mại êm ái vào chân",
+        "👟 Xỏ mũi chân vào giày rồi kéo nhẹ phần gót",
+        "🚶 Dán quai dính chắc chắn rồi tự tin bước đi dạo"
+      ]
+    }
   },
   {
     "id": "glasses",
@@ -563,7 +813,17 @@
     "centralSentenceAudio": "audio_central/glasses_sentence.mp3",
     "southSentenceAudio": "audio_south/glasses_sentence.mp3",
     "hint": "Chiếc kính sành điệu che nắng cho mắt",
-    "southHint": "Chiếc kính mát che nắng sành điệu"
+    "southHint": "Chiếc kính mát che nắng sành điệu",
+    "usage": {
+      "actionBtn": "👓 Đeo Kính Chống Nắng",
+      "actionType": "wear",
+      "title": "Kính mát bảo vệ mắt bé khỏi ánh nắng chói chang",
+      "steps": [
+        "👐 Dùng hai tay cầm hai gọng kính mở rộng vừa phải",
+        "👃 Đặt nhẹ phần đệm kính lên sống mũi thẳng",
+        "😎 Cài hai gọng qua vành tai giúp nhìn rõ không chói"
+      ]
+    }
   },
   {
     "id": "camera",
@@ -583,7 +843,17 @@
     "centralShortAudio": "audio_central/camera_short.mp3",
     "centralSentenceAudio": "audio_central/camera_sentence.mp3",
     "southSentenceAudio": "audio_south/camera_sentence.mp3",
-    "hint": "Tách tách! Máy ảnh lưu giữ kỷ niệm đẹp"
+    "hint": "Tách tách! Máy ảnh lưu giữ kỷ niệm đẹp",
+    "usage": {
+      "actionBtn": "📸 Bấm Tách Chụp Hình",
+      "actionType": "camera",
+      "title": "Bé ngắm ống kính và chụp lại nụ cười rạng rỡ của cả nhà",
+      "steps": [
+        "👀 Hướng ống kính máy ảnh về phía người thân bạn bè",
+        "😁 Cười thật tươi và hô to: Kim chi một hai ba!",
+        "🔘 Bấm nút Tách một cái để lưu lại bức ảnh kỷ niệm"
+      ]
+    }
   },
   {
     "id": "lantern",
@@ -603,7 +873,17 @@
     "centralShortAudio": "audio_central/lantern_short.mp3",
     "centralSentenceAudio": "audio_central/lantern_sentence.mp3",
     "southSentenceAudio": "audio_south/lantern_sentence.mp3",
-    "hint": "Chiếc đèn chiếu ánh sáng ấm áp"
+    "hint": "Chiếc đèn chiếu ánh sáng ấm áp",
+    "usage": {
+      "actionBtn": "🏮 Thắp Sáng Đèn Lồng",
+      "actionType": "light",
+      "title": "Chiếc lồng đèn lung linh thắp sáng đêm hội Trung Thu",
+      "steps": [
+        "🏮 Bật công tắc cho bóng đèn bên trong sáng rực rỡ",
+        "🚶 Cầm cán đèn cùng các bạn rước đèn quanh phố",
+        "🌕 Cùng phá cỗ bánh dẻo bánh nướng dưới ánh trăng rằm"
+      ]
+    }
   },
   {
     "id": "plant",
@@ -629,6 +909,16 @@
     "centralSentenceAudio": "audio_central/plant_sentence.mp3",
     "southSentenceAudio": "audio_south/plant_sentence.mp3",
     "hint": "Chậu hoa xanh mát làm đẹp căn phòng",
-    "southHint": "Bông hoa xinh xắn làm đẹp căn phòng"
+    "southHint": "Bông hoa xinh xắn làm đẹp căn phòng",
+    "usage": {
+      "actionBtn": "🌱 Tưới Nước Cho Cây",
+      "actionType": "plant",
+      "title": "Bé tưới nước chăm sóc cây xanh giúp môi trường trong lành",
+      "steps": [
+        "☀️ Đặt chậu cây ở ban công nơi có ánh nắng ban mai",
+        "🚿 Dùng bình tưới phun từng hạt nước li ti lên lá",
+        "🌸 Ngắm nhìn cây đâm chồi nảy lộc nở những đóa hoa xinh"
+      ]
+    }
   }
 ]
