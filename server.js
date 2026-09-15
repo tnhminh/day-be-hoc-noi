@@ -323,6 +323,76 @@ const server = http.createServer(async (req, res) => {
         return;
       }
 
+      // 8d. POST /api/upload-audio
+      if (req.method === "POST" && pathname === "/api/upload-audio") {
+        const rawDir = req.headers["x-target-dir"] || "audio_south";
+        const targetDir = ["audio", "audio_south", "audio_central"].includes(rawDir) ? rawDir : "audio_south";
+        const rawFilename = req.headers["x-filename"] || "voice_" + Date.now() + ".mp3";
+        let cleanName = path.basename(decodeURIComponent(rawFilename)).replace(/[^a-zA-Z0-9_.-]/g, "_");
+        if (!cleanName.toLowerCase().endsWith(".mp3") && !cleanName.toLowerCase().endsWith(".wav")) {
+          cleanName += ".mp3";
+        }
+        const targetPath = path.join(__dirname, targetDir, cleanName);
+
+        const chunks = [];
+        let totalSize = 0;
+        req.on("data", chunk => {
+          chunks.push(chunk);
+          totalSize += chunk.length;
+          if (totalSize > 25 * 1024 * 1024) req.destroy();
+        });
+        req.on("end", () => {
+          const buffer = Buffer.concat(chunks);
+          fs.writeFileSync(targetPath, buffer);
+          sendJson(res, 200, {
+            success: true,
+            folder: targetDir,
+            filename: cleanName,
+            path: targetDir + "/" + cleanName,
+            sizeKB: (buffer.length / 1024).toFixed(1)
+          });
+        });
+        return;
+      }
+
+      // 8e. POST /api/generate-voices-fpt
+      if (req.method === "POST" && pathname === "/api/generate-voices-fpt") {
+        const payload = await parseJsonBody(req);
+        const apiKey = payload.apiKey || process.env.FPT_AI_API_KEY;
+        if (!apiKey) {
+          sendJson(res, 400, { success: false, error: "Thiếu FPT.AI API Key" });
+          return;
+        }
+        const region = payload.region || "south";
+        const voice = payload.voice || (region === "south" ? "lannhi" : "myan");
+        try {
+          const testRes = await fetch("https://api.fpt.ai/hmi/tts/v5", {
+            method: "POST",
+            headers: { "api-key": apiKey, "voice": voice, "speed": "0" },
+            body: "Bé học nói tiếng Việt"
+          });
+          if (!testRes.ok) {
+            const errTxt = await testRes.text();
+            sendJson(res, 400, { success: false, error: "FPT API Error (" + testRes.status + "): " + errTxt });
+            return;
+          }
+          const testData = await testRes.json();
+          if (testData.error) {
+            sendJson(res, 400, { success: false, error: testData.message || testData.error });
+            return;
+          }
+          sendJson(res, 200, {
+            success: true,
+            message: "Kết nối FPT.AI thành công! Đang tổng hợp giọng " + voice + " miền Nam Sài Gòn.",
+            asyncUrl: testData.async
+          });
+        } catch (fptErr) {
+          sendJson(res, 500, { success: false, error: fptErr.message });
+        }
+        return;
+      }
+
+
 
       // 9. POST /api/admin/verify-pin
       if (req.method === 'POST' && pathname === '/api/admin/verify-pin') {

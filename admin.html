@@ -210,7 +210,59 @@
             </div>
           </div>
 
-          <div class="table-responsive">
+                  <!-- KHỐI GIẢI PHÁP GIỌNG MIỀN NAM SÀI GÒN CHUẨN -->
+        <div class="panel-box" style="background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #fde68a; margin-bottom: 24px;">
+          <div class="panel-header" style="border-bottom-color: #fde68a; margin-bottom: 14px; padding-bottom: 10px;">
+            <div>
+              <h2 style="color: #92400e;">🌴 Giải Pháp Giọng Đọc Miền Nam Sài Gòn Chuẩn 100%</h2>
+              <p style="font-size: 13.5px; color: #b45309; line-height: 1.5; margin-top: 4px;">
+                Các bộ máy TTS miễn phí toàn cầu (Google / Microsoft Edge) chỉ có dữ liệu giọng mẫu Hà Nội/Bắc đọc từ ngữ Nam. Để có <b>ngữ điệu và âm sắc Nam Bộ Sài Gòn chuẩn 100%</b>, bạn có 2 giải pháp trực tiếp:
+              </p>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+            <!-- CÁCH 1: FPT.AI TTS -->
+            <div style="background: #ffffff; border: 1.5px solid #fcd34d; border-radius: 14px; padding: 18px;">
+              <strong style="color: #b45309; font-size: 15px; display: block; margin-bottom: 6px;">
+                ⚡ Cách 1: Tổng hợp tự động với FPT.AI TTS
+              </strong>
+              <p style="font-size: 13px; color: #64748b; line-height: 1.4; margin-bottom: 12px;">
+                Dùng giọng <b>Lan Nhi</b> (nữ Sài Gòn dịu dàng) hoặc <b>Minh Quang</b> (nam Sài Gòn ấm áp).
+              </p>
+              <div style="display: flex; gap: 8px;">
+                <input type="password" id="inputFptKeyCms" class="form-control" placeholder="Dán FPT.AI API Key..." style="font-size: 13px;">
+                <button class="btn-action-primary" id="btnRunFptCms" style="white-space: nowrap; font-size: 13px;">
+                  🚀 Tạo Giọng Nam
+                </button>
+              </div>
+              <small style="display: block; margin-top: 6px; color: #94a3b8; font-size: 11px;">
+                Đăng ký lấy key miễn phí tại: <a href="https://fpt.ai" target="_blank" style="color: var(--primary); font-weight: 700;">fpt.ai</a>
+              </small>
+            </div>
+
+            <!-- CÁCH 2: PHÒNG THU / TẢI TỆP TRỰC TIẾP -->
+            <div style="background: #ffffff; border: 1.5px solid #fcd34d; border-radius: 14px; padding: 18px;">
+              <strong style="color: #b45309; font-size: 15px; display: block; margin-bottom: 6px;">
+                🎙️ Cách 2: Nạp tệp thu âm người thật
+              </strong>
+              <p style="font-size: 13px; color: #64748b; line-height: 1.4; margin-bottom: 12px;">
+                Ba mẹ hoặc cô giáo miền Nam thu âm trên điện thoại rồi nạp file lưu đè vào thư mục <code>audio_south/</code>.
+              </p>
+              <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <select id="selectWordForVoiceUpload" class="form-control" style="flex: 1; min-width: 140px; font-size: 13px; background: #fff;">
+                  <option value="">Chọn từ cần nạp giọng...</option>
+                </select>
+                <label class="btn-action-primary" style="font-size: 13px; cursor: pointer; white-space: nowrap;">
+                  ⬆️ Tải Tệp MP3
+                  <input type="file" id="uploadVoiceSouthInput" accept=".mp3,.wav" style="display: none;">
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<div class="table-responsive">
             <table class="data-table">
               <thead>
                 <tr>

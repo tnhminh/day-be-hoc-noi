@@ -35,6 +35,7 @@ $('#btnSubmitPin')?.addEventListener('click', async () => {
       pinModal.classList.add('hidden');
       showToast('🔓 Đã mở khóa quyền quản trị CMS!');
       loadAllData();
+  populateVoiceUploadWordsDropdown();
     } else {
       pinError.classList.remove('hidden');
       pinInput.value = '';
@@ -586,6 +587,78 @@ $("#btnDownloadGlbUrl")?.addEventListener("click", async () => {
       showToast(`✅ Đã tải về thành công: ${data.filename} (${data.sizeKB} KB)!`);
     } else {
       alert("Lỗi tải tệp từ web: " + data.error);
+    }
+  } catch (err) {
+    alert("Lỗi kết nối: " + err.message);
+  }
+});
+
+// =======================================================================
+// SOUTHERN SAIGON AUDIO MANAGEMENT & FPT / MANUAL UPLOAD
+// =======================================================================
+function populateVoiceUploadWordsDropdown() {
+  const sel = $("#selectWordForVoiceUpload");
+  if (!sel) return;
+  sel.innerHTML = "<option value=''>Chọn từ cần nạp giọng Nam...</option>" +
+    allWords.map(w => `<option value="${w.id}">${w.southWord || w.word} (${w.id})</option>`).join("");
+}
+
+// Button FPT.AI synthesis
+$("#btnRunFptCms")?.addEventListener("click", async () => {
+  const apiKey = $("#inputFptKeyCms")?.value.trim();
+  if (!apiKey) {
+    alert("Vui lòng nhập FPT.AI API Key! Bạn có thể đăng ký tài khoản miễn phí tại fpt.ai");
+    return;
+  }
+
+  showToast("⏳ Đang kết nối FPT.AI để tổng hợp giọng Nam Bộ...");
+  try {
+    const res = await fetch("/api/generate-voices-fpt", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ apiKey, region: "south", voice: "lannhi" })
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast("🎉 " + data.message);
+      alert("Kết nối FPT.AI thành công! Key hợp lệ.");
+    } else {
+      alert("Lỗi FPT.AI: " + data.error);
+    }
+  } catch (err) {
+    alert("Lỗi kết nối: " + err.message);
+  }
+});
+
+// Upload human recorded voice into audio_south/
+$("#uploadVoiceSouthInput")?.addEventListener("change", async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const wordId = $("#selectWordForVoiceUpload")?.value;
+  if (!wordId) {
+    alert("Vui lòng chọn từ vựng bạn muốn nạp giọng từ danh sách trước!");
+    e.target.value = "";
+    return;
+  }
+
+  showToast("⏳ Đang tải file thu âm giọng Nam lên hệ thống...");
+  try {
+    const arrayBuffer = await file.arrayBuffer();
+    const res = await fetch("/api/upload-audio", {
+      method: "POST",
+      headers: {
+        "x-target-dir": "audio_south",
+        "x-filename": wordId + ".mp3"
+      },
+      body: arrayBuffer
+    });
+    const data = await res.json();
+    if (data.success) {
+      showToast(`✅ Đã nạp giọng Nam thành công cho từ "${wordId}"!`);
+      renderAudioAudit(allWords);
+    } else {
+      alert("Lỗi tải âm thanh: " + data.error);
     }
   } catch (err) {
     alert("Lỗi kết nối: " + err.message);
