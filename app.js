@@ -1172,7 +1172,7 @@ const ANIM_INFO = {
   flamingo_flyA_: { label: "🦩 Sải cánh", hint: "Hồng hạc sải cánh tuyệt đẹp" },
   storkFly_B_: { label: "🕊️ Tung cánh", hint: "Chú cò trắng tung cánh bay lượn" },
   // Vehicles & Toys
-  Holobike_Loop: { label: "🚲 Đạp xe", hint: "Bánh xe đạp quay đều" },
+  Holobike_Loop: { label: "🔍 Phân rã 3D", hint: "Tách rời 356 linh kiện xe đạp cực đỉnh" },
   Wheels: { label: "🚚 Lăn bánh", hint: "Xe bon bon trên đường" },
   Wave: { label: "👋 Vẫy tay", hint: "Người máy vẫy tay chào bé" },
   ThumbsUp: { label: "👍 Khen giỏi", hint: "Khen ngợi bé phát âm giỏi" },
