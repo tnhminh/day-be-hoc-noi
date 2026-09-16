@@ -1033,6 +1033,7 @@ function fireConfetti(originX = window.innerWidth / 2, originY = window.innerHei
     updateConfetti();
   }
 }
+const launchConfetti = fireConfetti;
 
 function updateConfetti() {
   ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
