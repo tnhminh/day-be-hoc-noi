@@ -1470,13 +1470,22 @@ const ANIM_INFO = {
   parrot_A_: { label: "🦜 Vỗ cánh", hint: "Chú vẹt vỗ cánh bay lượn" },
   flamingo_flyA_: { label: "🦩 Sải cánh", hint: "Hồng hạc sải cánh tuyệt đẹp" },
   storkFly_B_: { label: "🕊️ Tung cánh", hint: "Chú cò trắng tung cánh bay lượn" },
-  // Vehicles & Toys
-  Holobike_Loop: { label: "🔍 Phân rã 3D", hint: "Tách rời 356 linh kiện xe đạp cực đỉnh" },
+  // Vehicles & Toys - EXPLODED VIEW & SIMULATION
+  Holobike_Loop: { label: "🔍 Phân rã xe đạp", hint: "Tách rời 356 linh kiện xe đạp lơ lửng cực đỉnh" },
+  Exploded_Truck: { label: "🔍 Phân rã xe tải", hint: "Tách rời bánh xe và bồn sữa bay lơ lửng 3D" },
+  Exploded_Car: { label: "🔍 Phân rã xe hơi", hint: "Nâng mui kính và ghế da tách rời lơ lửng" },
+  Disassemble_Robot: { label: "🔍 Phân rã Người Máy", hint: "Tách rời đầu, tay, chân và giáp ngực lơ lửng cực ngầu" },
+  ZeroGravity_Float: { label: "🌌 Không trọng lực", hint: "Phi hành gia bay lơ lửng ngoài vũ trụ" },
+  Bass_Beat_Pulse: { label: "🔊 Rung Bass", hint: "Loa nảy nhịp theo sóng nhạc cực sung" },
+  Bounce_Spin: { label: "⚽ Nảy tưng tưng", hint: "Quả bóng nảy cao xoay tròn 3D" },
+  Magic_Shine_Pulse: { label: "✨ Hào quang", hint: "Ngôi sao tỏa sáng lấp lánh nảy xoay 3D" },
   Wheels: { label: "🚚 Lăn bánh", hint: "Xe bon bon trên đường" },
   Wave: { label: "👋 Vẫy tay", hint: "Người máy vẫy tay chào bé" },
   ThumbsUp: { label: "👍 Khen giỏi", hint: "Khen ngợi bé phát âm giỏi" },
   Walking: { label: "🚶 Đi bộ", hint: "Người máy bước đi vững chãi" },
   Running: { label: "🏃 Chạy nhanh", hint: "Người máy chạy thật nhanh" },
+  Dance: { label: "💃 Nhảy múa", hint: "Nhảy múa rộn ràng ăn mừng" },
+  Jump: { label: "⚡ Nhảy cao", hint: "Bật nhảy cao tràn đầy năng lượng" },
   Yes: { label: "🙆 Gật đầu", hint: "Gật đầu đồng ý với bé" },
   No: { label: "🙅 Lắc đầu", hint: "Lắc đầu trêu đùa vui nhộn" }
 };
@@ -1661,12 +1670,19 @@ function triggerPracticalSimulation() {
     showToast(isSouth ? '📸 Tách! Con cười tươi xinh xắn quá nè!' : '📸 Tách! Bé cười tươi xinh xắn quá nè!');
   } else if (actionType === 'vehicle') {
     playCarHonk();
-    showComic('BÍP BÍP! 🚗');
-    spawnFloatingEmojis(['💨', '🏁', '⚡', '✨']);
-    viewer.style.transition = 'transform 0.35s ease';
-    viewer.style.transform = 'scale(1.18) translateX(42px)';
-    setTimeout(() => { viewer.style.transform = 'scale(1) translateX(0)'; }, 500);
-    showToast(isSouth ? '🚗 Bon bon! Xe lăn bánh an toàn trên đường nghen!' : '🚗 Bon bon! Xe lăn bánh an toàn trên đường nhé!');
+    showComic('PHÂN RÃ 3D! 🚗');
+    spawnFloatingEmojis(['🔍', '⚙️', '💨', '🏁', '⚡', '✨']);
+
+    const anims = viewer.availableAnimations || [];
+    const expAnim = anims.find(a => a.includes('Exploded') || a.includes('Holobike'));
+    if (expAnim) {
+      setViewerAnimation(expAnim);
+    } else {
+      viewer.style.transition = 'transform 0.35s ease';
+      viewer.style.transform = 'scale(1.18) translateX(42px)';
+      setTimeout(() => { viewer.style.transform = 'scale(1) translateX(0)'; }, 500);
+    }
+    showToast(isSouth ? '🚗 Phân rã 3D! Con nhìn các linh kiện xe bay lơ lửng nè!' : '🚗 Phân rã 3D! Bé nhìn các linh kiện xe bay lơ lửng nhé!');
   } else if (actionType === 'plant') {
     playUsageWaterSound();
     showComic('TÍ TÁCH! 🌸');
@@ -1675,6 +1691,31 @@ function triggerPracticalSimulation() {
     viewer.style.transform = 'scale(1.16) translateY(-14px)';
     setTimeout(() => { viewer.style.transform = 'scale(1) translateY(0)'; }, 400);
     showToast(isSouth ? '🌸 Tí tách! Cây xanh tươi tốt nở những bông hoa xinh!' : '🌸 Tí tách! Cây xanh tươi tốt nở những bông hoa xinh!');
+  } else if (actionType === 'toy') {
+    playCartoonSparkle();
+    const anims = viewer.availableAnimations || [];
+    const disAnim = anims.find(a => a.includes('Disassemble') || a.includes('ZeroGravity') || a.includes('Dance'));
+    if (disAnim) {
+      setViewerAnimation(disAnim);
+      showComic('BIẾN HÌNH! 🤖');
+      spawnFloatingEmojis(['🤖', '⚡', '✨', '🌟', '🚀']);
+      showToast(isSouth ? '🤖 Biến hình phân rã 3D cực ngầu luôn nè con!' : '🤖 Biến hình phân rã 3D cực ngầu luôn nhé bé!');
+    } else {
+      playCartoonBoing();
+      showComic('VUI QUÁ! 🧸');
+      spawnFloatingEmojis(['🧸', '🎈', '✨', '🌟']);
+      showToast(isSouth ? '🧸 Bạn đồ chơi cử động vui nhộn cùng con nè!' : '🧸 Bạn đồ chơi cử động vui nhộn cùng bé nè!');
+    }
+  } else if (actionType === 'play') {
+    playCartoonBoing();
+    const anims = viewer.availableAnimations || [];
+    const playAnim = anims.find(a => a.includes('Bounce') || a.includes('Magic'));
+    if (playAnim) {
+      setViewerAnimation(playAnim);
+    }
+    showComic('TƯNG TƯNG! ⚽');
+    spawnFloatingEmojis(['⚽', '⭐', '✨', '🎉']);
+    showToast(isSouth ? '⚽ Tưng tưng! Trò chơi thể thao thật vui khỏe nè!' : '⚽ Tưng tưng! Trò chơi thể thao thật vui khỏe nhé!');
   } else if (actionType === 'wear') {
     playCartoonSparkle();
     showComic('TỰ TIN! 👟');

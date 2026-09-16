@@ -68,3 +68,26 @@ test('Visual Usage Simulation: UI components and interactive handler exist', () 
   assert.ok(appJs.includes('function playUsageWaterSound()'), 'playUsageWaterSound must exist in app.js');
   assert.ok(appJs.includes('function playCameraSound()'), 'playCameraSound must exist in app.js');
 });
+
+test('Exploded Disassembly & 3D Interactive Animations: Toys and Vehicles have dedicated animations', () => {
+  const models = [
+    { file: 'models/bike.glb', expectedAnim: 'Holobike_Loop' },
+    { file: 'models/milk_truck.glb', expectedAnim: 'Exploded_Truck' },
+    { file: 'models/toy_car.glb', expectedAnim: 'Exploded_Car' },
+    { file: 'models/robot.glb', expectedAnim: 'Disassemble_Robot' },
+    { file: 'models/astronaut.glb', expectedAnim: 'ZeroGravity_Float' },
+    { file: 'models/boombox.glb', expectedAnim: 'Bass_Beat_Pulse' },
+    { file: 'models/ball.glb', expectedAnim: 'Bounce_Spin' },
+    { file: 'models/star.glb', expectedAnim: 'Magic_Shine_Pulse' }
+  ];
+
+  for (const m of models) {
+    const buf = fs.readFileSync(m.file);
+    const jsonLen = buf.readUInt32LE(12);
+    const jsonStr = buf.toString("utf8", 20, 20 + jsonLen);
+    const gltf = JSON.parse(jsonStr);
+    assert.ok(Array.isArray(gltf.animations) && gltf.animations.length > 0, `Model ${m.file} must have animations`);
+    const animNames = gltf.animations.map(a => a.name);
+    assert.ok(animNames.includes(m.expectedAnim), `Model ${m.file} must include ${m.expectedAnim}, got: [${animNames.join(", ")}]`);
+  }
+});

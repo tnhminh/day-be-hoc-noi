@@ -50,7 +50,16 @@ Hỗ trợ chuẩn đủ **Giọng Miền Nam**, **Giọng Miền Trung** và **
      - 🦜 **Con vẹt**: Vỗ cánh bay lượn (*parrot_A_*).
      - 🦩 **Hồng hạc**: Sải cánh bồng bềnh (*flamingo_flyA_*).
      - 🕊️ **Con cò**: Tung cánh bay lượn (*storkFly_B_*).
-     - 🤖 **Người máy**: Nhảy múa, Vẫy tay, Nhảy cao, Khen giỏi...
+     - 🤖 **Người máy**: Nhảy múa, Vẫy tay, Nhảy cao, Khen giỏi... và **Phân rã linh kiện 3D (*Disassemble_Robot*)**.
+   - **Hoạt họa Phân Rã Linh Kiện 3D Tương Lai (3D Exploded Disassembly View) cho Xe Cộ & Đồ Chơi**:
+     - 🚲 **Xe đạp**: Phân rã bay tách 356 linh kiện máy (*Holobike_Loop*).
+     - 🚚 **Xe tải sữa**: Phân rã bánh xe trước sau và bồn sữa lơ lửng (*Exploded_Truck*).
+     - 🚗 **Xe hơi**: Nâng mui kính trong suốt, ghế da và khung gầm tách rời lơ lửng (*Exploded_Car*).
+     - 🤖 **Người máy**: Tách rời đầu, vai, tay, chân và giáp ngực lơ lửng như Iron Man (*Disassemble_Robot*).
+     - 👨‍🚀 **Phi hành gia**: Bay lơ lửng trong không gian không trọng lực (*ZeroGravity_Float*).
+     - 📻 **Loa BoomBox**: Nẩy nhịp loa theo sóng nhạc rung Bass (*Bass_Beat_Pulse*).
+     - ⚽ **Quả bóng**: Nảy tưng tưng xoay tròn 3D (*Bounce_Spin*).
+     - ⭐ **Ngôi sao**: Tỏa sáng hào quang nảy xoay 3D (*Magic_Shine_Pulse*).
    - **Thanh điều khiển động tác**: Bé có thể chạm chọn các động tác khác nhau, tạm dừng/tiếp tục hoặc bấm nút "💃 Cử động" để chuyển động tác ăn mừng kèm pháo hoa confetti.
    - Bé có thể dùng tay vuốt xoay 360°, phóng to thu nhỏ để kích thích thị giác và trí tò mò.
 
