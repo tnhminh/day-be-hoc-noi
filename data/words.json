@@ -461,9 +461,9 @@
     "southSentenceAudio": "audio_south/robot_sentence.mp3",
     "hint": "Người máy thông minh biết nhảy múa",
     "usage": {
-      "actionBtn": "🤖 Bấm Nút Điều Khiển",
+      "actionBtn": "🔍 Phân Rã Người Máy 3D",
       "actionType": "toy",
-      "title": "Bé bấm điều khiển để người máy biểu diễn nhảy múa",
+      "title": "Phân rã giáp ngực, tay, chân và đầu người máy như Iron Man",
       "steps": [
         "🔘 Bật công tắc nguồn ở phía sau lưng người máy",
         "🎮 Cầm bộ điều khiển từ xa bấm nút tiến lùi",
@@ -623,9 +623,9 @@
     "hint": "Brum brum! Chiếc xe bốn bánh bon bon",
     "southHint": "Brum brum! Chiếc xe hơi chạy bon bon",
     "usage": {
-      "actionBtn": "🏎️ Kéo Xe Lăn Bánh",
+      "actionBtn": "🔍 Phân Rã Xe Hơi 3D",
       "actionType": "vehicle",
-      "title": "Chiếc xe ô tô dây cót phóng vút trên đường",
+      "title": "Phân rã mui kính, ghế da và khung gầm lơ lửng cực ngầu",
       "steps": [
         "🖐️ Đặt xe xuống sàn kéo lùi về sau lấy đà",
         "💨 Thả tay ra xem xe lao vút về phía trước",
@@ -653,9 +653,9 @@
     "southSentenceAudio": "audio_south/bike_sentence.mp3",
     "hint": "Bé đạp xe rèn luyện sức khỏe dẻo dai",
     "usage": {
-      "actionBtn": "🚴 Đạp Xe Bon Bon",
+      "actionBtn": "🔍 Phân Rã Xe Đạp 3D",
       "actionType": "vehicle",
-      "title": "Bé tập đạp xe giữ thăng bằng và rèn luyện đôi chân",
+      "title": "Khám phá 356 linh kiện xe đạp phân rã lơ lửng và đạp xe quanh sân",
       "steps": [
         "⛑️ Đội mũ bảo hiểm vừa vặn để bảo vệ đầu",
         "🦶 Đặt hai chân lên bàn đạp tay giữ chặt ghi-đông",
@@ -683,9 +683,9 @@
     "southSentenceAudio": "audio_south/milk_truck_sentence.mp3",
     "hint": "Xe tải to lớn chở hàng hóa bon bon",
     "usage": {
-      "actionBtn": "🚚 Bấm Còi Xe Tải",
+      "actionBtn": "🔍 Phân Rã Xe Tải 3D",
       "actionType": "vehicle",
-      "title": "Xe bồn chở sữa tươi thơm ngon từ nông trại về",
+      "title": "Phân rã cụm bánh xe và bồn chở sữa lơ lửng trong không gian",
       "steps": [
         "🥛 Nạp đầy sữa bò tươi nguyên chất từ trang trại",
         "🚚 Lái xe bon bon vượt qua các cung đường an toàn",
